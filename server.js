@@ -46,8 +46,12 @@ app.get("/books/:id", (req, res) => {
   var id = req.params.id;
   var book = db.get('books').find({ id: id}).value();
   res.render('books/view',{
-    
+    book: book
   })
+});
+
+app.get("/books/:id/edit", (req, res) => {
+  res.render('books/edit')
 });
 
 app.post('/books/create', (req, res) => {
