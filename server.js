@@ -110,6 +110,26 @@ app.get("/users/:id", (req, res) => {
   })
 });
 
+app.get("/users/:id/edit", (req, res) => {
+  var id = req.params.id;
+  var user = db.get('users').find({ id: id}).value();
+  res.render('users/edit',{ 
+    user: user
+  })
+});
+
+app.get('/users/:id/delete', (req, res) => {
+  var id = req.params.id;
+  db.get('users').remove({ id: id}).write();
+  res.redirect('/users');
+});
+
+app.post('/users/:id/edit', (req, res) => {
+  var id = req.params.id;
+  db.get('users').find({ id: id}).assign({ name: req.body.name, age:req.body.age}).write();
+  res.redirect('/users');
+});
+
 // listen for requests :)
 const listener = app.listen(process.env.PORT, () => {
   console.log("Your app is listening on port " + listener.address().port);
