@@ -1,23 +1,13 @@
 h2 List books
-ul
-  each book in books
-    li
-      span=book.title
-      span &nbsp
-      a(href="#") Sửa
-      span &nbsp
-      a(href="#") Xóa
-      
+a(href="/books/create") New
 table(style='width:100%')
-  tr()
+  tr
     th Tên
     th Action
-  tr
-    td Jill
-    td Smith
-    td 50
-  tr
-    td Eve
-    td Jackson
-    td 94
-      
+  each book in books
+    tr    
+      td=book.title
+      td
+        a(href="#") Sửa
+      td
+        a(href="#") Xóa
