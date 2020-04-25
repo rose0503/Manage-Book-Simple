@@ -1,5 +1,11 @@
 h2 Danh sách 
 a(href="/books/create") Thêm
+br
+br
+form(action="/books/sreach", method="GET")
+  input(type="text", name='q')
+  span &nbsp
+  button Tìm
 table(style='width:100%')
   tr
     th Tên

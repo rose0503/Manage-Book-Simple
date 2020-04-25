@@ -51,7 +51,11 @@ app.get("/books/:id", (req, res) => {
 });
 
 app.get("/books/:id/edit", (req, res) => {
-  res.render('books/edit')
+  var id = req.params.id;
+  var book = db.get('books').find({ id: id}).value();
+  res.render('books/edit',{
+    book: book
+  })
 });
 
 app.post('/books/:id/edit', (req, res) => {
@@ -60,10 +64,20 @@ app.post('/books/:id/edit', (req, res) => {
   res.redirect('/books');
 });
 
+app.get('/books/:id/delete', (req, res) => {
+  var id = req.params.id;
+  db.get('books').remove({ id: id}).write();
+  res.redirect('/books');
+});
+
 app.post('/books/create', (req, res) => {
   req.body.id = shortid.generate();
   db.get('books').push(req.body).write();
   res.redirect('/books');
+});
+
+app.get("/books/sreach", (req, res) => {
+  var 
 });
 
 // listen for requests :)
