@@ -29,14 +29,10 @@ app.get("/", (request, response) => {
   response.sendFile(__dirname + "/views/index.html");
 });
 
-// send the default array of dreams to the webpage
-app.get("/dreams", (request, response) => {
-  // express helps us take JS objects and send them as JSON
-  response.json(dreams);
-});
-
 app.get("/books", (req, res) => {
-  res.render('books/index')
+  res.render('books/index',{
+    books: db.get('books').value()
+  })
 });
 
 // listen for requests :)
