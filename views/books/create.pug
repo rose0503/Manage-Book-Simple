@@ -1,6 +1,7 @@
-h2 Add Books
-
-lable(for="book") Tiêu đề
-span &nbsp
-input#book(type='text')
-span &
+h2 Thêm sách
+form(action="/books/create", method="POST")
+  lable(for="book") Tiêu đề
+  span &nbsp
+  input#book(type='text')
+  span &nbsp
+  button Tạo
