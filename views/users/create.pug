@@ -1,0 +1,12 @@
+h2 Thêm người dùng
+form(action="/users/create", method="POST")
+  lable(for="user") Họ tên
+  span &nbsp
+  input#user(type='text', name="name")
+  span &nbsp
+  div
+    lable(for="tuoi") Tuổi
+    span &nbsp
+    input#tuoi(type='text', name="age")
+  button Tạo
+  

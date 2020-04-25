@@ -1,0 +1,15 @@
+h2 Danh sách người thuê sách
+a(href="/user/create") Thêm mới
+table(style='width:100%')
+  tr
+    th Tên
+    th Action
+  each user in users
+    tr    
+      td=user.name
+      td
+        a(href="/users/" + user.id) Chi tiết
+      td
+        a(href="/users/" + user.id + "/edit") Sửa
+      td
+        a(href="/users/" + user.id + "/delete") Xóa

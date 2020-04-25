@@ -18,7 +18,7 @@ app.set('view engine', 'pug');
 
 
 // Set some defaults (required if your JSON file is empty)
-db.defaults({ books: []})
+db.defaults({ books: [], users: []})
   .write()
 
 app.use(express.json()) // for parsing application/json
@@ -53,7 +53,7 @@ app.get("/books/:id", (req, res) => {
 app.get("/books/:id/edit", (req, res) => {
   var id = req.params.id;
   var book = db.get('books').find({ id: id}).value();
-  res.render('books/edit',{
+  res.render('books/edit',{ 
     book: book
   })
 });
@@ -79,11 +79,34 @@ app.post('/books/create', (req, res) => {
 app.get("/books/sreach", (req, res) => {
   var q = req.query.q;
   var matchBooks = db.get("books").value().filter((book) => {
-    book.title.toLowerCase().indexOf(q.toLowerCase()) !== -1 
+    return book.title.toLowerCase().indexOf(q.toLowerCase()) !== -1 
   })
   res.render('books/view',{
     book: matchBooks,
     q: q
+  })
+});
+
+app.get("/users", (req, res) => {
+  res.render('users/index',{
+    users: db.get('users').value()
+  })
+});
+
+app.get("/users/create", (req, res) => {
+  res.render('users/create')});
+
+app.post('/users/create', (req, res) => {
+  req.body.id = shortid.generate();
+  db.get('users').push(req.body).write();
+  res.redirect('/users');
+});
+
+app.get("/users/:id", (req, res) => {
+  var id = req.params.id;
+  var user = db.get('users').find({ id: id}).value();
+  res.render('users/view',{
+    user: user
   })
 });
 
