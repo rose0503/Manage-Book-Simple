@@ -77,7 +77,14 @@ app.post('/books/create', (req, res) => {
 });
 
 app.get("/books/sreach", (req, res) => {
-  var 
+  var q = req.query.q;
+  var matchBooks = db.get("books").value().filter((book) => {
+    book.title.toLowerCase().indexOf(q.toLowerCase()) !== -1 
+  })
+  res.render('books/view',{
+    book: matchBooks,
+    q: q
+  })
 });
 
 // listen for requests :)
