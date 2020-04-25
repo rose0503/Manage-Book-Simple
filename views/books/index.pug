@@ -8,6 +8,8 @@ table(style='width:100%')
     tr    
       td=book.title
       td
-        a(href="#") Sửa
+        a(href="/books/" + book.id) Chi tiết
       td
-        a(href="#") Xóa
+        a(href="/books/" + book.id + "/edit") Sửa
+      td
+        a(href="/books/" + book.id + "/delete") Xóa

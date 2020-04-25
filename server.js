@@ -42,9 +42,16 @@ app.get("/books", (req, res) => {
 app.get("/books/create", (req, res) => {
   res.render('books/create')});
 
+app.get("/books/:id", (req, res) => {
+  var id = req.params.id;
+  var book = db.get('books').find({ id: id}).value();
+  res.render('books/view',{
+    
+  })
+});
+
 app.post('/books/create', (req, res) => {
-  //req.body.id = shortid.generate();
-  //console.log(req.body.id)
+  req.body.id = shortid.generate();
   db.get('books').push(req.body).write();
   res.redirect('/books');
 });
