@@ -1,5 +1,15 @@
 {
   "books": [
-    null
+    {
+      "id": 1,
+      "title": "Bé khỏe bé ngoan"
+    },
+    {
+      "id": 2,
+      "title": "Hoa Hồng"
+    },
+    {
+      "title": "Tôi đi code dạo"
+    }
   ]
 }

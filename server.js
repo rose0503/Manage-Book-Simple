@@ -5,6 +5,7 @@
 // but feel free to use whatever libraries or frameworks you'd like through `package.json`.
 const express = require("express");
 const app = express();
+const pug = require("pug");
 const low = require('lowdb');
 const FileSync = require('lowdb/adapters/FileSync');
 const shortid = require('shortid');
@@ -19,6 +20,9 @@ app.set('view engine', 'pug');
 // Set some defaults (required if your JSON file is empty)
 db.defaults({ books: []})
   .write()
+
+app.use(express.json()) // for parsing application/json
+app.use(express.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
 
 // make all the files in 'public' available
 // https://expressjs.com/en/starter/static-files.html
