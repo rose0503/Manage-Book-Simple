@@ -45,3 +45,5 @@ router.post('/:id/edit', (req, res) => {
   db.get('users').find({ id: id}).assign({ name: req.body.name, age:req.body.age}).write();
   res.redirect('/users');
 });
+
+module.exports = router;
