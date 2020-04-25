@@ -5,6 +5,15 @@
 // but feel free to use whatever libraries or frameworks you'd like through `package.json`.
 const express = require("express");
 const app = express();
+const low = require('lowdb');
+const FileSync = require('lowdb/adapters/FileSync');
+const shortid = require('shortid');
+
+const adapter = new FileSync('db.json');
+const db = low(adapter);
+
+app.set('views', './views');
+app.set('view engine', 'pug');
 
 // our default array of dreams
 const dreams = [
@@ -26,6 +35,10 @@ app.get("/", (request, response) => {
 app.get("/dreams", (request, response) => {
   // express helps us take JS objects and send them as JSON
   response.json(dreams);
+});
+
+app.get("/books", (req, res) => {
+  res.render('books/index')
 });
 
 // listen for requests :)
