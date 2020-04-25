@@ -1,3 +1,11 @@
 {
-  "books": []
+  "books": [
+    {
+      "id": 1,
+      "title": "Bé khỏe bé ngoan"
+    }
+  ],
+  "posts": [],
+  "user": {},
+  "count": 0
 }

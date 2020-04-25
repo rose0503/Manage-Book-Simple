@@ -15,12 +15,10 @@ const db = low(adapter);
 app.set('views', './views');
 app.set('view engine', 'pug');
 
-// our default array of dreams
-const dreams = [
-  "Find and count some sheep",
-  "Climb a really tall mountain",
-  "Wash the dishes"
-];
+
+// Set some defaults (required if your JSON file is empty)
+db.defaults({ books: []})
+  .write()
 
 // make all the files in 'public' available
 // https://expressjs.com/en/starter/static-files.html
