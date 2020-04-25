@@ -54,6 +54,12 @@ app.get("/books/:id/edit", (req, res) => {
   res.render('books/edit')
 });
 
+app.post('/books/:id/edit', (req, res) => {
+  var id = req.params.id;
+  db.get('books').find({ id: id}).assign({ title: req.body.title}).write();
+  res.redirect('/books');
+});
+
 app.post('/books/create', (req, res) => {
   req.body.id = shortid.generate();
   db.get('books').push(req.body).write();
