@@ -39,8 +39,8 @@ app.get("/books/create", (req, res) => {
   res.render('books/create')});
 
 app.post('/books/create', (req, res) => {
-  req.body.id = shortid.generate();
-  console.log(req.body.id)
+  //req.body.id = shortid.generate();
+  //console.log(req.body.id)
   db.get('books').push(req.body).write();
   res.redirect('/books');
 });
