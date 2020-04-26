@@ -8,7 +8,8 @@ const app = express();
 const pug = require("pug");
 
 var bookRoute =require("./routes/book.route.js");
-var userRoute = require("./routes/user.route.js")
+var userRoute = require("./routes/user.route.js");
+var transactionRoute = require("./routes/transaction.route.js");
 
 app.set('views', './views');
 app.set('view engine', 'pug');
@@ -25,6 +26,7 @@ app.use(express.static("public"));
 
 app.use("/books", bookRoute);
 app.use("/users", userRoute);
+app.use("/transactions", transactionRoute);
 
 // https://expressjs.com/en/starter/basic-routing.html
 app.get("/", (request, response) => {
