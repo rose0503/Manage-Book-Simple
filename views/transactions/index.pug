@@ -3,11 +3,10 @@ a(href="/transactions/create") Thuê mới
 
 table(style='width:100%')
   tr
-    th Người thuê;
+    th Người thuê
     th DS sách
-  tr
-    each user in users
-      td user.name
-  tr
-    each book in books
-      td book.title
+  each transaction in transactions
+    tr
+      td=transaction.userId
+    tr
+      td= transaction.bookId
