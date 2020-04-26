@@ -3,7 +3,7 @@ form(action=("/transactions/create"), method="POST")
   label(for='u') Chọn người thuê:
   select#u
     each user in users
-      option(value=user.id)= user.name
+      option(value=user.id, name="userId")= user.name
     else
       option Không có
   br   
@@ -11,7 +11,7 @@ form(action=("/transactions/create"), method="POST")
   label(for='book') Chọn sách:
   select#book
     each book in books
-      option(value=book.id)= book.title
+      option(value=book.id , name="bookId")= book.title
     else
       option Không có
   br
