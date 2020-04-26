@@ -1,0 +1,6 @@
+h2 Thuê sách mới
+form(action=("/transactions/create"), method="POST")
+  label(for='user') Chọn người thuê:
+  select#user
+    each user in users
+      option(value=user.name)=user.name
