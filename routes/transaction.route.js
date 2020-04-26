@@ -21,9 +21,9 @@ router.get("/create", (req, res) => {
 
 router.post('/create', (req, res) => {
   req.body.id = shortid.generate();
-  var userId =req.body.value;
-  var bookId =req.body.value;
-  db.get('transactions').push(req.body.value).write();
+  var userId =req.body.user;
+  var bookId =req.body.book;
+  db.get('transactions').push(userId, bookId).write();
   res.redirect('/transactions');
 });
 

@@ -7,6 +7,6 @@ table(style='width:100%')
     th DS sách
   each transaction in transactions
     tr
-      td=transaction.userId
+      td=transaction.userId ?  transaction.userId : ''
     tr
-      td= transaction.bookId
+      td= transaction.bookId ? transaction.bookId : ''
