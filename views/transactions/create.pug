@@ -1,3 +1,19 @@
 h2 Thuê sách mới
-
+form(action=("/transactions/create"), method="POST")
+  label(for='u') Chọn người thuê:
+  select#u
+    each user in users
+      option(value=user.id)= user.name
+    else
+      option Không có
+  br   
+  br
+  label(for='book') Chọn sách:
+  select#book
+    each book in books
+      option(value=book.id)= book.title
+    else
+      option Không có
+  br
+  button Tạo
      
