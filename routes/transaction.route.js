@@ -12,7 +12,7 @@ router.get("/", (req, res) => {
   });
   var user = users.filter(function(user){
     for(var x in userId)
-      return user.id == x.id
+      return user.id == x
   })
   var bookId = transactions.map(function(tran) {
     
