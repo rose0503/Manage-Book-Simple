@@ -7,7 +7,7 @@ router.get("/", (req, res) => {
   var transactions = db.get('transactions').value();
   var users = db.get('users').value();
   var books = db.get('books').value();
-  var b =[];
+  
   var userId = transactions.map(function(tran) {
     return tran.userId
   });
@@ -20,12 +20,15 @@ router.get("/", (req, res) => {
   var bookId = transactions.map(function(tran) {    
     return tran.bookId
   });
-  var book = books.filter(function(book){
+  if(user){
+    var book = books.filter(function(book){
     for(let x of bookId)
       if(book.id === x)
         return book
-  })
+    })
   
+  }
+    
   res.render('transactions/index',{
     transactions: transactions,
     users: user,
