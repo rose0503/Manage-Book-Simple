@@ -2,16 +2,19 @@ h2 Thuê sách
 a(href="/transactions/create") Thuê mới
 
 table(style='width:100%')
-  tr
-    th Người thuê
-    th DS sách    
-  tr
-    each user in users
-      tr
-        td=user.name
-        each book in books
-          td
-            ul
-              li= book.title
-            
+  ul
+    tr
+      th Người thuê
+      th DS sách    
+    tr
+      each tran in transactions
+        each user in users
+          tr
+            td=user.name
+            td
+              each book in books
+                li= book.title
+            td  
+              a(href="/transactions/<id>/complete")= tran.isCompleteHoàn thành
+br
 a(href="/") Home
