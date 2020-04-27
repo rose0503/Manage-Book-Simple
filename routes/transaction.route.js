@@ -26,7 +26,7 @@ router.get("/", (req, res) => {
         return book
   })
   if(user){
-    var bookfilter = db.get('transactions').find({userId : user.id}).value();
+    var bookfilter = db.get('transactions').filter({id : user.id}).value();
     console.log(bookfilter)
   }
   
@@ -35,8 +35,6 @@ router.get("/", (req, res) => {
     users: user,
     books: book
   })
-  console.log(userId);
-  console.log(user);
   console.log(bookId);
   console.log(book);
   console.log(db.get('transactions').value())
