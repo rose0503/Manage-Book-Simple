@@ -25,10 +25,6 @@ router.get("/", (req, res) => {
       if(book.id === x)
         return book
   })
-  if(user){
-    var bookfilter = db.get('transactions').filter({id : user.id}).value();
-    console.log(bookfilter)
-  }
   
   res.render('transactions/index',{
     transactions: transactions,
