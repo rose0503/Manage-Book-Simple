@@ -3,34 +3,52 @@
     {
       "title": "Tôi đi code mướn",
       "description": "Specifies the form element the <textarea> element belongs to. The value of this attribute must be the id attribute of a <form> el",
-      "id": "ykn5IePR9"
+      "id": [
+        null,
+        null
+      ]
     },
     {
       "title": "Đường đời",
       "description": "Specifies the form element the <textarea> element belongs to. The value of this attribute must be the id attribute of a <form> el",
-      "id": "RvttMi5nZ"
+      "id": [
+        null,
+        null
+      ]
     },
     {
       "title": "Bạn tôi",
       "description": "Specifies the form element the <textarea> element belongs to. The value of this attribute must be the id attribute of a <form> el",
-      "id": "E_9jupGcb"
+      "id": [
+        null,
+        null
+      ]
     }
   ],
   "users": [
     {
       "name": "Trịnh Quốc Việt",
       "age": "24",
-      "id": "njlF1_Cmy"
+      "id": [
+        "njlF1_Cmy",
+        "9chh8zYeE"
+      ]
     },
     {
       "name": "Quang Khải",
       "age": "29",
-      "id": "9chh8zYeE"
+      "id": [
+        "njlF1_Cmy",
+        "9chh8zYeE"
+      ]
     },
     {
       "name": "Hoang Hai",
       "age": "27",
-      "id": "wEDfDGmBS"
+      "id": [
+        "njlF1_Cmy",
+        "9chh8zYeE"
+      ]
     }
   ],
   "transactions": [
@@ -43,6 +61,11 @@
       "userId": "9chh8zYeE",
       "book": "RvttMi5nZ",
       "id": "2o-V49_tl"
+    },
+    {
+      "userId": "[\"njlF1_Cmy\",\"9chh8zYeE\"]",
+      "book": "[null,null]",
+      "id": "TwcGsnE49"
     }
   ]
 }
