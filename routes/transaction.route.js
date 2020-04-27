@@ -11,7 +11,7 @@ router.get("/", (req, res) => {
     return tran.userId
   });
   var user = users.filter(function(user){
-    for(var x in userId)
+    for(var x of userId)
       return user.id == x
   })
   var bookId = transactions.map(function(tran) {
@@ -19,7 +19,7 @@ router.get("/", (req, res) => {
     return tran.bookId
   });
   var book = books.filter(function(book){
-    for(let x in bookId)
+    for(let x of bookId)
       return books.id == bookId.id
   })
   
