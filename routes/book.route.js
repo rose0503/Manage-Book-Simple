@@ -7,6 +7,7 @@ router.get("/", (req, res) => {
   res.render('books/index',{
     books: db.get('books').value()
   })
+  console.log(db.get('books').value())
 });
 
 router.get("/create", (req, res) => {
