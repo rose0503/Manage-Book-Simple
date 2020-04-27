@@ -11,10 +11,11 @@ router.get("/", (req, res) => {
     return tran.userId
   });
   var user = users.filter(function(user){
-    for(let x in userId)
-      return users.id == userId.id
+    for(var x in userId)
+      return user.id == x.id
   })
   var bookId = transactions.map(function(tran) {
+    
     return tran.bookId
   });
   var book = books.filter(function(book){
@@ -27,7 +28,10 @@ router.get("/", (req, res) => {
     users: user,
     books: book
   })
+  console.log(userId);
   console.log(user);
+  console.log(bookId);
+  console.log(book);
   console.log(db.get('transactions').value())
 });
 
