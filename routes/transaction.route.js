@@ -10,14 +10,14 @@ router.get("/", (req, res) => {
   var userId = transactions.map(function(tran) {
     return tran.userId
   });
-  var user = transactions.filter(function(user){
-    return userId == users.id
+  var user = users.filter(function(user){
+    return users.id == tran
   })
   var bookId = transactions.map(function(tran) {
     return tran.bookId
   });
-  var book = db.get('books').value().filter(function(book){
-    return book.id = bookId
+  var book = books.filter(function(book){
+    return  bookId == books.id
   })
   
   res.render('transactions/index',{
