@@ -11,13 +11,15 @@ router.get("/", (req, res) => {
     return tran.userId
   });
   var user = users.filter(function(user){
-    return users.id == tran
+    for(let x in userId)
+      return users.id == userId.id
   })
   var bookId = transactions.map(function(tran) {
     return tran.bookId
   });
   var book = books.filter(function(book){
-    return  bookId == books.id
+    for(let x in bookId)
+      return books.id == bookId.id
   })
   
   res.render('transactions/index',{
