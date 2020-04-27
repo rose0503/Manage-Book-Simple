@@ -37,32 +37,38 @@
     {
       "userId": "BU4QDrLha",
       "bookId": "qpeAb55io",
-      "id": "HmMsyar8e"
+      "id": "HmMsyar8e",
+      "isComplete": true
     },
     {
       "userId": "ZgieByaBt",
       "bookId": "qpeAb55io",
-      "id": "i1eCei3-x"
+      "id": "i1eCei3-x",
+      "isComplete": true
     },
     {
       "userId": "ZgieByaBt",
       "bookId": "HX-2Mb92P",
-      "id": "AeB57JmjO"
+      "id": "AeB57JmjO",
+      "isComplete": false
     },
     {
       "userId": "BU4QDrLha",
       "bookId": "NOvzTijta",
-      "id": "YROo39osF"
+      "id": "YROo39osF",
+      "isComplete": true
     },
     {
       "userId": "BU4QDrLha",
       "bookId": "NOvzTijta",
-      "id": "nuIjIZcy6"
+      "id": "nuIjIZcy6",
+      "isComplete": false
     },
     {
       "userId": "93vHQgA79",
       "bookId": "HX-2Mb92P",
-      "id": "bGhYi4epc"
+      "id": "bGhYi4epc",
+      "isComplete": true
     }
   ]
 }

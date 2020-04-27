@@ -47,6 +47,7 @@ router.get("/create", (req, res) => {
 
 router.post('/create', (req, res) => {
   req.body.id = shortid.generate();
+  var user
   db.get('transactions').push(req.body).write();
   res.redirect('/transactions');
 });
