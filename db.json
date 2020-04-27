@@ -1,71 +1,33 @@
 {
   "books": [
     {
-      "title": "Tôi đi code mướn",
+      "title": "Tôi đi code dạo",
       "description": "Specifies the form element the <textarea> element belongs to. The value of this attribute must be the id attribute of a <form> el",
-      "id": [
-        null,
-        null
-      ]
+      "id": []
     },
     {
       "title": "Đường đời",
       "description": "Specifies the form element the <textarea> element belongs to. The value of this attribute must be the id attribute of a <form> el",
-      "id": [
-        null,
-        null
-      ]
-    },
-    {
-      "title": "Bạn tôi",
-      "description": "Specifies the form element the <textarea> element belongs to. The value of this attribute must be the id attribute of a <form> el",
-      "id": [
-        null,
-        null
-      ]
+      "id": []
     }
   ],
   "users": [
     {
-      "name": "Trịnh Quốc Việt",
-      "age": "24",
-      "id": [
-        "njlF1_Cmy",
-        "9chh8zYeE"
-      ]
-    },
-    {
-      "name": "Quang Khải",
+      "name": "Quang Tran",
       "age": "29",
-      "id": [
-        "njlF1_Cmy",
-        "9chh8zYeE"
-      ]
+      "id": "uHU7iuJ4M"
     },
     {
-      "name": "Hoang Hai",
-      "age": "27",
-      "id": [
-        "njlF1_Cmy",
-        "9chh8zYeE"
-      ]
+      "name": "Quoc Viet",
+      "age": "24",
+      "id": "xPqZnc3ke"
     }
   ],
   "transactions": [
     {
-      "userId": "njlF1_Cmy",
-      "book": "ykn5IePR9",
-      "id": "y66Nu5m25"
-    },
-    {
-      "userId": "9chh8zYeE",
-      "book": "RvttMi5nZ",
-      "id": "2o-V49_tl"
-    },
-    {
-      "userId": "[\"njlF1_Cmy\",\"9chh8zYeE\"]",
-      "book": "[null,null]",
-      "id": "TwcGsnE49"
+      "userId": "uHU7iuJ4M",
+      "bookId": "[]",
+      "id": "8F9KQX01f"
     }
   ]
 }

@@ -5,11 +5,13 @@ const shortid = require('shortid');
 
 router.get("/", (req, res) => {
   var transactions = db.get('transactions').value();
+  var users = db.get('users').value();
+  var books = db.get('books').value();
   var userId = transactions.map(function(tran) {
     return tran.userId
   });
-  var user = db.get('users').value().filter(function(user){
-    return user.id = userId
+  var user = transactions.filter(function(user){
+    return userId == users.id
   })
   var bookId = transactions.map(function(tran) {
     return tran.bookId
@@ -38,8 +40,6 @@ router.get("/create", (req, res) => {
 
 router.post('/create', (req, res) => {
   req.body.id = shortid.generate();
-  var userId =req.body.user;
-  var bookId =req.body.book;
   db.get('transactions').push(req.body).write();
   res.redirect('/transactions');
 });

@@ -8,8 +8,8 @@ form(action=("/transactions/create"), method="POST")
       option Không có
   br   
   br
-  label(for='bookId') Chọn sách:
-  select#book(name="book")
+  label(for='book') Chọn sách:
+  select#book(name="bookId")
     each book in books
       option(value=book.id)= book.title
     else
