@@ -14,7 +14,8 @@ table(style='width:100%')
           td
             each book in books
               li= book.title
-          td  
-            a(href="/transactions/<id>/complete")= tran.isComplete ? "Hoàn thành" : "Chưa hoàn thành"
+          each tran in transactions    
+            td  
+              a(href="/transactions/" + tran.id + "/complete")= tran.isComplete ? "Hoàn thành" : "Đang mượn"
 br
 a(href="/") Home

@@ -44,6 +44,11 @@ router.get("/create", (req, res) => {
   })
 });
 
+router.get('/:id/complete', (req, res) => {
+  var id = req.params.id;
+  db.get('books').remove({ id: id}).write();
+  res.redirect('/books');
+});
 
 router.post('/create', (req, res) => {
   req.body.id = shortid.generate();
