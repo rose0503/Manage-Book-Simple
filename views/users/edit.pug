@@ -1,10 +1,16 @@
-h2 Cập nhật thông tin
-form(method="POST")
-  lable(for="user") Họ tên
-  span &nbsp
-  input#user(type='text', name="name", value= user.name)
-  lable(for="age") Tuổi
-  span &nbsp
-  input#age(type='text', name="age", value= user.age)
-  button Sửa
+extends ../layout/common.pug
+block content
+  .container.mt-2
+    h2.mb-4.d-flex.justify-content-center Cập nhật thông tin
+    form(method="POST")
+      .form-group.row
+        lable(for="user", class="col-sm-2 col-form-label") Họ tên
+        .col-sm-10
+          input#user(type='text', name="name", class="form-control", value = user.name)
+      .form-group.row
+        lable(for="tuoi", class="col-sm-2 col-form-label") Tuổi
+        .col-sm-10
+          input#tuoi(type='text', name="age", class="form-control", value = user.age)
+      button(type="submit", class="btn btn-primary mr-3") Sửa
+      a(href="/users", class="btn btn-secondary btn-md", role="button", aria-pressed="true") Hủy
   

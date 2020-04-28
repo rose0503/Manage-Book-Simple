@@ -2,28 +2,17 @@ extends ../layout/common.pug
 block content
   .container.mt-2
     h2.mb-4.d-flex.justify-content-center  Thêm người dùng
+    
     form(action="/users/create", method="POST")
-      lable(for="user") Họ tên
-      span &nbsp
-      input#user(type='text', name="name")
-      span &nbsp
-      div
-        lable(for="tuoi") Tuổi
-        span &nbsp
-        input#tuoi(type='text', name="age")
-      button Tạo
-      
-      
-      form(action="/users/create", method="POST")
       .form-group.row
         lable(for="user", class="col-sm-2 col-form-label") Họ tên
         .col-sm-10
-          input#book(type='text', name="title", class="form-control")
+          input#user(type='text', name="name", class="form-control")
       .form-group.row
-        lable(for="mota", class="col-sm-2 col-form-label") Mô tả
+        lable(for="tuoi", class="col-sm-2 col-form-label") Tuổi
         .col-sm-10
-          input#mota(type='text', name="description", class="form-control")
+          input#tuoi(type='text', name="age", class="form-control")
       button(type="submit", class="btn btn-primary mr-3") Tạo
-      a(href="/books", class="btn btn-secondary btn-md", role="button", aria-pressed="true") Hủy
+      a(href="/users", class="btn btn-secondary btn-md", role="button", aria-pressed="true") Hủy
 
   
