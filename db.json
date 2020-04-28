@@ -55,7 +55,7 @@
       "userId": "ZgieByaBt",
       "bookId": "HX-2Mb92P",
       "id": "AeB57JmjO",
-      "isComplete": false
+      "isComplete": true
     },
     {
       "userId": "BU4QDrLha",
@@ -67,7 +67,7 @@
       "userId": "BU4QDrLha",
       "bookId": "NOvzTijta",
       "id": "nuIjIZcy6",
-      "isComplete": false
+      "isComplete": true
     },
     {
       "userId": "93vHQgA79",
@@ -79,7 +79,13 @@
       "userId": "WRnV6by09",
       "bookId": "NOvzTijta",
       "id": "_6lLWjCBW",
-      "isComplete": false
+      "isComplete": true
+    },
+    {
+      "userId": "93vHQgA79",
+      "bookId": "HX-2Mb92P",
+      "id": "3abkr1pgf",
+      "isComplete": true
     }
   ]
 }

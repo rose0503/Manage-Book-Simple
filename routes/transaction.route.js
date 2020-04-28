@@ -46,8 +46,10 @@ router.get("/create", (req, res) => {
 
 router.get('/:id/complete', (req, res) => {
   var id = req.params.id;
-  db.get('books').remove({ id: id}).write();
-  res.redirect('/books');
+  var trans = db.get('transactions').value();
+  if(!trans.isComplete)
+    db.get('transactions').find({ id: id}).assign({ isComplete: true}).write();
+  res.redirect('/transactions');
 });
 
 router.post('/create', (req, res) => {
