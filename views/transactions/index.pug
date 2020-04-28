@@ -7,15 +7,17 @@ table(style='width:100%')
       th Người thuê
       th DS sách    
     
-    tr      
-      each user in users
-        tr
-          td=user.name
-          td
-            each book in books
-              li= book.title
-          each tran in transactions    
-            td  
-              a(href="/transactions/" + tran.id + "/complete")= tran.isComplete ? "Hoàn thành" : "Đang mượn"
+    tr  
+      each tran in transactions    
+        each user in users
+          if tran.userId == user.id
+            tr
+              td=user.name
+              td
+                each book in books
+                  if tran.bookId == book.id
+                    li= book.title  
+                td  
+                  a(href="/transactions/" + tran.id + "/complete")= tran.isComplete ? "Hoàn thành" : "Đang mượn"
 br
 a(href="/") Home
