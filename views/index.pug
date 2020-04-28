@@ -1,0 +1,37 @@
+extends ../layout/common
+
+block content
+
+
+    title Welcome to Glitch!
+meta(http-equiv='X-UA-Compatible', content='IE=edge')
+meta(name='viewport', content='width=device-width, initial-scale=1')
+meta(name='description', content='A cool thing made with Glitch')
+link#favicon(rel='icon', href='https://glitch.com/edit/favicon-app.ico', type='image/x-icon')
+// import the webpage's stylesheet
+link(rel='stylesheet', href='/style.css')
+// import the webpage's client-side javascript file
+script(src='/script.js', defer='')
+header
+  h1 Library bookstore
+main
+  h2 Xin ch&agrave;o,
+  p C&ugrave;ng tham quan th&#x1B0; vi&#x1EC7;n c&#x1EE7;a t&ocirc;i nh&aacute; ( &#x1D54; &#x1D25; &#x1D54; )
+  div
+    | Danh s&aacute;ch cu&#x1ED1;n s&aacute;ch hay: 
+    a(href='/books') T&#x1EA1;i &dstrok;&acirc;y
+  div
+    | Danh s&aacute;ch ng&#x1B0;&#x1EDD;i d&ugrave;ng: 
+    a(href='/users') T&#x1EA1;i &dstrok;&acirc;y
+  div
+    | Danh s&aacute;ch ng&#x1B0;&#x1EDD;i thu&ecirc; s&aacute;ch: 
+    a(href='/transactions') T&#x1EA1;i &dstrok;&acirc;y
+footer
+  | Made with 
+  b Quoc Viet
+  | !
+//
+  include the Glitch button to show what the webpage is about and
+  to make it easier for folks to view source and remix
+.glitchButton(style='position:fixed;top:2em;right:20px;')
+// <script src="https://button.glitch.me/button.js"></script>
