@@ -5,33 +5,21 @@ block content
     form(action=("/transactions/create"), method="POST")
       .form-group.row
         label.col-form-label(for='u') Chọn người thuê:
-        .col-sm-2
+        .col-sm
           select#u.form-control(name="userId")
             each user in users
               option(value=user.id)= user.name
             else
               option Không có
-      br   
-      br
-      label(for='book') Chọn sách:
-      select#book(name="bookId")
-        each book in books
-          option(value=book.id)= book.title
-        else
-          option Không có
-      br
-      button Tạo
       
-      
-      form(action="/books/create", method="POST")
       .form-group.row
-        lable(for="book", class="col-sm-2 col-form-label") Tiêu đề
-        .col-sm-10
-          input#book(type='text', name="title", class="form-control")
-      .form-group.row
-        lable(for="mota", class="col-sm-2 col-form-label") Mô tả
-        .col-sm-10
-          input#mota(type='text', name="description", class="form-control")
+        label.col-form-label(for='book') Chọn sách:
+        .col-sm
+          select#book.form-control(name="bookId")
+            each book in books
+              option(value=book.id)= book.title
+            else
+              option Không có
       button(type="submit", class="btn btn-primary mr-3") Tạo
-      a(href="/books", class="btn btn-secondary btn-md", role="button", aria-pressed="true") Hủy
-
+      a(href="/transactions", class="btn btn-secondary btn-md", role="button", aria-pressed="true") Hủy
+      
