@@ -2,16 +2,11 @@ var express = require('express')
 var router = express.Router()
 const db =require("../db.js");
 const shortid = require('shortid');
+const controller =require("../controllers/book.controller")
 
-router.get("/", (req, res) => {
-  res.render('books/index',{
-    books: db.get('books').value()
-  })
-  console.log(db.get('books').value())
-});
+router.get("/", controller.index);
 
-router.get("/create", (req, res) => {
-  res.render('books/create')});
+router.get("/create", controller.create);
 
 router.get("/:id", (req, res) => {
   var id = req.params.id;
