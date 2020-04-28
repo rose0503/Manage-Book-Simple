@@ -1,8 +1,10 @@
 extends ../layout/common.pug
 block content
   .container.mt-2
-    h2.mb-4.d-flex.justify-content-center Danh sách 
-    a(href="/books/create") Thêm mới
+    .d-flex.justify-content-between
+      h2.mb-4 Danh sách 
+      a.mt-2(href="/books/create") Thêm mới
+      a.border-box(href="/", class="btn btn-secondary btn-md", role="button", aria-pressed="true") Thêm mới
     table(style='width:100%')
       tr
         th Tên
