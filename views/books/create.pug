@@ -1,7 +1,7 @@
 extends ../layout/common.pug
 block content
   .container.mt-2
-    h2.mb-4.d-flex.j- Thêm sách
+    h2.mb-4.d-flex.justify-content-center Thêm sách
     form(action="/books/create", method="POST")
       .form-group.row
         lable(for="book", class="col-sm-2 col-form-label") Tiêu đề
@@ -11,4 +11,6 @@ block content
         lable(for="mota", class="col-sm-2 col-form-label") Mô tả
         .col-sm-10
           input#mota(type='text', name="description", class="form-control")
-      button(type="submit", class="btn btn-primary mt-2") Tạo
+      button(type="submit", class="btn btn-primary mr-3") Tạo
+      a(href="/", class="btn btn-secondary btn-md", role="button", aria-pressed="true") Hủy
+
