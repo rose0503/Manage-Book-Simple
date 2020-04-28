@@ -11,6 +11,7 @@ block content
             th Người thuê
             th DS sách    
             th Trạng thái
+        tbody
           tr  
             each tran in transactions    
               each user in users
@@ -24,9 +25,6 @@ block content
                           span= book.title  
                       td  
                         a(href="/transactions/" + tran.id + "/complete")= tran.isComplete ? "Hoàn thành" : "Đang mượn"
-      br
       a(href="/") Home
       
-      table.table.table-hover
-        thead.thead-light
-          tr
+      
