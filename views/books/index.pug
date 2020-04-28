@@ -4,7 +4,7 @@ block content
     .d-flex.justify-content-between
       h2.mb-4 Danh sách 
       a.mt-2(href="/books/create") Thêm mới
-      a.border-box(href="/", class="btn btn-secondary btn-md", role="button", aria-pressed="true") Thêm mới
+      a.h-fix-content(href="/", class="btn btn-secondary btn-md", role="button", aria-pressed="true") Thêm mới
     table(style='width:100%')
       tr
         th Tên
@@ -12,7 +12,7 @@ block content
       each book in books
         tr    
           td=book.title
-          td
+          td 
             a(href="/books/" + book.id) Chi tiết
           td
             a(href="/books/" + book.id + "/edit") Sửa
