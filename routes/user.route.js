@@ -3,11 +3,9 @@ var router = express.Router()
 const db =require("../db.js");
 const shortid = require('shortid');
 
-router.get("/", (req, res) => {
-  res.render('users/index',{
-    users: db.get('users').value()
-  })
-});
+const controller = require("../controllers/user.controller")
+
+router.get("/", controller.index);
 
 router.get("/create", (req, res) => {
   res.render('users/create')});

@@ -1,57 +1,23 @@
 var express = require('express')
 var router = express.Router()
-const db =require("../db.js");
-const shortid = require('shortid');
+
 const controller =require("../controllers/book.controller")
 
 router.get("/", controller.index);
 
 router.get("/create", controller.create);
 
-router.get("/:id", (req, res) => {
-  var id = req.params.id;
-  var book = db.get('books').find({ id: id}).value();
-  res.render('books/view',{
-    book: book
-  })
-});
+router.get("/:id", controller.getId);
 
-router.get("/:id/edit", (req, res) => {
-  var id = req.params.id;
-  var book = db.get('books').find({ id: id}).value();
-  res.render('books/edit',{ 
-    book: book
-  })
-});
+router.get("/:id/edit", controller.edit);
 
-router.post('/:id/edit', (req, res) => {
-  var id = req.params.id;
-  db.get('books').find({ id: id}).assign({ title: req.body.title}).write();
-  res.redirect('/books');
-});
+router.post('/:id/edit',controller.postEdit);
 
-router.get('/:id/delete', (req, res) => {
-  var id = req.params.id;
-  db.get('books').remove({ id: id}).write();
-  res.redirect('/books');
-});
+router.get('/:id/delete', controller.delete);
 
-router.post('/create', (req, res) => {
-  req.body.id = shortid.generate();
-  db.get('books').push(req.body).write();
-  res.redirect('/books');
-});
+router.post('/create', controller.postCreate);
 
-router.get("/sreach", (req, res) => {
-  var q = req.query.q;
-  var matchBooks = db.get("books").value().filter((book) => {
-    return book.title.toLowerCase().indexOf(q.toLowerCase()) !== -1 
-  })
-  res.render('books/view',{
-    book: matchBooks,
-    q: q
-  })
-});
+router.get("/sreach", controller.sreach);
 
 
 module.exports = router;
