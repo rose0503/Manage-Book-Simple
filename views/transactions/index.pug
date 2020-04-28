@@ -1,23 +1,32 @@
-h2 Thuê sách
-a(href="/transactions/create") Thuê mới
-
-table(style='width:100%')
-  ul
-    tr
-      th Người thuê
-      th DS sách    
-    
-    tr  
-      each tran in transactions    
-        each user in users
-          if tran.userId == user.id
-            tr
-              td=user.name
-              td
-                each book in books
-                  if tran.bookId == book.id
-                    li= book.title  
-                td  
-                  a(href="/transactions/" + tran.id + "/complete")= tran.isComplete ? "Hoàn thành" : "Đang mượn"
-br
-a(href="/") Home
+extends ../layout/common.pug
+block content
+  .container.mt-2
+    .d-flex.justify-content-between
+      h2.mb-4  Thuê sách      
+      a.h-25(href='/transactions/create', class="btn btn-primary btn-md", role="button", aria-pressed="true") Thêm mới
+    .table-responsive
+      table.table.table-hover(style='width:100%')
+        thead.thead-light
+          tr
+            th Người thuê
+            th DS sách    
+            th Trạng thái
+          tr  
+            each tran in transactions    
+              each user in users
+                if tran.userId == user.id
+                  tr
+                    td=user.name
+                    td
+                      each book in books
+                        if tran.bookId == book.id
+                          span -
+                          span= book.title  
+                      td  
+                        a(href="/transactions/" + tran.id + "/complete")= tran.isComplete ? "Hoàn thành" : "Đang mượn"
+      br
+      a(href="/") Home
+      
+      table.table.table-hover
+        thead.thead-light
+          tr
