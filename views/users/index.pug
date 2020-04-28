@@ -1,16 +1,23 @@
-h2 Danh sách người thuê sách
-a(href="/users/create") Thêm mới
-table(style='width:100%')
-  tr
-    th Tên
-    th Action
-  each user in users
-    tr    
-      td=user.name
-      td
-        a(href="/users/" + user.id) Chi tiết
-      td
-        a(href="/users/" + user.id + "/edit") Sửa
-      td
-        a(href="/users/" + user.id + "/delete") Xóa
-a(href="/") Home
+extends ../layout/common.pug
+block content
+  .container.mt-2
+    .d-flex.justify-content-between
+      h2.mb-4 Danh sách user
+      a.h-25(href='/users/create', class="btn btn-primary btn-md", role="button", aria-pressed="true") Thêm mới
+    .table-responsive
+      table.table.table-hover
+        thead.thead-light
+          tr
+            th Tên
+            th(colspan="3") Action
+        tbody   
+        each user in users
+          tr    
+            td=user.name
+            td
+              a(href="/users/" + user.id) Chi tiết
+            td
+              a(href="/users/" + user.id + "/edit") Sửa
+            td
+              a(href="/users/" + user.id + "/delete") Xóa
+      a(href="/") Home
