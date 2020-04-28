@@ -1,12 +1,13 @@
-h2 Thêm sách
-form(action="/books/create", method="POST")
-  lable(for="book") Tiêu đề
-  span &nbsp
-  input#book(type='text', name="title")
-  span &nbsp
-  div
-    lable(for="mota") Mô tả
+extends ../layout/common.pug
+block content
+  h2 Thêm sách
+  form(action="/books/create", method="POST")
+    lable(for="book") Tiêu đề
     span &nbsp
-    input#mota(type='text', name="description")
-  button Tạo
-  
+    input#book(type='text', name="title")
+    span &nbsp
+    div
+      lable(for="mota") Mô tả
+      span &nbsp
+      input#mota(type='text', name="description")
+    button Tạo
