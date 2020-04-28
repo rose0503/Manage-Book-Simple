@@ -3,9 +3,7 @@ block content
   .container.mt-2
     .d-flex
       h4 Quyển sách:
-      span &nbsp
       h4(class="text-info")=book.title
-    .d-flex
-      h4 Nội dung:
-      b=book.description 
+    h4 Nội dung:
+    p(class='font-weight-light ')=book.description 
     a(href="/books") Quay lại  
