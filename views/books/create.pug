@@ -1,15 +1,14 @@
 extends ../layout/common.pug
 block content
-  .container
-    h2 Thêm sách
+  .container.mt-2
+    h2.mb-4.d-flex.j- Thêm sách
     form(action="/books/create", method="POST")
       .form-group.row
         lable(for="book", class="col-sm-2 col-form-label") Tiêu đề
         .col-sm-10
-          input#book(type='text', name="title", class="form-control-plaintext")
-
-      div
-        lable(for="mota") Mô tả
-        span &nbsp
-        input#mota(type='text', name="description")
-      button Tạo
+          input#book(type='text', name="title", class="form-control")
+      .form-group.row
+        lable(for="mota", class="col-sm-2 col-form-label") Mô tả
+        .col-sm-10
+          input#mota(type='text', name="description", class="form-control")
+      button(type="submit", class="btn btn-primary mt-2") Tạo
