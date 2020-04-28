@@ -4,19 +4,20 @@ block content
     .d-flex.justify-content-between
       h2.mb-4 Danh sách
       a.h-25(href='/books/create', class="btn btn-primary btn-md", role="button", aria-pressed="true") Thêm mới
-    table.table.table-hover.text-align-center(style='width:100%')
-      thead.thead-light
-        tr
-          th Tên
-          th(colspan="3") Action
-      tbody    
-        each book in books
-          tr    
-            td=book.title
-            td 
-              a(href="/books/" + book.id) Chi tiết
-            td
-              a(href="/books/" + book.id + "/edit") Sửa
-            td
-              a(href="/books/" + book.id + "/delete") Xóa
+    .table-responsive
+      table.table.table-hover
+        thead.thead-light
+          tr
+            th Tên
+            th(colspan="3") Action
+        tbody    
+          each book in books
+            tr    
+              td=book.title
+              td 
+                a(href="/books/" + book.id) Chi tiết
+              td
+                a(href="/books/" + book.id + "/edit") Sửa
+              td
+                a(href="/books/" + book.id + "/delete") Xóa
     a(href="/") Home

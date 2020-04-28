@@ -1,10 +1,11 @@
 extends ../layout/common.pug
 block content
-  h2  Thư viện sách
-  h3 Cuốn sách:
-    span &nbsp
-    i=book.title
-  h3 Nội dung:
-  BLOCKQUOTE
-    p=book.description 
-  a(href="/books") Quay lại  
+  .container.mt-2
+    .d-flex
+      h4 Quyển sách:
+      span &nbsp
+      h4(class="text-info")=book.title
+    .d-flex
+      h4 Nội dung:
+      b=book.description 
+    a(href="/books") Quay lại  
