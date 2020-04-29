@@ -6,13 +6,15 @@
 const express = require("express");
 const app = express();
 const pug = require("pug");
+var cookieParser = require('cookie-parser');
 
 var indexRoute = require("./routes/index.route.js");
 var authRoute = require("./routes/auth.route.js");
 var bookRoute =require("./routes/book.route.js");
 var userRoute = require("./routes/user.route.js");
 var transactionRoute = require("./routes/transaction.route.js");
-var cookieParser = require('cookie-parser');
+
+var authMiddleware = require("./middlewares/auth.middleware");
 
 app.set('views', './views');
 app.set('view engine', 'pug');
@@ -27,10 +29,10 @@ app.use(express.urlencoded({ extended: true })) // for parsing application/x-www
 // https://expressjs.com/en/starter/static-files.html
 app.use(express.static("public"));
 
-app.get("/", indexRoute);
-app.use("/books", bookRoute);
-app.use("/users", userRoute);
-app.use("/transactions", transactionRoute);
+app.get("/", authMiddleware.requireAuth, indexRoute);
+app.use("/books",authMiddleware.requireAuth, bookRoute);
+app.use("/users",authMiddleware.requireAuth, userRoute);
+app.use("/transactions",authMiddleware.requireAuth, transactionRoute);
 app.use("/auth", authRoute);
 
 
