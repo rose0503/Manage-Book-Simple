@@ -23,8 +23,17 @@ module.exports.create = (req, res) => {
 module.exports.complete = (req, res) => {
   var id = req.params.id;
   var trans = db.get('transactions').value();
-  if(trans.id == id)
-    if(!trans.isComplete)
+  var error =[];
+  for(var tran of trans)
+    if(tran.id != id)
+      error.push('Yêu cầu không hợp lệ.')
+    if(error.length){
+      res.render('transactions/index',{
+        errors: error ,
+      })
+      return;
+    }
+    if(!tran.isComplete)
       db.get('transactions').find({ id: id}).assign({ isComplete: true}).write();
   res.redirect('/transactions');
   console.log(id)

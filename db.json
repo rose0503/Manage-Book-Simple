@@ -28,7 +28,13 @@
       "userId": "fdEbST2k3",
       "bookId": "nMlmryrHA",
       "id": "D_Zj61jtQ",
-      "isComplete": false
+      "isComplete": true
+    },
+    {
+      "userId": "JTJOid_H6",
+      "bookId": "C8KHJi_Xe",
+      "id": "dmOQslR5e",
+      "isComplete": true
     }
   ]
 }
