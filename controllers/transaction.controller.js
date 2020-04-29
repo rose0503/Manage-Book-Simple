@@ -28,8 +28,8 @@ module.exports.complete = (req, res) => {
     if(tran.id != id)
       error.push('Yêu cầu không hợp lệ.')
     if(error.length){
-      res.render('transactions/index',{
-        errors: error ,
+      res.render('transactions/complete',{
+        errors: error 
       })
       return;
     }
