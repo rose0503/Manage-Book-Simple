@@ -17,7 +17,8 @@
       "age": "24",
       "id": "kWiJlhwpl",
       "email": "tqviet.0503@gmail.com",
-      "password": "050318"
+      "password": "050318",
+      "isAdmin": true
     },
     {
       "name": "Quang Phú",
