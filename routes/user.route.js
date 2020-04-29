@@ -2,7 +2,7 @@ var express = require('express')
 var router = express.Router()
 
 const controller = require("../controllers/user.controller")
-const validate = require("../middlewares/user.validate");
+const validate = require("../validations/user.validate");
 
 router.get("/", controller.index);
 

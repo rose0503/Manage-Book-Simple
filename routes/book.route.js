@@ -2,7 +2,7 @@ var express = require('express')
 var router = express.Router()
 
 const controller =require("../controllers/book.controller");
-const validate = require("../middlewares/book.validate")
+const validate = require("../validations/book.validate")
 
 router.get("/", controller.index);
 
