@@ -12,6 +12,8 @@ module.exports.create = (req, res) => {
 
 module.exports.postCreate = (req, res) => {
   req.body.id = shortid.generate();
+  var error = [];
+  if(req.body.name > char(30))
   db.get('users').push(req.body).write();
   res.redirect('/users');
 };
