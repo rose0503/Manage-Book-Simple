@@ -2,7 +2,7 @@ html
   head 
     link(rel="stylesheet",href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css") 
     link(rel="icon", type="image/png", sizes="64x64", href="https://cdn.glitch.com/39b712c6-2072-484b-ac1a-b06616921dd5%2Fapple-icon-60x60.png?v=1588107445161")
-    //link(rel="stylesheet",href="/custom.css")
+    link(rel="stylesheet",href="/custom.css")
 
     block scripts
       script(src="https://code.jquery.com/jquery-3.2.1.slim.min.js",integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN", crossorigin="anonymous")
@@ -25,6 +25,7 @@ html
             a.nav-link(href='/users') Users
           li.nav-item
             a.nav-link(href='/transactions') Transactions  
-
+      .icon-user
+        img(src='https://picsum.photos/200/300', alt='')
     block content
     
