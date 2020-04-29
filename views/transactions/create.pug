@@ -7,10 +7,13 @@ block content
         label.col-form-label(for='u') Chọn người thuê:
         .col-sm
           select#u.form-control(name="userId")
-            each user in users
+            if !isAdmin
               option(value=user.id)= user.name
-            else
-              option Không có
+            if isAdmin
+              each user in users
+                option(value=user.id)= user.name
+              else
+                option Không có
       
       .form-group.row
         label.col-form-label(for='book') Chọn sách:
