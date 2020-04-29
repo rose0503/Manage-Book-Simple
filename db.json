@@ -33,12 +33,24 @@
       "userId": "kWiJlhwpl",
       "bookId": "smRwwAsSt",
       "id": "tYyqt31FH",
-      "isComplete": false
+      "isComplete": true
     },
     {
       "userId": "Py3Wpf4pj",
       "bookId": "GZXmHCz1-",
       "id": "wtyXNp5a8",
+      "isComplete": true
+    },
+    {
+      "userId": "u3kof8e5K",
+      "bookId": "smRwwAsSt",
+      "id": "Vqdlid-EL",
+      "isComplete": true
+    },
+    {
+      "userId": "Py3Wpf4pj",
+      "bookId": "GZXmHCz1-",
+      "id": "_UdoTtsXq",
       "isComplete": true
     }
   ]

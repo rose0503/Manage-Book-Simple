@@ -35,7 +35,7 @@ module.exports.complete = (req, res) => {
   // }
   if(!trans.isComplete)
     db.get('transactions').find({ id: id}).assign({ isComplete: true}).write();
-    res.redirect('/transactions');
+  res.redirect('/transactions');
   
 };
 
