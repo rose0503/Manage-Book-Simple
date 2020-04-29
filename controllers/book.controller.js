@@ -30,8 +30,7 @@ module.exports.edit = (req, res) => {
 
 module.exports.postEdit =  (req, res) => {
   var id = req.params.id;
-  var error = [];
-  
+  var error = [];  
   if(!req.body.title){
     error.push('Vui lòng nhập tiêu đề.');
   }
@@ -54,21 +53,6 @@ module.exports.delete = (req, res) => {
 
 module.exports.postCreate = (req, res) => {
   req.body.id = shortid.generate();
-  var error = [];
-  
-  if(!req.body.title){
-    error.push('Vui lòng nhập tiêu đề.');
-  }
-  if(!req.body.description){
-    error.push('Vui lòng nhập mô tả.');
-  }
-  if(error.length){
-    res.render('books/create',{
-      errors: error ,
-      values: req.body
-    })
-    return;
-  }
   db.get('books').push(req.body).write();
   res.redirect('/books');
 };
