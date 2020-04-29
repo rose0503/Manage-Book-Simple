@@ -46,7 +46,9 @@ module.exports.getId = (req, res) => {
 module.exports.edit = (req, res) => {
   var id = req.params.id;
   var user = db.get('users').find({ id: id}).value();
-  res.render('users/edit')
+  res.render('users/edit',{ 
+    user: user
+  })
 };
 
 module.exports.delete = (req, res) => {

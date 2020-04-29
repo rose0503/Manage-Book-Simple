@@ -30,6 +30,18 @@ module.exports.edit = (req, res) => {
 
 module.exports.postEdit =  (req, res) => {
   var id = req.params.id;
+  var error = [];
+  
+  if(!req.body.title){
+    error.push('Vui lòng nhập tiêu đề.');
+  }
+  if(error.length){
+    res.render('books/edit',{
+      errors: error ,
+      values: req.body
+    })
+    return;
+  }
   db.get('books').find({ id: id}).assign({ title: req.body.title}).write();
   res.redirect('/books');
 };
