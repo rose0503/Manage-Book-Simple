@@ -24,17 +24,17 @@ module.exports.complete = (req, res) => {
   var id = req.params.id;
   var trans = db.get('transactions').value();
   var error =[];
-  for(var tran of trans)
-    if(tran.id != id)
-      error.push('Yêu cầu không hợp lệ.')
-    if(error.length){
-      res.render('transactions/complete',{
-        errors: error 
-      })
-      return;
-    }
-    if(!tran.isComplete)
-      db.get('transactions').find({ id: id}).assign({ isComplete: true}).write();
+  
+  if(trans.id != id)
+    error.push('Yêu cầu không hợp lệ.')
+  if(error.length){
+    res.render('transactions/complete',{
+      errors: error 
+    })
+    return;
+  }
+  if(!trans.isComplete)
+    db.get('transactions').find({ id: id}).assign({ isComplete: true}).write();
   res.redirect('/transactions');
   console.log(id)
 };
