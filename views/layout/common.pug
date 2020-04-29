@@ -25,9 +25,14 @@ html
             a.nav-link(href='/users') Users
           li.nav-item
             a.nav-link(href='/transactions') Transactions  
-      .icon-user
-        b.mr-1 
-          block iconuser          
-        img(src='https://picsum.photos/200/300', alt='icon-user')
+      if user
+        .d-flex.align-items-center.dropdown
+          a.nav-link.dropdown-toggle#dropdownMenuButton(role="button",data-toggle="dropdown", aria-haspopup="true", aria-expanded="false")= user.name
+          .dropdown-menu
+            a.dropdown-item(href="/users/profile") Profile
+            a.dropdown-item(href="/auth/logout") Logout
+      if !user
+        .btn-group
+          a.btn.btn-primary(href="/auth/login", role="button") login  
     block content
     
