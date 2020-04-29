@@ -9,7 +9,8 @@ module.exports.index = (req, res) => {
     transactions: transactions,
     users: users,
     books: books
-  })  
+  }) 
+  console.log(db.get('transactions').value())
 };
 
 module.exports.create = (req, res) => {
@@ -26,7 +27,7 @@ module.exports.complete = (req, res) => {
     if(!trans.isComplete)
       db.get('transactions').find({ id: id}).assign({ isComplete: true}).write();
   res.redirect('/transactions');
-  console.log(trans)
+  console.log(id)
 };
 
 
