@@ -24,7 +24,7 @@ block content
                           span -
                           span= book.title  
                       td  
-                        a(href="/transactions/" + tran.id + "/complete")= tran.isComplete ? "Hoàn thành" : "Đang mượn"
+                        a.btn.btn-info(href="/transactions/" + tran.id + "/complete")= tran.isComplete ? "Hoàn thành" : "Đang mượn"
       a(href="/") Home
       
       

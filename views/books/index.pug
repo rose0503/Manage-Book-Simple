@@ -15,9 +15,9 @@ block content
             tr    
               td=book.title
               td 
-                a(href="/books/" + book.id) Chi tiết
+                a.btn.btn-light(href="/books/" + book.id) Chi tiết
               td
-                a(href="/books/" + book.id + "/edit") Sửa
+                a.btn.btn-light(href="/books/" + book.id + "/edit") Sửa
               td
-                a(href="/books/" + book.id + "/delete") Xóa
+                a.btn.btn-light(href="/books/" + book.id + "/delete") Xóa
     a(href="/") Home
