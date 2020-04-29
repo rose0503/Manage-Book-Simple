@@ -12,25 +12,6 @@ module.exports.create = (req, res) => {
 
 module.exports.postCreate = (req, res) => {
   req.body.id = shortid.generate();
-  var error = [];
-  
-  if(!req.body.name){
-    error.push('Vui lòng nhập họ tên.');
-  }
-  if((req.body.name).length > 30){
-    error.push('Tên phải nhỏ hơn 30 ký tự.');
-  }
-  
-  if(!req.body.age){
-    error.push('Vui lòng nhập tuổi.');
-  }
-  if(error.length){
-    res.render('users/create',{
-      errors: error ,
-      values: req.body
-    })
-    return;
-  }
   db.get('users').push(req.body).write();
   res.redirect('/users');
 };
@@ -58,26 +39,7 @@ module.exports.delete = (req, res) => {
 };
 
 module.exports.postEdit = (req, res) => {
-  var id = req.params.id;
-  var error = [];
-  
-  if(!req.body.name){
-    error.push('Vui lòng nhập họ tên.');
-  }
-  if((req.body.name).length > 30){
-    error.push('Tên phải nhỏ hơn 30 ký tự.');
-  }
-  
-  if(!req.body.age){
-    error.push('Vui lòng nhập tuổi.');
-  }
-  if(error.length){
-    res.render('users/edit',{
-      errors: error ,
-      values: req.body
-    })
-    return;
-  }
+  var id = req.params.id;  
   db.get('users').find({ id: id}).assign({ name: req.body.name, age:req.body.age}).write();
   res.redirect('/users');
 };
