@@ -6,11 +6,12 @@ var user = db.get("users").value();
 module.exports.isAdmin= (req, res, next) => {
     try {
       // check isAdmin
-      const idUser = req.signedCookies.userId;
-      // console.log('idUser', idUser)
+      const idUser = req.cookies.userId;
+      console.log(idUser)
       if (!idUser) {
         res.locals.isAdmin = false;
-      } else {
+      } 
+      else {
         const isAdmin = user.find({ id: idUser }).then(doc => {
           if (!doc[0].isAdmin) {
             res.locals.isAdmin = false;
@@ -27,7 +28,7 @@ module.exports.isAdmin= (req, res, next) => {
 
 module.exports.isUser = (req, res, next) => {
     // isUser
-    user.find({ id: req.signedCookies.userId }).then(user => {
+    user.find({ id: req.cookies.userId }).then(user => {
       res.locals.user = user[0];
       console.log('user', user[0])
     });
