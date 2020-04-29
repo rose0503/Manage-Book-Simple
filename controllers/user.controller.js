@@ -17,6 +17,10 @@ module.exports.postCreate = (req, res) => {
   if(!req.body.name){
     error.push('Vui lòng nhập họ tên.');
   }
+  if((req.body.name).length > 30){
+    error.push('Tên phải nhỏ hơn 30 ký tự.');
+  }
+  
   if(!req.body.age){
     error.push('Vui lòng nhập tuổi.');
   }
@@ -42,9 +46,7 @@ module.exports.getId = (req, res) => {
 module.exports.edit = (req, res) => {
   var id = req.params.id;
   var user = db.get('users').find({ id: id}).value();
-  res.render('users/edit',{ 
-    user: user
-  })
+  res.render('users/edit')
 };
 
 module.exports.delete = (req, res) => {
@@ -55,6 +57,25 @@ module.exports.delete = (req, res) => {
 
 module.exports.postEdit = (req, res) => {
   var id = req.params.id;
+  var error = [];
+  
+  if(!req.body.name){
+    error.push('Vui lòng nhập họ tên.');
+  }
+  if((req.body.name).length > 30){
+    error.push('Tên phải nhỏ hơn 30 ký tự.');
+  }
+  
+  if(!req.body.age){
+    error.push('Vui lòng nhập tuổi.');
+  }
+  if(error.length){
+    res.render('users/edit',{
+      errors: error ,
+      values: req.body
+    })
+    return;
+  }
   db.get('users').find({ id: id}).assign({ name: req.body.name, age:req.body.age}).write();
   res.redirect('/users');
 };

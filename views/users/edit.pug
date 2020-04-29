@@ -2,15 +2,19 @@ extends ../layout/common.pug
 block content
   .container.mt-2
     h2.mb-4.d-flex.justify-content-center Cập nhật thông tin
+    if errors
+      each error in errors
+        .alert.alert-danger= error        
+    
     form(method="POST")
       .form-group.row
         lable(for="user", class="col-sm-2 col-form-label") Họ tên
         .col-sm-10
-          input#user(type='text', name="name", class="form-control", value = user.name)
+          input#user(type='text', name="name", class="form-control",  value = values ? values.name : "")
       .form-group.row
         lable(for="tuoi", class="col-sm-2 col-form-label") Tuổi
         .col-sm-10
-          input#tuoi(type='text', name="age", class="form-control", value = user.age)
+          input#tuoi(type='text', name="age", class="form-control",  value = values ? values.age : "")
       button(type="submit", class="btn btn-primary mr-3") Sửa
       a(href="/users", class="btn btn-secondary btn-md", role="button", aria-pressed="true") Hủy
   
