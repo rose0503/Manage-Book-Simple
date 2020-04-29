@@ -15,7 +15,9 @@
     {
       "name": "Trịnh Quốc Việt",
       "age": "24",
-      "id": "kWiJlhwpl"
+      "id": "kWiJlhwpl",
+      "email": "tqviet.0503@gmail.com",
+      "password": "050318"
     },
     {
       "name": "Quang Phú",
@@ -25,7 +27,9 @@
     {
       "name": "Hoang Hải",
       "age": "25",
-      "id": "u3kof8e5K"
+      "id": "u3kof8e5K",
+      "email": "demo@gmail.com",
+      "password": "123123"
     }
   ],
   "transactions": [
