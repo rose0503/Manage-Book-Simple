@@ -22,9 +22,11 @@ module.exports.create = (req, res) => {
 module.exports.complete = (req, res) => {
   var id = req.params.id;
   var trans = db.get('transactions').value();
-  if(!trans.isComplete)
-    db.get('transactions').find({ id: id}).assign({ isComplete: true}).write();
+  if(trans.id == id)
+    if(!trans.isComplete)
+      db.get('transactions').find({ id: id}).assign({ isComplete: true}).write();
   res.redirect('/transactions');
+  console.log(trans)
 };
 
 
