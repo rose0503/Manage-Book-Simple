@@ -12,8 +12,8 @@ module.exports.isAdmin= (req, res, next) => {
         res.locals.isAdmin = false;
       } 
       else {
-        const isAdmin = db.get("users").find({ id: idUser }).value();        
-        if (!isAdmin ) {
+        const u = db.get("users").find({ id: idUser }).value();        
+        if (!u.isAdmin ) {
           res.locals.isAdmin = false;
         } else {
           res.locals.isAdmin = true;

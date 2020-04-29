@@ -3,7 +3,8 @@ block content
   .container.mt-2
     .d-flex.justify-content-between
       h2.mb-4 Danh sách
-      a.h-25(href='/books/create', class="btn btn-primary btn-md", role="button", aria-pressed="true") Thêm mới
+      if isAdmin
+        a.h-25(href='/books/create', class="btn btn-primary btn-md", role="button", aria-pressed="true") Thêm mới
     .table-responsive
       table.table.table-hover
         thead.thead-light
