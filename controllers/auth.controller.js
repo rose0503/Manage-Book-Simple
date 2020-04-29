@@ -33,3 +33,10 @@ module.exports.postLogin = (req, res) => {
   res.cookie("userId", user.id);
   res.redirect("/")
 }
+
+module.exports.logout = (req, res) => {
+    res.clearCookie("userId", {
+      path: "/"
+    });
+    res.redirect("/auth/login");
+  }
