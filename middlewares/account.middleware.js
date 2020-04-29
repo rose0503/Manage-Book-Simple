@@ -12,14 +12,15 @@ module.exports.isAdmin= (req, res, next) => {
         res.locals.isAdmin = false;
       } 
       else {
-        const isAdmin = user.find({ id: idUser }).then(doc => {
-          if (!doc[0].isAdmin) {
-            res.locals.isAdmin = false;
-          } else {
-            res.locals.isAdmin = true;
-          }
-        });
+        const isAdmin = db.get("users").find({ id: idUser }).value();        
+        if (!isAdmin ) {
+          res.locals.isAdmin = false;
+        } else {
+          res.locals.isAdmin = true;
+        }
+      
       }
+      console.log("local admin",res.locals.isAdmin)
       next();
     } catch (err) {
       console.log(err);
@@ -28,9 +29,9 @@ module.exports.isAdmin= (req, res, next) => {
 
 module.exports.isUser = (req, res, next) => {
     // isUser
-    user.find({ id: req.cookies.userId }).then(user => {
-      res.locals.user = user[0];
-      console.log('user', user[0])
-    });
+    var u = db.get("users").find({ id: req.cookies.userId }).value()
+    res.locals.user = u;
+    console.log('user', u)
+    console.log("local user",res.locals.user)
     next();
   };
