@@ -9,6 +9,11 @@
       "title": "Đường đời Tôi",
       "description": "Câu chuyện kể về một cô gái tên là Han Ji Eun mồ côi cả cha lẫn mẹ. Cô phải sống một mình đơn độc trong ngôi nhà do chính cha cô thiết kế và xây dựng.",
       "id": "C8KHJi_Xe"
+    },
+    {
+      "title": "Bạn tôi",
+      "description": "Câu chuyện kể về một cô gái tên là Han Ji Eun mồ côi cả cha lẫn mẹ. Cô phải sống một mình đơn độc trong ngôi nhà do chính cha cô thiết kế và xây dựng.",
+      "id": "BU5FXNhyp"
     }
   ],
   "users": [
@@ -46,7 +51,13 @@
       "userId": "fdEbST2k3",
       "bookId": "C8KHJi_Xe",
       "id": "OhqZfW7HV",
-      "isComplete": false
+      "isComplete": true
+    },
+    {
+      "userId": "fdEbST2k3",
+      "bookId": "nMlmryrHA",
+      "id": "iUnRJ_6Wo",
+      "isComplete": true
     }
   ]
 }
