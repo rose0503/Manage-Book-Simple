@@ -30,8 +30,6 @@ module.exports.isAdmin= (req, res, next) => {
 module.exports.isUser = (req, res, next) => {
     // isUser
     var u = db.get("users").find({ id: req.cookies.userId }).value()
-    res.locals.userLocal = u;
-    console.log('user', u)
-    console.log("local user",res.locals.user)
+    res.locals.user = u;
     next();
   };

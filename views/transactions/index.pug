@@ -15,17 +15,22 @@ block content
         tbody
           tr  
             each tran in transactions    
-              each user in users
-                if tran.userId == user.id
+              each u in users
+                if tran.userId == u.id 
+                  if 
                   tr
-                    td=user.name
+                    td=u.name
                     td
                       each book in books
-                        if tran.bookId == book.id
+                        if tran.bookId == book.id 
                           span -
                           span= book.title  
-                      td  
-                        a.btn.btn-info(href="/transactions/" + tran.id + "/complete")= tran.isComplete ? "Hoàn thành" : "Đang mượn"
+                      if isAdmin
+                        td  
+                          a.btn.btn-info(href="/transactions/" + tran.id + "/complete")= tran.isComplete ? "Hoàn thành" : "Đang mượn"
+                      if !isAdmin
+                        td  
+                          a.btn.btn-info.disabled(aria-disabled="true", role="button", href="/transactions/" + tran.id + "/complete")= tran.isComplete ? "Hoàn thành" : "Đang mượn"
       a(href="/") Home
       
       
