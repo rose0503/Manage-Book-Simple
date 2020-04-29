@@ -13,7 +13,20 @@ module.exports.create = (req, res) => {
 module.exports.postCreate = (req, res) => {
   req.body.id = shortid.generate();
   var error = [];
-  if(req.body.name > char(30))
+  
+  if(!req.body.name){
+    error.push('Vui lòng nhập họ tên.');
+  }
+  if(!req.body.age){
+    error.push('Vui lòng nhập tuổi.');
+  }
+  if(error.length){
+    res.render('users/create',{
+      errors: error ,
+      values: req.body
+    })
+    return;
+  }
   db.get('users').push(req.body).write();
   res.redirect('/users');
 };
