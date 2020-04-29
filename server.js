@@ -7,6 +7,7 @@ const express = require("express");
 const app = express();
 const pug = require("pug");
 
+var indexRoute = require("./routes/index.route.js");
 var bookRoute =require("./routes/book.route.js");
 var userRoute = require("./routes/user.route.js");
 var transactionRoute = require("./routes/transaction.route.js");
@@ -30,11 +31,7 @@ app.use("/books", bookRoute);
 app.use("/users", userRoute);
 app.use("/transactions", transactionRoute);
 
-app.get("/", (request, response) => {
-  //response.cookie("cookie", "")
-  console.log()
-  response.render("index");
-});
+app.get("/", indexRoute);
 
 // listen for requests :)
 const listener = app.listen(process.env.PORT, () => {
