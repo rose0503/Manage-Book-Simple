@@ -17,20 +17,30 @@
       "age": "24",
       "id": "kWiJlhwpl",
       "email": "tqviet.0503@gmail.com",
-      "password": "3a43f7efa744ee1fa98b6d86b76bc4d2",
+      "password": "050318",
       "isAdmin": true
     },
     {
       "name": "Quang Phú",
       "age": "29",
-      "id": "Py3Wpf4pj"
+      "id": "Py3Wpf4pj",
+      "email": "quangphu@gmail.com",
+      "password": "4297f44b13955235245b2497399d7a93",
+      "isAdmin": false
     },
     {
       "name": "Hoang Hải",
       "age": "25",
       "id": "u3kof8e5K",
-      "email": "demo@gmail.com",
-      "password": "123123"
+      "email": "hoanghai@gmail.com",
+      "password": "4297f44b13955235245b2497399d7a93",
+      "isAdmin": false
+    },
+    {
+      "name": "Nguyễn Huỳnh Dương",
+      "age": "30",
+      "id": "87mGH1wCN",
+      "isAdmin": false
     }
   ],
   "transactions": [
@@ -38,7 +48,7 @@
       "userId": "kWiJlhwpl",
       "bookId": "smRwwAsSt",
       "id": "tYyqt31FH",
-      "isComplete": true
+      "isComplete": false
     },
     {
       "userId": "Py3Wpf4pj",

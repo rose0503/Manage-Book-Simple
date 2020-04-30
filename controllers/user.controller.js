@@ -5,6 +5,7 @@ module.exports.index = (req, res) => {
   res.render('users/index',{
     users: db.get('users').value()
   })
+  console.log(db.get('users').value())
 }
 
 module.exports.create = (req, res) => {
@@ -12,6 +13,7 @@ module.exports.create = (req, res) => {
 
 module.exports.postCreate = (req, res) => {
   req.body.id = shortid.generate();
+  req.body.isAdmin = false;
   db.get('users').push(req.body).write();
   res.redirect('/users');
 };
