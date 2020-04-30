@@ -4,7 +4,7 @@ module.exports.postCreate = (req, res, next) => {
     error.push('Vui lòng nhập họ tên.');
   }
   if((req.body.name).length > 30){
-    error.push('Tên phải nhỏ hơn 30 ký tự.');
+    error.push('Họ tên phải nhỏ hơn 30 ký tự.');
   }
   
   if(!req.body.age){
