@@ -30,7 +30,7 @@ module.exports.postLogin = (req, res) => {
   if (countWrongPassword >= 3) {
     res.render("auth/login",{
       errors : [
-        "Bạn đã nhập sai quá nhiều lần. Chúng tôi sẽ kiểm tra, vui lòng quay lại sau!!."
+        "Bạn đã nhập sai quá nhiều lần. Hãy quay lại sau!!."
       ],
       values: req.body
     })
