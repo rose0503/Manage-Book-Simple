@@ -17,6 +17,7 @@ module.exports.create = (req, res) => {
 module.exports.postCreate = (req, res) => {
   req.body.id = shortid.generate();
   req.body.isAdmin = false;
+  req.body.wrongLoginCount = 0;
   bcrypt.hash(req.body.password, saltRounds, function(err, hash) {
       req.body.password= hash;
   });

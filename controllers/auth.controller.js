@@ -1,4 +1,6 @@
-const md5 = require("md5"); 
+//const md5 = require("md5"); 
+const bcrypt = require("bcrypt");
+const saltRounds = 10;
 
 const db =require("../db.js");
 const shortid = require('shortid');

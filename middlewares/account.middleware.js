@@ -20,7 +20,7 @@ module.exports.isAdmin= (req, res, next) => {
         }
       
       }
-      console.log("local admin",res.locals.isAdmin)
+      //console.log("local admin",res.locals.isAdmin)
       next();
     } catch (err) {
       console.log(err);

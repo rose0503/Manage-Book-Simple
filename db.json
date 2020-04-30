@@ -18,7 +18,8 @@
       "id": "kWiJlhwpl",
       "email": "tqviet.0503@gmail.com",
       "password": "3a43f7efa744ee1fa98b6d86b76bc4d2",
-      "isAdmin": true
+      "isAdmin": true,
+      "wrongLoginCount": 0
     },
     {
       "name": "Quang Phú",
@@ -26,7 +27,8 @@
       "id": "Py3Wpf4pj",
       "email": "quangphu@gmail.com",
       "password": "4297f44b13955235245b2497399d7a93",
-      "isAdmin": false
+      "isAdmin": false,
+      "wrongLoginCount": 0
     },
     {
       "name": "Hoang Hải",
@@ -34,15 +36,26 @@
       "id": "u3kof8e5K",
       "email": "hoanghai@gmail.com",
       "password": "4297f44b13955235245b2497399d7a93",
-      "isAdmin": false
+      "isAdmin": false,
+      "wrongLoginCount": 0
     },
     {
-      "name": "Hong",
-      "email": "hong@gmail.com",
-      "age": "27",
+      "name": "Nguyen Canh",
+      "email": "nguyencanh@gmail.com",
+      "age": "28",
       "password": "123123",
-      "id": "VVUVqOYPj",
-      "isAdmin": false
+      "id": "So27pFaXO",
+      "isAdmin": false,
+      "wrongLoginCount": 0
+    },
+    {
+      "name": "Quang Tran",
+      "email": "demo@gmail.com",
+      "age": "25",
+      "password": "123123",
+      "id": "KxP05T979",
+      "isAdmin": false,
+      "wrongLoginCount": 0
     }
   ],
   "transactions": [
