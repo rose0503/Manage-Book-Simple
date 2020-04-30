@@ -28,7 +28,8 @@ html
       if user
         .d-flex.align-items-center.dropdown
           a.nav-link.dropdown-toggle#dropdownMenuButton(role="button",data-toggle="dropdown", aria-haspopup="true", aria-expanded="false")= user.name 
-            span -Admin
+            if isAdmin 
+              span -Admin
           .dropdown-menu
             //a.dropdown-item(href="/users/profile") Thông tin
             a.dropdown-item(href="/auth/logout") Đăng xuất

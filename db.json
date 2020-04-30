@@ -17,7 +17,7 @@
       "age": "24",
       "id": "kWiJlhwpl",
       "email": "tqviet.0503@gmail.com",
-      "password": "050318",
+      "password": "$2b$10$nGjLDOeIpPswKF/LOZXLqexOLRXrHHPrRXtsPyZZFtyCAmU9tnXkO",
       "isAdmin": true,
       "wrongLoginCount": 0
     },
@@ -35,9 +35,18 @@
       "age": "25",
       "id": "u3kof8e5K",
       "email": "hoanghai@gmail.com",
-      "password": "123123",
+      "password": "$2b$10$nGjLDOeIpPswKF/LOZXLqexOLRXrHHPrRXtsPyZZFtyCAmU9tnXkO",
       "isAdmin": false,
       "wrongLoginCount": 0
+    },
+    {
+      "name": "Nguyen Canh",
+      "email": "nguyencanh@gmail.com",
+      "age": "20",
+      "password": "$2b$10$NiLkPaJoft.B1CxbpTux2.Dhk7RDoOmCbxPn0H5Lit.mq2re6esZS",
+      "id": "BGqoDzTZX",
+      "isAdmin": false,
+      "wrongLoginCount": 4
     }
   ],
   "transactions": [

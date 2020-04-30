@@ -28,12 +28,18 @@ app.use(express.urlencoded({ extended: true })); // for parsing application/x-ww
 // https://expressjs.com/en/starter/static-files.html
 app.use(express.static("public"));
 
-app.get("/", authMiddleware.requireAuth, indexRoute);
+app.get(
+  "/",
+  authMiddleware.requireAuth,
+  accountMiddleware.isUser,
+  accountMiddleware.isAdmin,
+  indexRoute
+);
 app.use(
   "/books",
   authMiddleware.requireAuth,
   accountMiddleware.isUser,
-  accountMiddleware.isAdmin,  
+  accountMiddleware.isAdmin,
   bookRoute
 );
 app.use(
