@@ -18,12 +18,8 @@ module.exports.postCreate = (req, res) => {
   req.body.id = shortid.generate();
   req.body.isAdmin = false;
   bcrypt.hash(req.body.password, saltRounds, function(err, hash) {
-        const newUser = new User({
-          id: id,
-          name: req.body.name,
-          email: req.body.email,
-          password: hash
-        });
+      req.body.password= hash;
+  });
   db.get('users').push(req.body).write();
   res.redirect('/users');
 };

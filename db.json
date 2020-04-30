@@ -1,5 +1,80 @@
 {
-  "books": [],
-  "users": [],
-  "transactions": []
+  "books": [
+    {
+      "title": "Tôi đi code dạo",
+      "description": "Câu chuyện kể về một cô gái tên là Han Ji Eun mồ côi cả cha lẫn mẹ. Cô phải sống một mình đơn độc trong ngôi nhà do chính cha cô thiết kế và xây dựng.",
+      "id": "smRwwAsSt"
+    },
+    {
+      "title": "Đường đời ",
+      "description": "Câu chuyện kể về một cô gái tên là Han Ji Eun mồ côi cả cha lẫn mẹ. Cô phải sống một mình đơn độc trong ngôi nhà do chính cha cô thiết kế và xây dựng.",
+      "id": "GZXmHCz1-"
+    }
+  ],
+  "users": [
+    {
+      "name": "Trịnh Quốc Việt",
+      "age": "24",
+      "id": "kWiJlhwpl",
+      "email": "tqviet.0503@gmail.com",
+      "password": "3a43f7efa744ee1fa98b6d86b76bc4d2",
+      "isAdmin": true
+    },
+    {
+      "name": "Quang Phú",
+      "age": "29",
+      "id": "Py3Wpf4pj",
+      "email": "quangphu@gmail.com",
+      "password": "4297f44b13955235245b2497399d7a93",
+      "isAdmin": false
+    },
+    {
+      "name": "Hoang Hải",
+      "age": "25",
+      "id": "u3kof8e5K",
+      "email": "hoanghai@gmail.com",
+      "password": "4297f44b13955235245b2497399d7a93",
+      "isAdmin": false
+    },
+    {
+      "name": "Hong",
+      "email": "hong@gmail.com",
+      "age": "27",
+      "password": "123123",
+      "id": "VVUVqOYPj",
+      "isAdmin": false
+    }
+  ],
+  "transactions": [
+    {
+      "userId": "kWiJlhwpl",
+      "bookId": "smRwwAsSt",
+      "id": "tYyqt31FH",
+      "isComplete": false
+    },
+    {
+      "userId": "Py3Wpf4pj",
+      "bookId": "GZXmHCz1-",
+      "id": "wtyXNp5a8",
+      "isComplete": true
+    },
+    {
+      "userId": "u3kof8e5K",
+      "bookId": "smRwwAsSt",
+      "id": "Vqdlid-EL",
+      "isComplete": true
+    },
+    {
+      "userId": "Py3Wpf4pj",
+      "bookId": "GZXmHCz1-",
+      "id": "_UdoTtsXq",
+      "isComplete": true
+    },
+    {
+      "userId": "u3kof8e5K",
+      "bookId": "GZXmHCz1-",
+      "id": "FuYh94X7f",
+      "isComplete": true
+    }
+  ]
 }
