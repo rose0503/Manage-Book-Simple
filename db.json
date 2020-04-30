@@ -19,14 +19,14 @@
       "email": "tqviet.0503@gmail.com",
       "password": "050318",
       "isAdmin": true,
-      "wrongLoginCount": 4
+      "wrongLoginCount": 0
     },
     {
       "name": "Quang Phú",
       "age": "29",
       "id": "Py3Wpf4pj",
       "email": "quangphu@gmail.com",
-      "password": "123123",
+      "password": "$2b$10$nGjLDOeIpPswKF/LOZXLqexOLRXrHHPrRXtsPyZZFtyCAmU9tnXkO",
       "isAdmin": false,
       "wrongLoginCount": 0
     },

@@ -39,9 +39,9 @@ module.exports.postLogin = (req, res) => {
     
   //var hashedPassword = md5(password);
   
-  //const resultCheck = bcrypt.compareSync(password, user.password);
+  const resultCheck = bcrypt.compareSync(password, user.password);
   
-  if(user.password !== password){
+  if(resultCheck === false){
     db.get("users").find({email: email}).assign({ wrongLoginCount: (countWrongPassword+=1)}).write()
     res.render("auth/login",{
       errors: [
@@ -53,6 +53,7 @@ module.exports.postLogin = (req, res) => {
   }
   else {
     console.log("password oki")
+    
   }
   res.cookie("userId", user.id);
   res.redirect("/")
