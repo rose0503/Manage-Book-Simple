@@ -25,9 +25,24 @@ module.exports.postLogin = (req, res) => {
     })
     return;
   }
-  var hashedPassword = md5(password);
   
-  if(user.password !== hashedPassword){
+  let countWrongPassword = user.wrongLoginCount;
+  if (countWrongPassword >= 3) {
+    res.render("auth/login",{
+      errors : [
+        "Bạn đã nhập sai quá nhiều lần. Hãy thử lại sau!!."
+      ],
+      values: req.body
+    })
+  }
+  
+    
+  //var hashedPassword = md5(password);
+  
+  const resultCheck = bcrypt.compareSync(password, user.password);
+  
+  if(!resultCheck){
+    db.get("users").find({email: email}).assign({ wrongLoginCount = (countWrongPassword+=1)}).write()
     res.render("auth/login",{
       errors: [
         "Wrong password."
