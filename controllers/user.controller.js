@@ -1,3 +1,6 @@
+const bcrypt = require("bcrypt");
+const saltRounds = 10;
+
 const db =require("../db.js");
 const shortid = require('shortid');
 

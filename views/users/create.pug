@@ -13,9 +13,17 @@ block content
         .col-sm-10
           input#user(type='text', name="name", class="form-control",  value = values ? values.name : "")
       .form-group.row
+        lable(for="email", class="col-sm-2 col-form-label") Tài khoản Email
+        .col-sm-10
+          input#email(type='email', name="email", class="form-control",  value = values ? values.email : "")    
+      .form-group.row
         lable(for="tuoi", class="col-sm-2 col-form-label") Tuổi
         .col-sm-10
           input#tuoi(type='text', name="age", class="form-control",  value = values ? values.age : "")
+      .form-group.row
+        lable(for="pass", class="col-sm-2 col-form-label") Password
+        .col-sm-10
+          input#pass(type='password', name="age", class="form-control",  value = values ? values.age : "")    
       button(type="submit", class="btn btn-primary mr-3") Tạo
       a(href="/users", class="btn btn-secondary btn-md", role="button", aria-pressed="true") Hủy
 
