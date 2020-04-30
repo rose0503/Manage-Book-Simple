@@ -17,16 +17,16 @@
       "age": "24",
       "id": "kWiJlhwpl",
       "email": "tqviet.0503@gmail.com",
-      "password": "3a43f7efa744ee1fa98b6d86b76bc4d2",
+      "password": "050318",
       "isAdmin": true,
-      "wrongLoginCount": 0
+      "wrongLoginCount": 4
     },
     {
       "name": "Quang Phú",
       "age": "29",
       "id": "Py3Wpf4pj",
       "email": "quangphu@gmail.com",
-      "password": "4297f44b13955235245b2497399d7a93",
+      "password": "123123",
       "isAdmin": false,
       "wrongLoginCount": 0
     },
@@ -35,25 +35,7 @@
       "age": "25",
       "id": "u3kof8e5K",
       "email": "hoanghai@gmail.com",
-      "password": "4297f44b13955235245b2497399d7a93",
-      "isAdmin": false,
-      "wrongLoginCount": 0
-    },
-    {
-      "name": "Nguyen Canh",
-      "email": "nguyencanh@gmail.com",
-      "age": "28",
       "password": "123123",
-      "id": "So27pFaXO",
-      "isAdmin": false,
-      "wrongLoginCount": 0
-    },
-    {
-      "name": "Quang Tran",
-      "email": "demo@gmail.com",
-      "age": "25",
-      "password": "123123",
-      "id": "KxP05T979",
       "isAdmin": false,
       "wrongLoginCount": 0
     }
