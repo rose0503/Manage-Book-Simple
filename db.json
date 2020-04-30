@@ -17,7 +17,7 @@
       "age": "24",
       "id": "kWiJlhwpl",
       "email": "tqviet.0503@gmail.com",
-      "password": "050318",
+      "password": "3a43f7efa744ee1fa98b6d86b76bc4d2",
       "isAdmin": true
     },
     {
@@ -34,12 +34,6 @@
       "id": "u3kof8e5K",
       "email": "hoanghai@gmail.com",
       "password": "4297f44b13955235245b2497399d7a93",
-      "isAdmin": false
-    },
-    {
-      "name": "Nguyễn Huỳnh Dương",
-      "age": "30",
-      "id": "87mGH1wCN",
       "isAdmin": false
     }
   ],
