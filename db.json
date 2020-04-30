@@ -17,7 +17,7 @@
       "age": "24",
       "id": "kWiJlhwpl",
       "email": "tqviet.0503@gmail.com",
-      "password": "050318",
+      "password": "3a43f7efa744ee1fa98b6d86b76bc4d2",
       "isAdmin": true
     },
     {
@@ -62,7 +62,7 @@
       "userId": "u3kof8e5K",
       "bookId": "GZXmHCz1-",
       "id": "FuYh94X7f",
-      "isComplete": false
+      "isComplete": true
     }
   ]
 }
