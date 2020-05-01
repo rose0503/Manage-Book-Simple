@@ -31,14 +31,12 @@ app.use(express.static("public"));
 app.get(
   "/",
   authMiddleware.requireAuth,
-  accountMiddleware.isUser,
   accountMiddleware.isAdmin,
   indexRoute
 );
 app.use(
   "/books",
   authMiddleware.requireAuth,
-  accountMiddleware.isUser,
   accountMiddleware.isAdmin,
   bookRoute
 );
@@ -46,14 +44,12 @@ app.use(
   "/users",
   authMiddleware.requireAuth,
   accountMiddleware.isAdmin,
-  accountMiddleware.isUser,
   userRoute
 );
 app.use(
   "/transactions",
   authMiddleware.requireAuth,
   accountMiddleware.isAdmin,
-  accountMiddleware.isUser,
   transactionRoute
 );
 app.use("/auth", authRoute);

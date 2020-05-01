@@ -35,10 +35,8 @@ module.exports.postLogin = (req, res) => {
       values: req.body
     })
   }
-  
-    
-  //var hashedPassword = md5(password);
-  
+      
+  //var hashedPassword = md5(password);  
   const resultCheck = bcrypt.compareSync(password, user.password);
   
   if(resultCheck === false){
@@ -51,10 +49,7 @@ module.exports.postLogin = (req, res) => {
     })
     return;
   }
-  else {
-    console.log("password oki")
-    
-  }
+  
   res.cookie("userId", user.id);
   res.redirect("/")
 }
