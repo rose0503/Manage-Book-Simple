@@ -3,6 +3,8 @@
 
 // we've started you off with Express (https://expressjs.com/)
 // but feel free to use whatever libraries or frameworks you'd like through `package.json`.
+require("dotenv").config();
+
 const express = require("express");
 const app = express();
 const pug = require("pug");
@@ -19,7 +21,7 @@ var accountMiddleware = require("./middlewares/account.middleware");
 
 app.set("views", "./views");
 app.set("view engine", "pug");
-app.use(cookieParser('abc123'));
+app.use(cookieParser(process.env.SESSION_SECRET));
 
 app.use(express.json()); // for parsing application/json
 app.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
