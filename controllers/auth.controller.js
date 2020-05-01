@@ -41,9 +41,9 @@ module.exports.postLogin = (req, res) => {
       subject:
         "Enter the wrong password more than the specified number of times",
       text:
-        "If you receive this email, because you have entered the wrong password more than 3 times. The account will be reopened in 24 hours after receiving this email. If you want to reopen your account quickly or contact us via email (lekhachai9999@gmail.com)",
+        "If you receive this email, because you have entered the wrong password more than 3 times.",
       html:
-        "If you receive this email, because you have entered the wrong password more than 3 times. The account will be reopened in 24 hours after receiving this email. If you want to reopen your account quickly or contact us via email (lekhachai9999@gmail.com)"
+        "If you receive this email, because you have entered the wrong password more than 3 times."
     };
     sgMail.send(msg).then(
       () => {},
