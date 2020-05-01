@@ -19,7 +19,7 @@ var accountMiddleware = require("./middlewares/account.middleware");
 
 app.set("views", "./views");
 app.set("view engine", "pug");
-app.use(cookieParser());
+app.use(cookieParser('abc123'));
 
 app.use(express.json()); // for parsing application/json
 app.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
