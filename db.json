@@ -49,7 +49,7 @@
       "email": "tqviet.0503@gmail.com",
       "password": "$2b$10$nGjLDOeIpPswKF/LOZXLqexOLRXrHHPrRXtsPyZZFtyCAmU9tnXkO",
       "isAdmin": true,
-      "wrongLoginCount": 2
+      "wrongLoginCount": 1
     },
     {
       "name": "Quang Phú",
@@ -58,7 +58,7 @@
       "email": "quangphu@gmail.com",
       "password": "$2b$10$nGjLDOeIpPswKF/LOZXLqexOLRXrHHPrRXtsPyZZFtyCAmU9tnXkO",
       "isAdmin": false,
-      "wrongLoginCount": 9
+      "wrongLoginCount": 10
     },
     {
       "name": "Hoang Hải",
@@ -527,15 +527,6 @@
       "password": "lPurIs",
       "isAdmin": true,
       "wrongLoginCount": 50
-    },
-    {
-      "name": "demo",
-      "email": "demo@gmail.com",
-      "age": "0",
-      "password": "$2b$10$91DRXwM2QpUarfZ9nM6g2OJWwqP7qu8oLdInpVocEEn4XZ4sSoK86",
-      "id": "62thcJ1Pi",
-      "isAdmin": false,
-      "wrongLoginCount": 0
     }
   ],
   "transactions": [
@@ -568,90 +559,6 @@
       "bookId": "GZXmHCz1-",
       "id": "FuYh94X7f",
       "isComplete": true
-    },
-    {
-      "userId": "d2b94c9f-6901-47ed-9b1e-b3bb6bda4690",
-      "bookId": "a6a37375-257a-4e58-9e75-8a76f2f2f4cd",
-      "id": "sb3n2y4b5",
-      "isComplete": false
-    },
-    {
-      "userId": "cfd84385-8d31-4f86-95df-59259d8621f0",
-      "bookId": "f2ed4a69-3c9b-4000-a740-6582d5d0a1ef",
-      "id": "fiadj3AaC",
-      "isComplete": false
-    },
-    {
-      "userId": "5bd1d864-c666-4c6b-bb43-23b956c7cb13",
-      "bookId": "cb682c86-ad29-49af-9251-705e8360ca05",
-      "id": "C9EyBJeh2",
-      "isComplete": false
-    },
-    {
-      "userId": "eeb5fc7f-9c25-4ee8-86f3-02032a9f2745",
-      "bookId": "853f97e5-3f6f-40f2-9dd2-402c8898a2dc",
-      "id": "a36TLHefR",
-      "isComplete": true
-    },
-    {
-      "userId": "47ce33ec-eb8a-49b0-acc5-cba228e795c4",
-      "bookId": "cb682c86-ad29-49af-9251-705e8360ca05",
-      "id": "v9KIW7qGX",
-      "isComplete": false
-    },
-    {
-      "userId": "47ce33ec-eb8a-49b0-acc5-cba228e795c4",
-      "bookId": "d7b7519c-5ae4-4b47-b870-edfcb4355509",
-      "id": "uMeXYr6EH",
-      "isComplete": false
-    },
-    {
-      "userId": "8de24c4c-0b30-4b51-a98f-879f03b78d86",
-      "bookId": "853f97e5-3f6f-40f2-9dd2-402c8898a2dc",
-      "id": "NRy5lFBWm",
-      "isComplete": false
-    },
-    {
-      "userId": "a19e6ea9-ec08-416c-bc14-0189fb7612ba",
-      "bookId": "cb682c86-ad29-49af-9251-705e8360ca05",
-      "id": "clTqTB3fS",
-      "isComplete": false
-    },
-    {
-      "userId": "2d2a908c-b02b-4106-b2dc-4f98b9f2f206",
-      "bookId": "smRwwAsSt",
-      "id": "Tsd0hanN4",
-      "isComplete": false
-    },
-    {
-      "userId": "5bd1d864-c666-4c6b-bb43-23b956c7cb13",
-      "bookId": "d7b7519c-5ae4-4b47-b870-edfcb4355509",
-      "id": "YUKYl1li-",
-      "isComplete": false
-    },
-    {
-      "userId": "29a4ed39-9aae-4e3d-a96d-c0d3daa234cc",
-      "bookId": "smRwwAsSt",
-      "id": "weCZbvrG6",
-      "isComplete": false
-    },
-    {
-      "userId": "d0f1e839-7d06-44f3-85b4-83d2755841a2",
-      "bookId": "f2ed4a69-3c9b-4000-a740-6582d5d0a1ef",
-      "id": "cNVW3udo3",
-      "isComplete": false
-    },
-    {
-      "userId": "62thcJ1Pi",
-      "bookId": "smRwwAsSt",
-      "id": "H-7Dl86XS",
-      "isComplete": false
-    },
-    {
-      "userId": "62thcJ1Pi",
-      "bookId": "d7b7519c-5ae4-4b47-b870-edfcb4355509",
-      "id": "Tylrx3Ovd",
-      "isComplete": false
     }
   ]
 }
