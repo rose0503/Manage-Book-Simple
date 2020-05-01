@@ -1,6 +1,42 @@
 const db =require("../db.js");
 const shortid = require('shortid');
 
+function generatePagination(page, paginationSizes, numPages) {
+    let startLink = -1;
+    // add skip '...'
+    let addition = {
+      start: false, // add skip at start
+      end: false // add skip at end
+    };
+    if (page < paginationSizes) {
+      // current page  at start
+      startLink = 0;
+      addition.end = numPages > paginationSizes ? true : false;
+    } else if (numPages - page <= paginationSizes) {
+      // current page  at end
+      startLink = numPages - paginationSizes;
+      addition.start = true;
+    } else {
+      // current page  at middle
+      startLink = Math.floor(page / paginationSizes) * paginationSizes;
+      addition.start = true;
+      addition.end = true;
+    }
+    let pageLinks = Array.from({ length: paginationSizes }, (_, index) => {
+      return startLink + index;
+    });
+
+    if (addition.start) {
+      pageLinks.unshift(0, false);
+    }
+
+    if (addition.end) {
+      pageLinks.push(false, numPages - 1);
+    }
+    return pageLinks;
+  };
+
+
 module.exports.index = (req, res) => {
   var transactions = db.get('transactions').value();
   var users = db.get('users').value();
