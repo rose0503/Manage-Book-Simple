@@ -12,7 +12,7 @@ block content
             th Tên
             th(colspan="3") Action
         tbody   
-        each user in listUser
+        each user in users
           tr    
             td=user.name
             if isAdmin
@@ -26,41 +26,20 @@ block content
               td
                 a.btn.btn-light(href="/users/" + user.id) Chi tiết
     
-    nav(aria-label='Page navigation example')
-          ul.pagination.justify-content-end#myNavi
-            - let index = 1;
-              li(class=`page-item ${ pageCurrent === NaN ||page_Current === 0 || page_Current === 1 || pageSize === 1 ? 'disabled' : '' }`)
-                a.page-link.previous(href='#', aria-label='Previous')
-                  span(aria-hidden='true') &laquo;
-              - for (index ; index <= paginationSize; index++)
-                li.page-item.item(value = index)
-                  a.page-link(href="/users/" + '?page=' + index )= index
-              li(class=`page-item ${page_Current === pageSize || pageSize === 1 ? 'disabled' : '' }`)
-                a.page-link.next(href='/users/'+ '?page=', aria-label='Next')
-                  span(aria-hidden='true') &raquo;
-
-  script.
-        // get index navigation 
-        let href = document.location.href;
-        let pageNum = parseInt(href.slice(-1));
-        pageNum === NaN || pageNum === 1 ? pageNum=1 : pageNum;
-        let lis = document.getElementsByClassName('item');
-        for(let j = 0; j< lis.length; j++) {
-            let li1 = lis[j];
-            let vl = parseInt(li1.getAttribute('value'));
-            if(vl === pageNum){
-                li1.classList.add("active")
-            }
-        }
-
-        // next page
-        let next = document.getElementsByClassName('next');
-        // change attribute href next 
-        next[0].setAttribute("href", "/users?page=" + (pageNum+1))
-
-        // previous page
-        let previous = document.getElementsByClassName("previous");
-        // change attribute href previous
-        previous[0].setAttribute("href", "/users?page=" + (pageNum-1))
-    
+      if pagination
+        nav(aria-label='Page navigation example')
+            ul.pagination.justify-content-end
+                li.page-item(class=`${pagination.page === 0 ? 'disabled': ''}`)
+                    a.page-link(href=`/users?page=${pagination.page - 1}&limit=${pagination.limit}${search ? '&name=' + search : ''}`, aria-label='Previous')
+                        span(aria-hidden='true') &laquo;
+                each val, index in pagination.links
+                    if (val === false) 
+                        li.page-item
+                            a.page-link(href=`/users?page=${ index === 1 ? pagination.links[2] - 1 : pagination.links[pagination.links.length - 3] + 1 }&limit=${pagination.limit}${search ? '&name=' + search : ''}`) ∙∙∙                    
+                    else
+                        li.page-item(class=`${val === pagination.page ? 'active': ''}`)
+                            a.page-link(href=`/users?page=${val}&limit=${pagination.limit}${search ? '&name=' + search : ''}`)=val                    
+                li.page-item(class=`${pagination.page + 1 === pagination.numPages ? 'disabled': ''}`)
+                    a.page-link(href=`/users?page=${pagination.page + 1}&limit=${pagination.limit}${search ? '&name=' + search : ''}`, aria-label='Next')
+                        span(aria-hidden='true') &raquo;
     a(href="/") Home

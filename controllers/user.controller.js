@@ -4,37 +4,47 @@ const saltRounds = 10;
 const db =require("../db.js");
 const shortid = require('shortid');
 
-// module.exports.index = (req, res) => {
-//   var user = db.get('users').value();
-  
-//   let page = parseInt(req.query.page) || 1;
-//   let perPage = 4;
+function generatePagination(page, paginationSizes, numPages) {
+    let startLink = -1;
+    // add skip '...'
+    let addition = {
+      start: false, // add skip at start
+      end: false // add skip at end
+    };
+    if (page < paginationSizes) {
+      // current page  at start
+      startLink = 0;
+      addition.end = numPages > paginationSizes ? true : false;
+    } else if (numPages - page <= paginationSizes) {
+      // current page  at end
+      startLink = numPages - paginationSizes;
+      addition.start = true;
+    } else {
+      // current page  at middle
+      startLink = Math.floor(page / paginationSizes) * paginationSizes;
+      addition.start = true;
+      addition.end = true;
+    }
+    let pageLinks = Array.from({ length: paginationSizes }, (_, index) => {
+      return startLink + index;
+    });
 
-//   let start = (page - 1) * perPage;
-//   let end = page * perPage;
-  
-//   let pageSize = Math.ceil(user.length / 3);
+    if (addition.start) {
+      pageLinks.unshift(0, false);
+    }
 
-//   let paginationSizes = pageSize >= 3 ? 3 : pageSize;
-
-//   let pageCurrent = parseInt(req.query.page);
-  
-//   res.render('users/index',{
-//     users: user,
-//     listUser: user.slice(start, end),
-//     paginationSize: paginationSizes,
-//     pageSize: pageSize,
-//     page_Current: pageCurrent
-//   })
-//   console.log(db.get('users').value())
-// }
+    if (addition.end) {
+      pageLinks.push(false, numPages - 1);
+    }
+    return pageLinks;
+  };
 
 module.exports.index = (req, res) => {
   const query = db.get("users");
   // query params
   let { page, limit } = req.query;
   page = +page && +page >= 0 ? +page : 0;
-  limit = +limit && +limit >= 0 ? +limit : 3;
+  limit = +limit && +limit >= 0 ? +limit : 4;
 
   const length = query.size().value();
 
@@ -42,7 +52,7 @@ module.exports.index = (req, res) => {
   const numPages = Math.ceil(length / limit);
 
   // size of a pagination bar: default 5
-  const paginationSizes = numPages >= 5 ? 5 : numPages;
+  const paginationSizes = numPages >= 3 ? 3 : numPages;
   if (page >= numPages) {
     page = numPages - 1;
   }
@@ -53,7 +63,7 @@ module.exports.index = (req, res) => {
     .take(limit)
     .value();
   const links = generatePagination(page, paginationSizes, numPages);
-  return res.render("user/index", {
+  return res.render("users/index", {
     users,
     auth: req.user,
     pagination: {
