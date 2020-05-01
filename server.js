@@ -34,7 +34,7 @@ app.get(
   "/",
   authMiddleware.requireAuth,
   accountMiddleware.isAdmin,
-  indexRoute
+  indexRoute, 
 );
 app.use(
   "/books",
