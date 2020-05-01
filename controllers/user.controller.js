@@ -5,15 +5,26 @@ const db =require("../db.js");
 const shortid = require('shortid');
 
 module.exports.index = (req, res) => {
+  var user = db.get('users').value();
+  
   let page = parseInt(req.query.page) || 1;
   let perPage = 3;
 
   let start = (page - 1) * perPage;
   let end = page * perPage;
   
-  var user = db.get('users').value();
+  let pageSize = Math.ceil(user.length / 3);
+
+  let paginationSizes = pageSize >= 3 ? 3 : pageSize;
+
+  let pageCurrent = parseInt(req.query.page);
+  
   res.render('users/index',{
-    users: user
+    users: user,
+    listUser: user.slice(start, end),
+    paginationSize: paginationSizes,
+    pageSize: pageSize,
+    page_Current: pageCurrent
   })
   console.log(db.get('users').value())
 }
