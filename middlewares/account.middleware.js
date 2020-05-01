@@ -1,12 +1,10 @@
 const db = require("../db");
-let cookies_req = {};
-let counter = 0;
 var user = db.get("users").value();
 
 module.exports.isAdmin= (req, res, next) => {
     try {
       // check isAdmin
-      const idUser = req.cookies.userId;
+      const idUser = req.signedCookies.userId;
       console.log(idUser)
       if (!idUser) {
         res.locals.isAdmin = false;
