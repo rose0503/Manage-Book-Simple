@@ -8,7 +8,7 @@ module.exports.index = (req, res) => {
   var user = db.get('users').value();
   
   let page = parseInt(req.query.page) || 1;
-  let perPage = 3;
+  let perPage = 4;
 
   let start = (page - 1) * perPage;
   let end = page * perPage;
