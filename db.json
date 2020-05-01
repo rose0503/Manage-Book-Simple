@@ -28,7 +28,7 @@
       "email": "quangphu@gmail.com",
       "password": "$2b$10$nGjLDOeIpPswKF/LOZXLqexOLRXrHHPrRXtsPyZZFtyCAmU9tnXkO",
       "isAdmin": false,
-      "wrongLoginCount": 5
+      "wrongLoginCount": 8
     },
     {
       "name": "Hoang Hải",
