@@ -1,4 +1,5 @@
 //const md5 = require("md5"); 
+const sgMail = require("@sendgrid/mail");
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
 
