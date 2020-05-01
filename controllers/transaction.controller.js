@@ -46,21 +46,6 @@ module.exports.index = (req, res) => {
   let pagination = null;
 
   if (transactions.length > 0) {    
-    // if (req.user.role !== 0) {
-    //   transactions = transactions.filter(trans => {
-    //     const { userId, isCompleted } = trans;
-    //     const user = users.find(val => val.id === userId) || {};
-    //     if (isCompleted === true || user.isLogging === false || user.role === 0)
-    //       return false;
-    //     return true;
-    //   });
-    // }
-    // transactions = transactions.map(trans => {
-    //   const { bookId, userId, id, isCompleted } = trans;
-    //   const user = users.find(val => val.id === userId);
-    //   const book = books.find(val => val.id === bookId);
-    //   return { id, user, book, isCompleted };
-    // });
 
     // pagination
     const length = transactions.length;
@@ -68,7 +53,7 @@ module.exports.index = (req, res) => {
     const numPages = Math.ceil(length / limit);
 
     // size of a pagination bar: default 5
-    const paginationSizes = numPages >= 5 ? 5 : numPages;
+    const paginationSizes = numPages >= 4 ? 4 : numPages;
     if (page >= numPages) {
       page = numPages - 1;
     }
@@ -88,7 +73,8 @@ module.exports.index = (req, res) => {
   res.render('transactions/index',{
     transactions: transactions,
     users: users,
-    books: books
+    books: books,
+    pagination
   }) 
 };
 
