@@ -4,30 +4,67 @@ const saltRounds = 10;
 const db =require("../db.js");
 const shortid = require('shortid');
 
+// module.exports.index = (req, res) => {
+//   var user = db.get('users').value();
+  
+//   let page = parseInt(req.query.page) || 1;
+//   let perPage = 4;
+
+//   let start = (page - 1) * perPage;
+//   let end = page * perPage;
+  
+//   let pageSize = Math.ceil(user.length / 3);
+
+//   let paginationSizes = pageSize >= 3 ? 3 : pageSize;
+
+//   let pageCurrent = parseInt(req.query.page);
+  
+//   res.render('users/index',{
+//     users: user,
+//     listUser: user.slice(start, end),
+//     paginationSize: paginationSizes,
+//     pageSize: pageSize,
+//     page_Current: pageCurrent
+//   })
+//   console.log(db.get('users').value())
+// }
+
 module.exports.index = (req, res) => {
-  var user = db.get('users').value();
-  
-  let page = parseInt(req.query.page) || 1;
-  let perPage = 4;
+  const query = db.get("users");
+  // query params
+  let { page, limit } = req.query;
+  page = +page && +page >= 0 ? +page : 0;
+  limit = +limit && +limit >= 0 ? +limit : 3;
 
-  let start = (page - 1) * perPage;
-  let end = page * perPage;
-  
-  let pageSize = Math.ceil(user.length / 3);
+  const length = query.size().value();
 
-  let paginationSizes = pageSize >= 3 ? 3 : pageSize;
+  // num of pages
+  const numPages = Math.ceil(length / limit);
 
-  let pageCurrent = parseInt(req.query.page);
-  
-  res.render('users/index',{
-    users: user,
-    listUser: user.slice(start, end),
-    paginationSize: paginationSizes,
-    pageSize: pageSize,
-    page_Current: pageCurrent
-  })
-  console.log(db.get('users').value())
-}
+  // size of a pagination bar: default 5
+  const paginationSizes = numPages >= 5 ? 5 : numPages;
+  if (page >= numPages) {
+    page = numPages - 1;
+  }
+  // skip
+  const skip = page * limit;
+  const users = query
+    .drop(skip)
+    .take(limit)
+    .value();
+  const links = generatePagination(page, paginationSizes, numPages);
+  return res.render("user/index", {
+    users,
+    auth: req.user,
+    pagination: {
+      links,
+      numPages,
+      page,
+      limit,
+      start: skip
+    }
+  });
+};
 
 module.exports.create = (req, res) => {
   res.render('users/create')};
