@@ -5,8 +5,15 @@ const db =require("../db.js");
 const shortid = require('shortid');
 
 module.exports.index = (req, res) => {
+  let page = parseInt(req.query.page) || 1;
+  let perPage = 3;
+
+  let start = (page - 1) * perPage;
+  let end = page * perPage;
+  
+  var user = db.get('users').value();
   res.render('users/index',{
-    users: db.get('users').value()
+    users: user
   })
   console.log(db.get('users').value())
 }
