@@ -37,7 +37,7 @@ module.exports.postLogin = (req, res) => {
 
     const msg = {
       to: email,
-      from: "pes2012vodich@gmail.com",
+      from: "tqviet.0503@gmail.com",
       subject:
         "Enter the wrong password more than the specified number of times",
       text:
