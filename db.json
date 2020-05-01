@@ -19,7 +19,7 @@
       "email": "tqviet.0503@gmail.com",
       "password": "$2b$10$nGjLDOeIpPswKF/LOZXLqexOLRXrHHPrRXtsPyZZFtyCAmU9tnXkO",
       "isAdmin": true,
-      "wrongLoginCount": 1
+      "wrongLoginCount": 2
     },
     {
       "name": "Quang Phú",
@@ -28,7 +28,7 @@
       "email": "quangphu@gmail.com",
       "password": "$2b$10$nGjLDOeIpPswKF/LOZXLqexOLRXrHHPrRXtsPyZZFtyCAmU9tnXkO",
       "isAdmin": false,
-      "wrongLoginCount": 8
+      "wrongLoginCount": 9
     },
     {
       "name": "Hoang Hải",
@@ -46,7 +46,7 @@
       "password": "$2b$10$NiLkPaJoft.B1CxbpTux2.Dhk7RDoOmCbxPn0H5Lit.mq2re6esZS",
       "id": "BGqoDzTZX",
       "isAdmin": false,
-      "wrongLoginCount": 15
+      "wrongLoginCount": 17
     }
   ],
   "transactions": [
