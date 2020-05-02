@@ -21,8 +21,8 @@ router.get('/:id/delete', controller.delete);
 
 router.post('/:id/edit', validate.postEdit, controller.postEdit);
 
-// router.get("/profile", controller.profile)
+router.get("/profile", controller.profile)
 
-// router.post("/profile", upload.single('avatar'), controller.postProfile)
+router.post("/profile", upload.single('avatar'), controller.postProfile)
 
 module.exports = router;

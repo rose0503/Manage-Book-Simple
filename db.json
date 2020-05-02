@@ -527,6 +527,16 @@
       "password": "lPurIs",
       "isAdmin": true,
       "wrongLoginCount": 50
+    },
+    {
+      "name": "Nguyen Vy",
+      "email": "nguyenvy@gmail.com",
+      "age": "25",
+      "password": "123",
+      "id": "7bnjWKi8g",
+      "avatar": "uploads/be1c6b47f7d6a013cdd4f08d10e2bcc5",
+      "isAdmin": false,
+      "wrongLoginCount": 0
     }
   ],
   "transactions": [
