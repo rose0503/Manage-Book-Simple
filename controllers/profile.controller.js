@@ -2,6 +2,13 @@ const cloudinary = require("cloudinary").v2;
 const fs = require("fs");
 const db = require("../db");
 
+cloudinary.config({
+  cloud_name: process.env.CLOUD_NAME,
+  api_key: process.env.CLOUD_KEY,
+  api_secret: process.env.CLOUD_SECRET,
+  CLOUDINARY_URL:  process.env.CLOUDINARY_URL
+});
+
 module.exports.index = (req, res) => {
   const id = req.signedCookies.userId;
 
@@ -41,10 +48,9 @@ module.exports.changeAvatar = async (req, res) => {
     if (!req.file) {
       res.render("profiles/updateAvatar", { auth: user, error: ["Avatar is required"]});
     }
-//     if (!checkIsImage(req.file.mimetype)) {
-//       res.render("profiles/updateAvatar", { auth: user, error: ["Avatar is not valid"]});
-//       //throw new Exception("Avatar is not valid");
-//     }
+    if (!checkIsImage(req.file.mimetype)) {
+      res.render("profiles/updateAvatar", { auth: user, error: ["Avatar is not valid"]});
+    }
 
 //     const path = await cloudinary.uploader
 //       .upload(req.file.path, {
