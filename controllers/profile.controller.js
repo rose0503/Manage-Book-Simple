@@ -14,7 +14,7 @@ module.exports.index = (req, res) => {
 module.exports.avatarPage = (req, res) => {
   const id = req.signedCookies.userId;
   var user = db.get('users').find({ id: id}).value();
-  res.render('profiles/index',{
+  res.render('profiles/updateAvatar',{
     auth: user
   }) 
 };
@@ -33,12 +33,14 @@ function checkIsImage(mimetype) {
   }
 
 module.exports.changeAvatar = async (req, res) => {
+    const id = req.signedCookies.userId;
+    var user = db.get('users').find({ id: id}).value();
 //   const user = req.user;
-//   try {
-//     if (!req.file) {
-//       res.render("profiles/updateAvatar", { auth: user, error: ["Avatar is required"]});
-//       //throw new Exception("Avatar is required");
-//     }
+  try {
+    
+    if (!req.file) {
+      res.render("profiles/updateAvatar", { auth: user, error: ["Avatar is required"]});
+    }
 //     if (!checkIsImage(req.file.mimetype)) {
 //       res.render("profiles/updateAvatar", { auth: user, error: ["Avatar is not valid"]});
 //       //throw new Exception("Avatar is not valid");
@@ -58,7 +60,7 @@ module.exports.changeAvatar = async (req, res) => {
 //       .write();
 //     fs.unlinkSync(req.file.path);
 //     res.redirect("/profiles");
-//   } catch (error) {
-//     res.render("profile/avatar", { auth: user, error: error.message });
-//   }
+  } catch (error) {
+    res.render("profiles/avatar", { auth: user, error: error.message});
+  }
 };

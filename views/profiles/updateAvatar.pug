@@ -2,9 +2,9 @@ extends ../layout/common.pug
 
 block content
   .container.d-flex.flex-column.align-items-center
-    h1.text-center Profile
-    .avatar
-      img(id='avatar' src=auth.avatar ? auth.avatar : 'https://i.ya-webdesign.com/images/default-avatar-png-6.png')
+    h1.text-center Cập nhật ảnh đại diện
+    .div.m-3
+      img(width=200, id='avatar' src=auth.avatar ? auth.avatar : 'https://i.ya-webdesign.com/images/default-avatar-png-6.png')
     form(action="", method="post", enctype="multipart/form-data")
       if error
         .alert.alert-danger #{error}
