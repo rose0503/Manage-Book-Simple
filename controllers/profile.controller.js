@@ -3,21 +3,36 @@ const fs = require("fs");
 const db = require("../db");
 
 module.exports.index = (req, res) => {
-  res.render("profile/index", { auth: req.user });
+  res.render("profiles/index", { auth: req.user });
 };
 
 module.exports.avatarPage = (req, res) => {
-  res.render("profile/avatar", { auth: req.user });
+  res.render("profiles/updateAvatar", { auth: req.user });
 };
+  /**
+   * Check file is image of ['image/png', 'image/jpeg']
+   * @param {string} mimetype
+   */
+function checkIsImage(mimetype) {
+    const acceptImageTypes = [
+      "image/png",
+      "image/jpeg",
+      "image/gif",
+      "image/x-icon"
+    ];
+    return acceptImageTypes.includes(mimetype);
+  }
 
 module.exports.changeAvatar = async (req, res) => {
   const user = req.user;
   try {
     if (!req.file) {
-      throw new Exception("Avatar is required");
+      res.render("profiles/updateAvatar", { auth: user, error: ["Avatar is required"]});
+      //throw new Exception("Avatar is required");
     }
     if (!checkIsImage(req.file.mimetype)) {
-      throw new Exception("Avatar is not valid");
+      res.render("profiles/updateAvatar", { auth: user, error: ["Avatar is not valid"]});
+      //throw new Exception("Avatar is not valid");
     }
 
     const path = await cloudinary.uploader
@@ -33,7 +48,7 @@ module.exports.changeAvatar = async (req, res) => {
       .assign({ avatar: path })
       .write();
     fs.unlinkSync(req.file.path);
-    res.redirect("/profile");
+    res.redirect("/profiles");
   } catch (error) {
     res.render("profile/avatar", { auth: user, error: error.message });
   }

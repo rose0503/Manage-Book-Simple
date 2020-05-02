@@ -16,6 +16,7 @@ var authRoute = require("./routes/auth.route.js");
 var bookRoute = require("./routes/book.route.js");
 var userRoute = require("./routes/user.route.js");
 var transactionRoute = require("./routes/transaction.route.js");
+var profileRoute = require("./routes/profile.route.js");
 
 var authMiddleware = require("./middlewares/auth.middleware");
 var accountMiddleware = require("./middlewares/account.middleware");
@@ -42,6 +43,12 @@ app.use(
   authMiddleware.requireAuth,
   accountMiddleware.isAdmin,
   bookRoute
+);
+app.use(
+  "/profiles",
+  authMiddleware.requireAuth,
+  accountMiddleware.isAdmin,
+  profileRoute
 );
 app.use(
   "/users",
