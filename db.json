@@ -49,7 +49,8 @@
       "email": "tqviet.0503@gmail.com",
       "password": "$2b$10$nGjLDOeIpPswKF/LOZXLqexOLRXrHHPrRXtsPyZZFtyCAmU9tnXkO",
       "isAdmin": true,
-      "wrongLoginCount": 1
+      "wrongLoginCount": 1,
+      "avatar": "http://res.cloudinary.com/quocviet0503/image/upload/v1588412910/student/2505fc6ce92ceaa0058713011883c1c2.jpg"
     },
     {
       "name": "Quang Phú",
@@ -535,6 +536,26 @@
       "password": "123",
       "id": "7bnjWKi8g",
       "avatar": "uploads/be1c6b47f7d6a013cdd4f08d10e2bcc5",
+      "isAdmin": false,
+      "wrongLoginCount": 0
+    },
+    {
+      "name": "Hong",
+      "email": "demo@gmail.com",
+      "age": "25",
+      "password": "$2b$10$mYBPEDAPQpLk4gGvvSdR2.dIuZ18dwV96BFLgUHW87DaOuUdh4MmS",
+      "id": "aa3CpP1a8",
+      "avatar": "uploads/6bcd0316488974db8dee7dc53fcfd09f",
+      "isAdmin": false,
+      "wrongLoginCount": 2
+    },
+    {
+      "name": "Quang Tran",
+      "email": "quangtran@gmail.com",
+      "age": "25",
+      "password": "$2b$10$EZY7zHE4Lh9utF743Y15g.oxNU/3ptz60vlJ5Y/Cumfl7VoyZSQDu",
+      "id": "OP_T5pMrx",
+      "avatar": "http://res.cloudinary.com/quocviet0503/image/upload/v1588413302/student/1e96ae5120a0a846795a2575a6ba1758.jpg",
       "isAdmin": false,
       "wrongLoginCount": 0
     }

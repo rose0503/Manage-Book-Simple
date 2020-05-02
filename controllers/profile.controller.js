@@ -52,20 +52,22 @@ module.exports.changeAvatar = async (req, res) => {
       res.render("profiles/updateAvatar", { auth: user, error: ["Avatar is not valid"]});
     }
 
-//     const path = await cloudinary.uploader
-//       .upload(req.file.path, {
-//         public_id: `student/${req.file.filename}`,
-//         tags: "student"
-//       })
-//       .then(result => result.url)
-//       .catch(_ => false);
-//     if (!path) throw new Exception("There was an error saving your avatar");
-//     db.get("users")
-//       .find({ id: user.id })
-//       .assign({ avatar: path })
-//       .write();
-//     fs.unlinkSync(req.file.path);
-//     res.redirect("/profiles");
+    const path = await cloudinary.uploader
+      .upload(req.file.path, {
+        public_id: `student/${req.file.filename}`,
+        tags: "student"
+      })
+      .then(result => result.url)
+      .catch(_ => false);
+    if (!path) 
+      res.render("profiles/updateAvatar", { auth: user, error: ["There was an error saving your avatar"]});
+      //throw new Exception("There was an error saving your avatar");
+    db.get("users")
+      .find({ id: user.id })
+      .assign({ avatar: path })
+      .write();
+    fs.unlinkSync(req.file.path);
+    res.redirect("/profiles");
   } catch (error) {
     res.render("profiles/avatar", { auth: user, error: error.message});
   }
