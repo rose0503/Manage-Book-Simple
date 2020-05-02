@@ -11,12 +11,13 @@ block content
           tr
             th Avatar
             th Tên
+            th
             th(colspan="3") Action
         tbody   
         each user in users
           tr
             td
-              img(id='avatar',src=user.avatar ? user.avatar : '/images/default-avatar.png')
+              img(width=32,src=user.avatar ? user.avatar : 'https://i.ya-webdesign.com/images/default-avatar-png-6.png')
             td=user.name
             if isAdmin
               td
