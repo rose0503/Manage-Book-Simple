@@ -5,7 +5,7 @@ const upload = multer({
 });
 
 const router = require("express").Router();
-const controller = require("../controller/profile.controller");
+const controller = require("../controllers/profile.controller");
 
 router.get("/", controller.index);
 router.get("/avatar", controller.avatarPage);
