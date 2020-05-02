@@ -9,11 +9,14 @@ block content
       table.table.table-hover
         thead.thead-light
           tr
+            th Avatar
             th Tên
             th(colspan="3") Action
         tbody   
         each user in users
-          tr    
+          tr
+            td
+              img(id='avatar',src=user.avatar ? user.avatar : '/images/default-avatar.png')
             td=user.name
             if isAdmin
               td
