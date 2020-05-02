@@ -27,9 +27,11 @@ html
             a.nav-link(href='/transactions') Transactions  
       if user
         .d-flex.align-items-center.dropdown
-          a.nav-link.dropdown-toggle#dropdownMenuButton(role="button",data-toggle="dropdown", aria-haspopup="true", aria-expanded="false")= user.name 
-            if isAdmin 
-              span -Admin
+          a.nav-link.dropdown-toggle#dropdownMenuButton(role="button",data-toggle="dropdown", aria-haspopup="true", aria-expanded="false")
+            span= user.name 
+              if isAdmin 
+                span -Admin
+            img.icon-user.m-1(id='avatar' src=user.avatar ? user.avatar : 'https://i.ya-webdesign.com/images/default-avatar-png-6.png', alt="Avatar")    
           .dropdown-menu
             a.dropdown-item(href="/profiles") Thông tin
             a.dropdown-item(href="/auth/logout") Đăng xuất
