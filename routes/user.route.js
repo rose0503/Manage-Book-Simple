@@ -22,8 +22,4 @@ router.get('/:id/delete', controller.delete);
 
 router.post('/:id/edit', validate.postEdit, controller.postEdit);
 
-router.get("/profile", profileController.profile)
-
-router.post("/profile", upload.single('avatar'), profileController.postProfile)
-
 module.exports = router;
