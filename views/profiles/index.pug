@@ -5,7 +5,7 @@ block content
       h1.text-center Profile
       .avatar
         img.img-fluid(src=auth.avatar ? auth.avatar : 'https://i.ya-webdesign.com/images/default-avatar-png-6.png')
-      a.btn.btn-primary.btn-sm(href="/profile/avatar")= auth.avatar ? 'change avatar': 'upload avatar'  
+      a.btn.btn-primary.btn-sm(href="/profiles/updateAvatar")= auth.avatar ? 'change avatar': 'upload avatar'  
       .info
         .text-center Name: #{auth.name}
         .text-center Email: #{auth.email}

@@ -4,21 +4,19 @@ const db = require("../db");
 
 module.exports.index = (req, res) => {
   const id = req.signedCookies.userId;
-//   await User.find({ id: id }).then(doc => {
-//     res.render("./users/profile.pug", {
-//       user: doc[0]
-//     });
-//   });
-  
+
   var user = db.get('users').find({ id: id}).value();
   res.render('profiles/index',{
     auth: user
   })
-  //res.render("profiles/index", { auth: req.user });
 };
 
 module.exports.avatarPage = (req, res) => {
-  res.render("profiles/updateAvatar", { auth: req.user });
+  const id = req.signedCookies.userId;
+  var user = db.get('users').find({ id: id}).value();
+  res.render('profiles/index',{
+    auth: user
+  }) 
 };
   /**
    * Check file is image of ['image/png', 'image/jpeg']
