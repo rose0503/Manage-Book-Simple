@@ -11,6 +11,7 @@ module.exports = {
   for(let a of Object.keys(cartArr))
     result += cartArr[a];
   res.locals.countBooks = result;
-  next();
+  
+    next();
   }
 };

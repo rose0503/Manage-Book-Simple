@@ -7,7 +7,7 @@ block content
       each error in errors
         .alert.alert-danger= error
         
-    form(action="/books/create", method="POST")
+    form(action="/books/create", method="POST", enctype="multipart/form-data")
       .form-group.row
         lable(for="book", class="col-sm-2 col-form-label") Tiêu đề
         .col-sm-10
@@ -16,6 +16,17 @@ block content
         lable(for="mota", class="col-sm-2 col-form-label") Mô tả
         .col-sm-10
           input#mota(type='text', name="description", class="form-control" value = values ? values.description : "")
+          
+      .input-group.mb-3
+        .input-group-prepend
+          .input-group-text Upload
+        .custom-file
+          input.custom-file-input(type="file" id="avatar-input" aria-describedby="inputGroupFileAddon01" name='avatar')
+          label.custom-file-label(for="avatar-input" id='avatar-label') Choose file
+      .d-flex.justify-content-center.align-items-center
+        .avatar
+          img(id='avatar' src="xxx")    
       button(type="submit", class="btn btn-primary mr-3") Tạo
       a(href="/books", class="btn btn-secondary btn-md", role="button", aria-pressed="true") Hủy
+    script(src="/javascript/custom.js")
 
