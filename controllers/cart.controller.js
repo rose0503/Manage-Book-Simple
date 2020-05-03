@@ -14,3 +14,21 @@ module.exports.addToCart = (req, res) =>{
   res.redirect('/books');
   
 };
+
+module.exports.index = (req, res) => {
+  const { sessionId } = req.signedCookies;
+
+  const cart = db
+    .get("sessions")
+    .find({ id: sessionId })
+    .value();
+  const cartId = cart ? cart.cart : [];
+  const books = db
+    .get("books")
+    .filter(book => {
+      return cartId.includes(book.id);
+    })
+    .value();
+
+  res.render("cart/index", { auth: req.user, books });
+};
