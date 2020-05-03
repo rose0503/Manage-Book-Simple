@@ -36,7 +36,7 @@ html
             span= user.name 
               if isAdmin 
                 span -Admin
-            img.icon-user.m-1(id='avatar' src=user.avatar ? user.avatar : 'https://i.ya-webdesign.com/images/default-avatar-png-6.png', alt="Avatar")    
+            img.icon-user.m-1(id='avatar-icon' src=user.avatar ? user.avatar : 'https://i.ya-webdesign.com/images/default-avatar-png-6.png', alt="Avatar")    
           .dropdown-menu
             a.dropdown-item(href="/profiles") Thông tin
             a.dropdown-item(href="/auth/logout") Đăng xuất

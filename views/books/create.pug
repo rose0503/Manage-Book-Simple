@@ -24,8 +24,8 @@ block content
           input.custom-file-input(type="file" id="avatar-input" aria-describedby="inputGroupFileAddon01" name='avatar')
           label.custom-file-label(for="avatar-input" id='avatar-label') Choose file
       .d-flex.justify-content-center.align-items-center
-        .avatar
-          img(id='avatar' src="xxx")    
+        div
+          img(style="width=50px; height= 50px", id='avatar' src="xxx")    
       button(type="submit", class="btn btn-primary mr-3") Tạo
       a(href="/books", class="btn btn-secondary btn-md", role="button", aria-pressed="true") Hủy
     script(src="/javascript/custom.js")
