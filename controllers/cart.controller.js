@@ -11,10 +11,14 @@ module.exports.addToCart = (req, res) =>{
   var count = db.get('sessions').find({id: sessionId}).get('cart.' + id, 0).value();
   console.log("count",count);
   db.get('sessions').find({id: sessionId}).set("cart." + id, count + 1).write();
-  // let result = session.reduce((acc, cur) => {
-  //       return (acc += cur[1]);
-  //     }, 0);
-  // res.locals.countBooks = result;
+  const cartArr = session.cart;
+  console.log("cartid", session.cart)
+  for(let a of cartArr)
+    console.log(a)
+  let result = cartArr.reduce((acc, cur) => {
+        return (acc += cur);
+      }, 0);
+  res.locals.countBooks = result;
   
   res.redirect('/books');
   
