@@ -2,30 +2,11 @@ extends ../layout/common.pug
 block content
   .div
     .d-flex.justify-content-between
-      h2.mb-4 Danh sách
+      h2.mb-4 Thư viện sách
       if isAdmin
         a.h-25(href='/books/create', class="btn btn-primary btn-md", role="button", aria-pressed="true") Thêm mới
     
-    .table-responsive
-      table.table.table-hover
-        thead.thead-light
-          tr
-            th Tên
-            th(colspan="3") Action
-        tbody    
-          each book in books
-            tr    
-              td=book.title
-              if isAdmin
-                td 
-                  a.btn.btn-light(href="/books/" + book.id) Chi tiết
-                td
-                  a.btn.btn-light(href="/books/" + book.id + "/edit") Sửa
-                td
-                  a.btn.btn-light(href="/books/" + book.id + "/delete") Xóa
-              if !isAdmin
-                td 
-                  a.btn.btn-light(href="/books/" + book.id) Chi tiết
+    
     .row
       each book in books
         .col-sm-6.col-md-4.col-lg-3
@@ -34,19 +15,20 @@ block content
             .card-body
               h5.card-title(style="height: 48px !important")=book.title
               p.card-text                  
-                .text-truncate
+                .text-truncate(style='width: 180px')
                   span=book.description                
               
               if isAdmin   
-                .row
-                  .col-sm-4.col-md-6.col-lg-3
-                    a.btn.btn-primary(href='#') Add
+                .row                  
+                    a.btn.btn-primary.m-1(href='/cart/add/'+ book.id) Add
+                    a.btn.btn-primary.m-1(href="/books/" + book.id) Chi tiết
+                    a.btn.btn-primary.m-1(href="/books/" + book.id + "/edit") Sửa                
+                    a.btn.btn-primary.m-1(href="/books/" + book.id + "/delete") Xóa
+              if !isAdmin                 
+                .row                  
+                    a.btn.btn-primary.m-1(href='/cart/add/'+ book.id) Add to cart
                     a.btn.btn-primary.m-1(href="/books/" + book.id) Chi tiết
 
-                    a.btn.btn-primary(href="/books/" + book.id + "/edit") Sửa                
-                    a.btn.btn-primary(href="/books/" + book.id + "/delete") Xóa
-              if !isAdmin                 
-                  a.btn.btn-primary(href="/books/" + book.id) Chi tiết
 
                   
     a(href="/") Home
