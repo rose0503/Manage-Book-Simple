@@ -10,6 +10,6 @@ block content
           if(c.cart == book.id)
             .col-12.col-xl-3.col-md-4.col-sm-6.my-2
               .card
-                img.card-img-top(src=book.coverUrl)
+                img.card-img-top(src=book.coverUrl ? book.coverUrl : 'https://icons.iconarchive.com/icons/thalita-torres/office/512/school-book-icon.png')
                 .card-body
                   p.text-center.card-text=book.title
