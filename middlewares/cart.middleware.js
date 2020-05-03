@@ -2,18 +2,20 @@ const db = require("../db")
 
 module.exports = {
   cart:  (req, res, next) => {    
-    // const id = req.signedCookies.sessionId;
-    // const session= db.get("sessions").find({id : id}).value();
-    // // count book add cart
-    //  //sessions.find({id : id}).then(doc => {
-    //   var count = session.get('cart.' + id).value();
-    //   const cartArr = session.cart ? session.cart : [];
-    //   let result = cartArr.reduce((acc, cur) => {
-    //     return (acc += cur[1]);
-    //   }, 0);
-    //   res.locals.countBooks = result;
-    // //});
-    // console.log(cartArr)
+    // var id = req.params.id;
+  var id = req.params.id;
+  var sessionId = req.signedCookies.sessionId;
+  var session=  db.get('sessions').find({id: sessionId}).value()
+  
+  var count = db.get('sessions').find({id: sessionId}).get('cart.' + id, 0).value();
+  console.log("count",count);
+  db.get('sessions').find({id: sessionId}).set("cart." + id, count + 1).write();
+  const cartArr = session.cart;
+  //console.log("cartid", session.cart)
+  let result = 0;
+  for(let a of Object.keys(cartArr))
+    result += cartArr[a];
+  res.locals.countBooks = result;
     next();
   }
 };

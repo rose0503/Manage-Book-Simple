@@ -12,14 +12,12 @@ module.exports.addToCart = (req, res) =>{
   console.log("count",count);
   db.get('sessions').find({id: sessionId}).set("cart." + id, count + 1).write();
   const cartArr = session.cart;
-  console.log("cartid", session.cart)
-  for(let a of cartArr)
-    console.log(a)
-  let result = cartArr.reduce((acc, cur) => {
-        return (acc += cur);
-      }, 0);
+  //console.log("cartid", session.cart)
+  let result = 0;
+  for(let a of Object.keys(cartArr))
+    result += cartArr[a];
   res.locals.countBooks = result;
-  
+  //console.log(result)
   res.redirect('/books');
   
 };
