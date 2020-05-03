@@ -10,28 +10,40 @@ cloudinary.config({
   CLOUDINARY_URL:  process.env.CLOUDINARY_URL
 });
 
-// function checkIsImage(mimetype) {
-//   const acceptImageTypes = [
-//     "image/png",
-//     "image/jpeg",
-//     "image/gif",
-//     "image/x-icon"
-//   ];
-//   return acceptImageTypes.includes(mimetype);
-// }
+function checkIsImage(mimetype) {
+  const acceptImageTypes = [
+    "image/png",
+    "image/jpeg",
+    "image/gif",
+    "image/x-icon"
+  ];
+  return acceptImageTypes.includes(mimetype);
+}
 
 module.exports.postCreate = (req, res, next) => {
-  var error = [];
+  //var error = [];
   
   if (!req.body.title) {
-    error.push("Vui lòng nhập tiêu đề.");
+    res.render("books/create", {
+      errors: "Vui lòng nhập tiêu đề.",
+      values: req.body
+    });
+    //error.push("Vui lòng nhập tiêu đề.");
   }
   if (!req.body.description) {
-    error.push("Vui lòng nhập mô tả.");
+    res.render("books/create", {
+      errors: "Vui lòng nhập mô tả.",
+      values: req.body
+    });
+    //error.push("Vui lòng nhập mô tả.");
   }
 
   if (!req.file) {
-    error.push("Image is required");
+    res.render("books/create", {
+      errors: "Image is required",
+      values: req.body
+    });
+    //error.push("Image is required");
   }
   
   // if (!checkIsImage(req.file.mimetype)) {
@@ -46,15 +58,19 @@ module.exports.postCreate = (req, res, next) => {
     .then(result => result.url)
     .catch(_ => false);
   if (!path)
-    error.push("There was an error saving your image");  
-
-  if (error.length) {
     res.render("books/create", {
-      errors: error,
+      errors: "There was an error saving your image",
       values: req.body
     });
-    return;  
-  }
+    //error.push("There was an error saving your image");  
+    
+  // if (error.length) {
+  //   res.render("books/create", {
+  //     errors: error,
+  //     values: req.body
+  //   });
+  //   return;  
+  // }
   
   const newBook = {
     title: req.body.title,
