@@ -18,7 +18,7 @@ block content
       .form-group.row
         label.col-form-label(for='book') Chọn sách:
         .col-sm
-          select#book.form-control(name="bookId")
+          select#book.form-control(name="bookId",size="5" , multiple)
             each book in books
               option(value=book.id)= book.title
             else

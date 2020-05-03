@@ -572,27 +572,46 @@
     },
     {
       "userId": "Py3Wpf4pj",
-      "bookId": "GZXmHCz1-",
+      "bookId": [
+        "GZXmHCz1-"
+      ],
       "id": "wtyXNp5a8",
       "isComplete": true
     },
     {
       "userId": "u3kof8e5K",
-      "bookId": "smRwwAsSt",
+      "bookId": [
+        "smRwwAsSt"
+      ],
       "id": "Vqdlid-EL",
       "isComplete": true
     },
     {
       "userId": "Py3Wpf4pj",
-      "bookId": "GZXmHCz1-",
+      "bookId": [
+        "GZXmHCz1-"
+      ],
       "id": "_UdoTtsXq",
       "isComplete": true
     },
     {
       "userId": "u3kof8e5K",
-      "bookId": "GZXmHCz1-",
+      "bookId": [
+        "GZXmHCz1-"
+      ],
       "id": "FuYh94X7f",
       "isComplete": true
+    },
+    {
+      "userId": "u3kof8e5K",
+      "bookId": [
+        "GZXmHCz1-",
+        "d7b7519c-5ae4-4b47-b870-edfcb4355509",
+        "cb682c86-ad29-49af-9251-705e8360ca05",
+        "f2ed4a69-3c9b-4000-a740-6582d5d0a1ef"
+      ],
+      "id": "ffaLqpiou",
+      "isComplete": false
     }
   ],
   "sessions": [
@@ -601,73 +620,64 @@
       "cart": {}
     },
     {
-      "id": "U2vRfjcWs"
+      "id": "o8NoRs_bS"
     },
     {
-      "id": "U2vRfjcWs"
+      "id": "o8NoRs_bS"
     },
     {
-      "id": "U2vRfjcWs"
+      "id": "o8NoRs_bS"
     },
     {
-      "id": "U2vRfjcWs"
+      "id": "o8NoRs_bS"
     },
     {
-      "id": "U2vRfjcWs"
+      "id": "o8NoRs_bS"
     },
     {
-      "id": "U2vRfjcWs"
+      "id": "o8NoRs_bS"
     },
     {
-      "id": "U2vRfjcWs"
+      "id": "8JcxuIkdy"
     },
     {
-      "id": "U2vRfjcWs"
+      "id": "0sx2l-YYH"
     },
     {
-      "id": "U2vRfjcWs"
+      "id": "0sx2l-YYH"
     },
     {
-      "id": "U2vRfjcWs"
+      "id": "0sx2l-YYH"
     },
     {
-      "id": "U2vRfjcWs"
+      "id": "0sx2l-YYH"
     },
     {
-      "id": "U2vRfjcWs"
+      "id": "C8Dw2pITY"
     },
     {
-      "id": "U2vRfjcWs"
+      "id": "At7nDC-_1"
     },
     {
-      "id": "U2vRfjcWs"
+      "id": "yo966cki6"
     },
     {
-      "id": "U2vRfjcWs"
+      "id": "yo966cki6"
     },
     {
-      "id": "U2vRfjcWs"
+      "id": "yo966cki6"
     },
     {
-      "id": "U2vRfjcWs"
+      "id": "yo966cki6"
     },
     {
-      "id": "U2vRfjcWs"
+      "id": "yo966cki6"
     },
     {
-      "id": "U2vRfjcWs"
+      "id": "yo966cki6"
     },
     {
-      "id": "U2vRfjcWs"
-    },
-    {
-      "id": "U2vRfjcWs"
-    },
-    {
-      "id": "U2vRfjcWs"
-    },
-    {
-      "id": "U2vRfjcWs"
+      "id": "yo966cki6"
     }
   ]
 }

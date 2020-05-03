@@ -76,19 +76,9 @@ module.exports.index = (req, res) => {
     books: books,
     pagination
   }) 
+  console.log(db.get('transactions').value())
 };
 
-// module.exports.index = (req, res) => {
-//   var transactions = db.get('transactions').value();
-//   var users = db.get('users').value();
-//   var books = db.get('books').value();
-//   res.render('transactions/index',{
-//     transactions: transactions,
-//     users: users,
-//     books: books
-//   }) 
-//   console.log(db.get('transactions').value())
-// };
 
 module.exports.create = (req, res) => {
   res.render('transactions/create.pug', {

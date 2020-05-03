@@ -21,9 +21,11 @@ block content
                       td=u.name
                       td
                         each book in books
-                          if tran.bookId == book.id 
-                            span -
-                            span= book.title  
+                          each b in tran.bookId
+                            if b == book.id 
+                              div
+                                span -
+                                span= book.title  
                         if isAdmin
                           td  
                             a.btn.btn-info(href="/transactions/" + tran.id + "/complete")= tran.isComplete ? "Hoàn thành" : "Đang mượn"
