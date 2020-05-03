@@ -17,6 +17,7 @@ var bookRoute = require("./routes/book.route.js");
 var userRoute = require("./routes/user.route.js");
 var transactionRoute = require("./routes/transaction.route.js");
 var profileRoute = require("./routes/profile.route.js");
+var cartRoute = require("./routes/cart.route.js");
 
 var authMiddleware = require("./middlewares/auth.middleware");
 var accountMiddleware = require("./middlewares/account.middleware");
@@ -65,6 +66,7 @@ app.use(
   transactionRoute
 );
 app.use("/auth", authRoute);
+app.use("/cart", cartRoute);
 
 // listen for requests :)
 const listener = app.listen(process.env.PORT, () => {
