@@ -3,6 +3,13 @@ const cloudinary = require("cloudinary").v2;
 const fs = require("fs");
 const shortid = require("shortid");
 
+cloudinary.config({
+  cloud_name: process.env.CLOUD_NAME,
+  api_key: process.env.CLOUD_KEY,
+  api_secret: process.env.CLOUD_SECRET,
+  CLOUDINARY_URL:  process.env.CLOUDINARY_URL
+});
+
 // function checkIsImage(mimetype) {
 //   const acceptImageTypes = [
 //     "image/png",
@@ -23,13 +30,14 @@ module.exports.postCreate = (req, res, next) => {
     error.push("Vui lòng nhập mô tả.");
   }
 
-  if (!req.file ) {
+  if (!req.file) {
     error.push("Image is required");
   }
+  
   // if (!checkIsImage(req.file.mimetype)) {
   //   error.push("Image is not valid");
   // }
-  
+  console.log(req.file.path)
   const path = cloudinary.uploader
     .upload(req.file.path, {
       public_id: `student/${req.file.filename}`,
@@ -37,29 +45,28 @@ module.exports.postCreate = (req, res, next) => {
     })
     .then(result => result.url)
     .catch(_ => false);
-  if (!path) error.push("here was an error saving your image");
-
-  const newBook = {
-    title: req.body.title,
-    description: req.body.description,
-    id: shortid.generate(),
-    imgUrl: path
-  };
-  db.get("books")
-    .push(newBook)
-    .write();
-  // add dum data
-  fs.unlinkSync(req.file.path);
+  if (!path)
+    error.push("There was an error saving your image");  
 
   if (error.length) {
     res.render("books/create", {
       errors: error,
       values: req.body
     });
-    return;
-  
+    return;  
   }
   
+  const newBook = {
+    title: req.body.title,
+    description: req.body.description,
+    id: shortid.generate(),
+    coverUrl: path
+  };
+  db.get("books")
+    .push(newBook)
+    .write();
+  // add dum data
+  fs.unlinkSync(req.file.path);  
   
   next();
 };
