@@ -563,7 +563,10 @@
   "transactions": [
     {
       "userId": "kWiJlhwpl",
-      "bookId": "smRwwAsSt",
+      "bookId": [
+        "smRwwAsSt",
+        "GZXmHCz1-"
+      ],
       "id": "tYyqt31FH",
       "isComplete": false
     },
@@ -595,97 +598,76 @@
   "sessions": [
     {
       "id": "q5t_aPzhn",
-      "cart": {
-        "smRwwAsSt": 2,
-        "GZXmHCz1-": 1
-      }
+      "cart": {}
     },
     {
-      "id": "lKk4fGGEd"
+      "id": "U2vRfjcWs"
     },
     {
-      "id": "lf4mp-vRv"
+      "id": "U2vRfjcWs"
     },
     {
-      "id": "BmNwtT1bR"
+      "id": "U2vRfjcWs"
     },
     {
-      "id": "BmNwtT1bR"
+      "id": "U2vRfjcWs"
     },
     {
-      "id": "BmNwtT1bR"
+      "id": "U2vRfjcWs"
     },
     {
-      "id": "ZvwfpllRB"
+      "id": "U2vRfjcWs"
     },
     {
-      "id": "RriyEgG2O"
+      "id": "U2vRfjcWs"
     },
     {
-      "id": "RriyEgG2O"
+      "id": "U2vRfjcWs"
     },
     {
-      "id": "RriyEgG2O"
+      "id": "U2vRfjcWs"
     },
     {
-      "id": "RriyEgG2O"
+      "id": "U2vRfjcWs"
     },
     {
-      "id": "g-UISjJtg"
+      "id": "U2vRfjcWs"
     },
     {
-      "id": "prYca6LNO"
+      "id": "U2vRfjcWs"
     },
     {
-      "id": "yw0TfmYfX"
+      "id": "U2vRfjcWs"
     },
     {
-      "id": "Pz-70LZls"
+      "id": "U2vRfjcWs"
     },
     {
-      "id": "Pz-70LZls"
+      "id": "U2vRfjcWs"
     },
     {
-      "id": "Pz-70LZls"
+      "id": "U2vRfjcWs"
     },
     {
-      "id": "Pz-70LZls"
+      "id": "U2vRfjcWs"
     },
     {
-      "id": "Pz-70LZls"
+      "id": "U2vRfjcWs"
     },
     {
-      "id": "Pz-70LZls"
+      "id": "U2vRfjcWs"
     },
     {
-      "id": "Pz-70LZls"
+      "id": "U2vRfjcWs"
     },
     {
-      "id": "Pz-70LZls"
+      "id": "U2vRfjcWs"
     },
     {
-      "id": "Pz-70LZls"
+      "id": "U2vRfjcWs"
     },
     {
-      "id": "Pz-70LZls"
-    },
-    {
-      "id": "Pz-70LZls"
-    },
-    {
-      "id": "Pz-70LZls"
-    },
-    {
-      "id": "Pz-70LZls"
-    },
-    {
-      "id": "Pz-70LZls"
-    },
-    {
-      "id": "Pz-70LZls"
-    },
-    {
-      "id": "Pz-70LZls"
+      "id": "U2vRfjcWs"
     }
   ]
 }
