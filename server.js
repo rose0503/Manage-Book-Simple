@@ -22,6 +22,7 @@ var cartRoute = require("./routes/cart.route.js");
 var authMiddleware = require("./middlewares/auth.middleware");
 var accountMiddleware = require("./middlewares/account.middleware");
 var sessionMiddleware = require("./middlewares/session.middleware");
+const cartMiddleWare = require("./middlewares/cart.middleware");
 
 app.set("views", "./views");
 app.set("view engine", "pug");
@@ -34,6 +35,7 @@ app.use(express.urlencoded({ extended: true })); // for parsing application/x-ww
 // https://expressjs.com/en/starter/static-files.html
 app.use(express.static("public"));
 app.use(sessionMiddleware);
+app.use(cartMiddleware.cart);
 
 app.get(
   "/",

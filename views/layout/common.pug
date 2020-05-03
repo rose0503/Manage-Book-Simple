@@ -29,6 +29,9 @@ html
               a.nav-link(href='/cart') Cart  
       if user
         .d-flex.align-items-center.dropdown
+          a.cart(href="/cart")
+            img.nav-link(src="https://cdn.glitch.com/1eeeaa03-4c95-4acc-925a-ac933fed2ce6%2Fsupermarket.svg?v=1587797125082", style="height:30px; width:20px; padding:0")
+            span.count= countBooks === undefined ? '' : countBooks
           a.nav-link.dropdown-toggle#dropdownMenuButton(role="button",data-toggle="dropdown", aria-haspopup="true", aria-expanded="false")
             span= user.name 
               if isAdmin 
@@ -39,6 +42,9 @@ html
             a.dropdown-item(href="/auth/logout") Đăng xuất
       if !user
         .btn-group
+          a.cart.m-1(href="/cart")
+            img.nav-link(src="https://cdn.glitch.com/1eeeaa03-4c95-4acc-925a-ac933fed2ce6%2Fsupermarket.svg?v=1587797125082", style="height:30px; width:20px; padding:0")
+            span.count= countBooks === undefined ? "" : countBooks
           a.btn(href="/auth/login", role="button") Đăng nhập  
     .container.p-5
       block content
