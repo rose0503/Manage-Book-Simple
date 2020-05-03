@@ -29,15 +29,21 @@ block content
     .row
       each book in books
         .col-sm-6.col-md-4.col-lg-3
-          .card.mb-3(style='width: 210px')
-            img.card-img-top(src=book.coverUrl ? book.coverUrl : 'https://i.ya-webdesign.com/images/default-avatar-png-6.png',alt='Book-image')
+          .card.mb-3(style='width: 250px')
+            img.card-img-top.m-1(style='width: 180px',src=book.coverUrl ? book.coverUrl : 'https://i.ya-webdesign.com/images/default-avatar-png-6.png',alt='Book-image')
             .card-body
               h5.card-title(style="height: 48px !important")=book.title
               p.card-text                  
-                .d-inline-block.text-truncate(style="height: 48px !important")
+                .text-truncate
                   span=book.description                
                                
               a.btn.btn-primary(href='#') Thêm vào giỏ
+              if isAdmin 
+                  a.btn.btn-primary.m-1(href="/books/" + book.id) Chi tiết
+                  a.btn.btn-primary(href="/books/" + book.id + "/edit") Sửa                
+                  a.btn.btn-primary(href="/books/" + book.id + "/delete") Xóa
+              if !isAdmin                 
+                  a.btn.btn-primary(href="/books/" + book.id) Chi tiết
 
                   
     a(href="/") Home
