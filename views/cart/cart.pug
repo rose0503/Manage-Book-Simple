@@ -3,11 +3,13 @@ block content
   .container
     h1.text-center Cart
     .d-flex.justify-content-center.align-items-center
-      a.btn.btn-primary(href='/transactions/bulk') rent
+      a.btn.btn-primary(href='#') rent
     .row
       each book in books
-        .col-12.col-xl-3.col-md-4.col-sm-6.my-2
-          .card
-            img.card-img-top(src=book.imgUrl)
-            .card-body
-              p.text-center.card-text=book.title
+        each c in cart
+          if(c.cart == book.id)
+            .col-12.col-xl-3.col-md-4.col-sm-6.my-2
+              .card
+                img.card-img-top(src=book.coverUrl)
+                .card-body
+                  p.text-center.card-text=book.title

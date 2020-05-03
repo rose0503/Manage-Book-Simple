@@ -24,8 +24,7 @@ module.exports.index = (req, res) => {
     .value();
   
   const bookId = cart ? cart.cart : {};
-  const books = db.get("books")
-      .filter(book => {return bookId.includes(book.id);}).value();
+  const books = db.get("books").value();
 
-  res.render("cart/index", { auth: req.user, books });
+  res.render("cart/cart", { cart, books });
 };
