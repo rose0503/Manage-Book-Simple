@@ -8,9 +8,9 @@ module.exports.addToCart = (req, res) =>{
     res.redirect('/books')
     return;
   }
-  var count = db.get('sessions').find({id: sessionId}).get('cart.' + id, 0).value();
+  var count = db.get('sessions').find({id: sessionId}).get('cart.count' + id, 0).value();
   
-  db.get('sessions').find({id: sessionId}).set("cart." + id, count + 1).write();
+  db.get('sessions').find({id: sessionId}).set("cart.count" + id, count + 1).write();
   res.redirect('/books');
   
 };

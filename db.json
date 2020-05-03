@@ -563,39 +563,88 @@
   "transactions": [
     {
       "userId": "kWiJlhwpl",
-      "bookId": ["smRwwAsSt","GZXmHCz1-"],
+      "bookId": [
+        "smRwwAsSt",
+        "GZXmHCz1-"
+      ],
       "id": "tYyqt31FH",
       "isComplete": false
     },
     {
       "userId": "Py3Wpf4pj",
-      "bookId": ["GZXmHCz1-"],
+      "bookId": [
+        "GZXmHCz1-"
+      ],
       "id": "wtyXNp5a8",
       "isComplete": true
     },
     {
       "userId": "u3kof8e5K",
-      "bookId": ["smRwwAsSt"],
+      "bookId": [
+        "smRwwAsSt"
+      ],
       "id": "Vqdlid-EL",
       "isComplete": true
     },
     {
       "userId": "Py3Wpf4pj",
-      "bookId": ["GZXmHCz1-"],
+      "bookId": [
+        "GZXmHCz1-"
+      ],
       "id": "_UdoTtsXq",
       "isComplete": true
     },
     {
       "userId": "u3kof8e5K",
-      "bookId": ["GZXmHCz1-"],
+      "bookId": [
+        "GZXmHCz1-"
+      ],
       "id": "FuYh94X7f",
       "isComplete": true
     }
   ],
-  "sessions": [{
-    "id":"oS3Sqrk52",
-    "cart": {
-      "GZXmHCz1-"
+  "sessions": [
+    {
+      "id": "oS3Sqrk52",
+      "cart": [
+        {
+          "booId": "GZXmHCz1-",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "id": "t1GOoaSTT"
+    },
+    {
+      "id": "t1GOoaSTT"
+    },
+    {
+      "id": "t1GOoaSTT"
+    },
+    {
+      "id": "t1GOoaSTT"
+    },
+    {
+      "id": "t1GOoaSTT"
+    },
+    {
+      "id": "t1GOoaSTT"
+    },
+    {
+      "id": "t1GOoaSTT"
+    },
+    {
+      "id": "t1GOoaSTT"
+    },
+    {
+      "id": "t1GOoaSTT"
+    },
+    {
+      "id": "s9_JN79O6"
+    },
+    {
+      "id": "s9_JN79O6"
     }
-  }]
+  ]
 }
