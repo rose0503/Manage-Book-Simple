@@ -6,6 +6,7 @@ module.exports.index =  (req, res) => {
   res.render('books/index',{
     books: db.get('books').value()
   })
+  console.log(db.get('sessions').value())
 }
 
  module.exports.create = (req, res) => {

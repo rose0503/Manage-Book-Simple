@@ -42,8 +42,8 @@ app.get(
   indexRoute, 
 );
 app.use(
-  "/books",
-  authMiddleware.requireAuth,
+  "/books", 
+  accountMiddleware.isUser,
   accountMiddleware.isAdmin,
   bookRoute
 );
