@@ -9,7 +9,7 @@ module.exports = {
     
       const cartArr = session.cart ? session.cart : [];
       let result = cartArr.reduce((acc, cur) => {
-        return (acc += cur.count);
+        return (acc += cur[1]);
       }, 0);
       res.locals.countBooks = result;
     //});
