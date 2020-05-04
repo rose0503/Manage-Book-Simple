@@ -4,7 +4,7 @@ block content
   .container.d-flex.flex-column.align-items-center
       h1.text-center Profile
       .avatar
-        img.img-fluid(src=auth.avatar ? auth.avatar : 'https://i.ya-webdesign.com/images/default-avatar-png-6.png')
+        img(width = 100,src=auth.avatar ? auth.avatar : 'https://i.ya-webdesign.com/images/default-avatar-png-6.png')
       a.btn.btn-primary.btn-sm(href="/profiles/updateAvatar")= auth.avatar ? 'change avatar': 'upload avatar'  
       .info
         .text-center Name: #{auth.name}
