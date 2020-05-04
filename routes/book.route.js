@@ -5,7 +5,7 @@ const controller =require("../controllers/book.controller");
 const validate = require("../validations/book.validate");
 
 const multer = require('multer');
-const upload = multer({ dest: './public/uploads/books' })
+const upload = multer({ dest: './public/uploads/' })
 
 router.get("/", controller.index);
 

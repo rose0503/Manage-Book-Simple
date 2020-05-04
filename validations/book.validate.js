@@ -35,7 +35,7 @@ module.exports.postCreate = (req, res, next) => {
   // if (req.file.mimetype === undefined) {
   //   error.push("Image is required");
   // }
-  if (!checkIsImage(req.file.mimetype)) {
+  if (!checkIsImage(req.file)) {
     error.push("Image is not valid");
   }
   console.log(req.file.path);
@@ -48,7 +48,7 @@ module.exports.postCreate = (req, res, next) => {
     .catch(_ => false);
   if (!path)    
     error.push("There was an error saving your image");
-
+  console.log("path",path);
   if (error.length) {
     res.render("books/create", {
       errors: error,
