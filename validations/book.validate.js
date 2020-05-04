@@ -56,12 +56,12 @@ module.exports.postCreate = (req, res, next) => {
     });
     return;
   }
-  let pathBook = req.file.path.split('/').slice(1).join('/')
+  //let pathBook = req.file.path.split('/').slice(1).join('/')
   const newBook = {
     title: req.body.title,
     description: req.body.description,
     id: shortid.generate(),
-    coverUrl: pathBook
+    coverUrl: path
   };
   console.log(newBook)
   db.get("books")
