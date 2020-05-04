@@ -29,6 +29,9 @@ module.exports.postCreate = (req, res, next) => {
   if(!req.body.description){
     error.push('Vui lòng nhập mô tả.');
   }
+  if (!req.file) {    
+    error.push("Image is required");
+  }
   if(error.length){
     res.render('books/create',{
       errors: error ,
