@@ -21,7 +21,7 @@ router.post('/:id/edit', validate.postEdit, controller.postEdit);
 
 router.get('/:id/delete', controller.delete);
 
-router.post('/create', upload.single('avatar'), validate.postCreate, controller.postCreate);
+router.post('/create', upload.single('avatar'),controller.postCreate);
 
 router.get("/sreach", controller.sreach);
 
