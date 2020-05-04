@@ -79,16 +79,16 @@ module.exports.postCreate = (req, res) => {
   if (!checkIsImage(req.file.mimetype)) {
     error.push("Image is not valid");
   }
-  console.log(req.file);
-  const path = cloudinary.uploader
-    .upload(req.file.path, {
-      public_id: `student/${req.file.originalname}`,
-      tags: "student"
-    })
-    .then(result => result.url)
-    .catch(_ => false);
-  if (!path)    
-    error.push("There was an error saving your image");
+  // console.log(req.file);
+  // const path = cloudinary.uploader
+  //   .upload(req.file.path, {
+  //     public_id: `student/${req.file.originalname}`,
+  //     tags: "student"
+  //   })
+  //   .then(result => result.url)
+  //   .catch(_ => false);
+  // if (!path)    
+  //   error.push("There was an error saving your image");
   //console.log("path",path);
   if (error.length) {
     res.render("books/create", {
@@ -97,12 +97,12 @@ module.exports.postCreate = (req, res) => {
     });
     return;
   }
-  //let pathBook = req.file.path.split('/').slice(1).join('/')
+  let pathBook = req.file.path.split('/').slice(1).join('/')
   const newBook = {
     title: req.body.title,
     description: req.body.description,
     id: shortid.generate(),
-    coverUrl: path
+    coverUrl: pathBook
   };
   console.log(newBook)
   db.get("books")

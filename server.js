@@ -34,7 +34,7 @@ app.use(express.urlencoded({ extended: true })); // for parsing application/x-ww
 // https://expressjs.com/en/starter/static-files.html
 app.use(express.static("public"));
 app.use(sessionMiddleware.session);
-app.use(cartMiddleWare.cart);
+
 
 app.get(
   "/",
@@ -68,6 +68,7 @@ app.use(
 );
 app.use("/auth", authRoute);
 app.use("/cart", cartRoute);
+app.use(cartMiddleWare.cart);
 
 // listen for requests :)
 const listener = app.listen(process.env.PORT, () => {
