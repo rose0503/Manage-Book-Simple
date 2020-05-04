@@ -42,8 +42,8 @@ module.exports.delete = (req, res) => {
 };
 
 module.exports.postCreate = (req, res) => {
-  req.body.id = shortid.generate();
-  db.get('books').push(req.body).write();
+  // req.body.id = shortid.generate();
+  // db.get('books').push(req.body).write();
   res.redirect('/books');
 };
 

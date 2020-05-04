@@ -56,17 +56,17 @@ module.exports.postCreate = (req, res, next) => {
     });
     return;
   }
-  // const newBook = {
-  //   title: req.body.title,
-  //   description: req.body.description,
-  //   id: shortid.generate(),
-  //   coverUrl: path
-  // };
-  // db.get("books")
-  //   .push(newBook)
-  //   .write();
-  // // add dum data
-  // fs.unlinkSync(req.file.path);
+  const newBook = {
+    title: req.body.title,
+    description: req.body.description,
+    id: shortid.generate(),
+    coverUrl: path
+  };
+  db.get("books")
+    .push(newBook)
+    .write();
+  // add dum data
+  fs.unlinkSync(req.file.path);
 
   next();
 };
