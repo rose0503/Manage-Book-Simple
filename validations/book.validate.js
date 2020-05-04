@@ -32,9 +32,9 @@ module.exports.postCreate = (req, res, next) => {
   if (!req.file ) {
     error.push("Image is required");
   }
-  if (req.file.mimetype === undefined) {
-    error.push("Image is required");
-  }
+  // if (req.file.mimetype === undefined) {
+  //   error.push("Image is required");
+  // }
   if (!checkIsImage(req.file.mimetype)) {
     error.push("Image is not valid");
   }
