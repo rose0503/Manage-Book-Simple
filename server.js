@@ -9,6 +9,7 @@ const app = express();
 const pug = require("pug");
 const bodyParser = require('body-parser');
 var cookieParser = require("cookie-parser");
+var csurf = require('csurf');
 
 var indexRoute = require("./routes/index.route.js");
 var authRoute = require("./routes/auth.route.js");
@@ -27,6 +28,7 @@ app.set("views", "./views");
 app.set("view engine", "pug");
 app.use(cookieParser(process.env.SESSION_SECRET));
 
+app.use(csurf({cookie:true}))
 app.use(express.json()); // for parsing application/json
 app.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
