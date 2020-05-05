@@ -29,8 +29,9 @@ module.exports.index = (req, res) => {
     .get("sessions")
     .find({ id: sessionId })
     .value();
-  
+  console.log("cart", cart)
   const bookId = cart ? cart.cart : {};
+  console.log("booid",bookId)
   const books = db.get("books").value();
 
   res.render("cart/cart", { cart, books });
