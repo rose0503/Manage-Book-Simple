@@ -10,6 +10,9 @@ const pug = require("pug");
 const bodyParser = require('body-parser');
 var cookieParser = require("cookie-parser");
 var csurf = require('csurf');
+var mongoose = require('mongoose');
+
+mongoose.connect('mongodb://localhost/test');
 
 var indexRoute = require("./routes/index.route.js");
 var authRoute = require("./routes/auth.route.js");
