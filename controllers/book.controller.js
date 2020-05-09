@@ -22,16 +22,19 @@ function checkIsImage(mimetype) {
   return acceptImageTypes.includes(mimetype);
 }
 
-module.exports.index =  (req, res) => {
+module.exports.index = async (req, res) => {
   // res.render('books/index',{
   //   books: db.get('books').value()
   // })
   // console.log(db.get('books').value())
   
-  Book.find().then(books => {
-    
+  var books = await Book.find(); 
   
+  res.render('books/index',{
+  books: books
   })
+  
+} 
   
 
  module.exports.create = (req, res) => {
