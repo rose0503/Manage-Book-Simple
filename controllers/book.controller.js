@@ -28,8 +28,8 @@ module.exports.index = async (req, res) => {
   // })
   // console.log(db.get('books').value())
   
-  var books = await Book.find(); 
-  
+  var books = await Book.find()
+  .then(doc =>  console.log('doc', doc)); 
   res.render('books/index',{
   books: books
   })
