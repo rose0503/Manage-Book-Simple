@@ -29,11 +29,11 @@ module.exports.index = async (req, res) => {
   // })
   // console.log(db.get('books').value())
   
- await Book.find({})
+ let books = await Book.find({})
   .then(doc =>  console.log('doc', doc)); 
-  // res.render('books/index',{
-  // books: books
-  // })
+  res.render('books/index',{
+  books: books
+  })
   
 } 
   

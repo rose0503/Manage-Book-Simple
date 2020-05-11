@@ -75,15 +75,6 @@ module.exports.postLogin = async (req, res) => {
   }
 
   res.cookie("userId", user.id, { signed: true });
-
-//   await User.find({ email: email }).then(doc => {
-//         // pass userId = user.id
-//         res.cookie("userId", doc[0].id, {
-//           signed: true
-//         });
-//         res.redirect("/users");
-//       });
-  
   res.redirect("/");
 };
 
