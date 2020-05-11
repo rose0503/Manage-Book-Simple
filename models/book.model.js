@@ -7,5 +7,5 @@ var bookSchema = new mongoose.Schema({
     coverUrl: String
 });
 
-var Book = mongoose.model('Books', bookSchema, 'Books');
-module.exports = Book;
+var User = mongoose.model('Books', bookSchema, 'Books');
+module.exports = User;
