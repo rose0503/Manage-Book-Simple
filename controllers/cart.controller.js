@@ -93,6 +93,7 @@ module.exports.postCart=  async (req, res) => {
       return;
 
     }
+    res.redirect("/books")
   } catch (error) {
     res.render("cart/cart", { message: error.message });
   }
