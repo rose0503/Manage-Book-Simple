@@ -4,7 +4,7 @@ const fs = require("fs");
 const shortid = require("shortid");
 var Book = require("../models/book.model");
 
-// var Book = require("../models/book.model");
+var Book = require("../models/book.model");
 
 cloudinary.config({
   cloud_name: process.env.CLOUD_NAME,
@@ -24,13 +24,13 @@ function checkIsImage(mimetype) {
 }
 
 module.exports.index = async (req, res) => {
-  res.render('books/index',{
-    books: db.get('books').value()
-  })
-  console.log(db.get('books').value())
+//   res.render('books/index',{
+//     books: db.get('books').value()
+//   })
+//   console.log(db.get('books').value())
   
-//  let books = await Book.find({})
-//   .then(doc =>  console.log('doc', doc)); 
+ let books = await Book.find({})
+  .then(doc =>  console.log('doc', doc)); 
   // res.render('books/index',{
   // books: books
   // })
