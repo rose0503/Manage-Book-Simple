@@ -2,14 +2,26 @@ extends ../layout/common.pug
 block content
   .container
     h1.text-center Cart
+    if notifi
+      each i in notifi
+        .alert.alert-danger= i
+
+    if success
+      .alert.alert-success=success
+
     .d-flex.justify-content-center.align-items-center
-      a.btn.btn-primary(href='#') rent
+      a.btn.btn-primary(href='/cart/addCart') rent
     .row
-      each book in books
-        each c in cart
-          if(c.cart == book.id)
-            .col-12.col-xl-3.col-md-4.col-sm-6.my-2
-              .card
-                img.card-img-top(src=book.coverUrl ? book.coverUrl : 'https://icons.iconarchive.com/icons/thalita-torres/office/512/school-book-icon.png')
-                .card-body
-                  p.text-center.card-text=book.title
+      if books
+        each book in books   
+          if cart
+            each d in  Object.keys(cart.cart) 
+              if(d == book.id)
+                .col-12.col-xl-3.col-md-4.col-sm-6.my-2
+                  .card
+                    img.card-img-top(src=book.coverUrl ? book.coverUrl : 'https://icons.iconarchive.com/icons/thalita-torres/office/512/school-book-icon.png')
+                    .card-body
+                      p.text-center.card-text=book.title
+
+                    
+    

@@ -7,4 +7,6 @@ router.get("/", controller.index);
 
 router.get("/add/:id", controller.addToCart);
 
+router.get("/addCart", controller.postCart)
+
 module.exports = router;
