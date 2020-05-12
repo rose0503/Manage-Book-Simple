@@ -24,13 +24,13 @@ function checkIsImage(mimetype) {
 }
 
 module.exports.index = async (req, res) => {
-  // res.render('books/index',{
-  //   books: db.get('books').value()
-  // })
-  // console.log(db.get('books').value())
+  res.render('books/index',{
+    books: db.get('books').value()
+  })
+  console.log(db.get('books').value())
   
- let books = await Book.find({})
-  .then(doc =>  console.log('doc', doc)); 
+//  let books = await Book.find({})
+//   .then(doc =>  console.log('doc', doc)); 
   // res.render('books/index',{
   // books: books
   // })
