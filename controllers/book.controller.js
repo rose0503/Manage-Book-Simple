@@ -31,9 +31,9 @@ module.exports.index = async (req, res) => {
   
  let books = await Book.find({})
   .then(doc =>  console.log('doc', doc)); 
-  res.render('books/index',{
-  books: books
-  })
+  // res.render('books/index',{
+  // books: books
+  // })
   
 } 
   

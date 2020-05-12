@@ -5,7 +5,7 @@ const saltRounds = 10;
 
 const db = require("../db.js");
 const shortid = require("shortid");
-var User = require("../model/user.model");
+//var User = require("../model/user.model");
 
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 

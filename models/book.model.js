@@ -1,11 +1,10 @@
 var mongoose = require("mongoose");
 
 var bookSchema = new mongoose.Schema({
-    id: String,
     title: String,
     description: String,
     coverUrl: String
 });
 
-var Book = mongoose.model('Books', bookSchema, 'Books');
+var Book = mongoose.model('CRUD-Book.Books', bookSchema, 'CRUD-Book.Books');
 module.exports = Book;
