@@ -47,7 +47,7 @@ module.exports.postCart=  async (req, res) => {
     .get("sessions")
     .find({ id: sessionId })
     .value();
-  
+  console.log("cartdata", cartData)
   //const bookId = cartData ? cartData.cart : [];
 
   const booksData = db.get("books").value();
@@ -57,8 +57,8 @@ module.exports.postCart=  async (req, res) => {
     if (!cartData) 
       notifi.push("Bạn phải đăng nhập để thuê sách!!");
     
-      if (!userId) 
-      notifi.push("Bạn phải đăng nhập để thuê sách!!");
+    if (!userId) 
+    notifi.push("Bạn phải đăng nhập để thuê sách!!");
       
     // const cart = db
     //   .get("sessions")

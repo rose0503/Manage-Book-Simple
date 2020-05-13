@@ -7,10 +7,11 @@ module.exports = {
   
   let cartArr;
     
-  if(session.cart) {
-    cartArr = session.cart;
-  }else {
+  if(!session.cart) {
     cartArr = {};
+    
+  }else {
+    cartArr = session.cart;
   }
   console.log("cartid", cartArr)
   let result = 0;
