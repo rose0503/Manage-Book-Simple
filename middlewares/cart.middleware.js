@@ -6,6 +6,7 @@ module.exports = {
   var session=  db.get('sessions').find({id: sessionId}).value()
   
   let cartArr;
+    
   if(session.cart) {
     cartArr = session.cart;
   }else {
