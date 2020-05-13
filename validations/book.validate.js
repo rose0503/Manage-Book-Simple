@@ -35,7 +35,7 @@ module.exports.postCreate = (req, res, next) => {
   // if (req.file.mimetype === undefined) {
   //   error.push("Image is required");
   // }
-  if (!checkIsImage(req.file.mimetype)) {
+  if (checkIsImage(req.file.mimetype)== undefined) {
     error.push("Image is not valid");
   }
   console.log(req.file);

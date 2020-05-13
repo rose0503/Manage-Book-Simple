@@ -1,7 +1,7 @@
 const db = require("../db");
 const cloudinary = require("cloudinary").v2;
 const fs = require("fs");
-const shortid = require("shortid");
+//const shortid = require("shortid");
 var Book = require("../models/book.model");
 
 cloudinary.config({
@@ -41,17 +41,19 @@ module.exports.index = async (req, res) => {
   res.render('books/create')
  };
 
-module.exports.getId = (req, res) => {
+module.exports.getId = async (req, res) => {
   var id = req.params.id;
-  var book = db.get('books').find({ id: id}).value();
+  //var book = db.get('books').find({ id: id}).value();
+  const book = await Book.findOne({_id : id});
   res.render('books/view',{
     book: book
   })
 };
 
-module.exports.edit = (req, res) => {
+module.exports.edit = async (req, res) => {
   var id = req.params.id;
-  var book = db.get('books').find({ id: id}).value();
+  //var book = db.get('books').find({ id: id}).value();
+  const book = await Book.findOne({_id : id});
   res.render('books/edit',{ 
     book: book
   })

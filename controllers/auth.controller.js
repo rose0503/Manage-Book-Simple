@@ -3,8 +3,8 @@ const sgMail = require("@sendgrid/mail");
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
 
-const db = require("../db.js");
-const shortid = require("shortid");
+// const db = require("../db.js");
+// const shortid = require("shortid");
 var User = require("../models/user.model");
 
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
