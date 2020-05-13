@@ -90,9 +90,9 @@ module.exports.postCreate = async (req, res) => {
   // if (req.file.mimetype === undefined) {
   //   error.push("Image is required");
   // }
-  if (!checkIsImage(req.file.mimetype)) {
-    error.push("Image is not valid");
-  }
+  // if (!checkIsImage(req.file.mimetype)) {
+  //   error.push("Image is not valid");
+  // }
   // console.log(req.file);
   // const path = cloudinary.uploader
   //   .upload(req.file.path, {
