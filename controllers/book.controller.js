@@ -1,4 +1,4 @@
-const db = require("../db");
+//const db = require("../db");
 const cloudinary = require("cloudinary").v2;
 const fs = require("fs");
 //const shortid = require("shortid");
@@ -59,19 +59,21 @@ module.exports.edit = async (req, res) => {
   })
 };
 
-module.exports.postEdit =  (req, res) => {
+module.exports.postEdit = async (req, res) => {
   var id = req.params.id;
-  db.get('books').find({ id: id}).assign({ title: req.body.title}).write();
+  //db.get('books').find({ id: id}).assign({ title: req.body.title}).write();
+  await Book.findByIdAndUpdate(id, { title: req.body.title});
   res.redirect('/books');
 };
 
-module.exports.delete = (req, res) => {
+module.exports.delete = async (req, res) => {
   var id = req.params.id;
-  db.get('books').remove({ id: id}).write();
+  //db.get('books').remove({ id: id}).write();
+  await Book.findByIdAndRemove(id);
   res.redirect('/books');
 };
 
-module.exports.postCreate = (req, res) => {
+module.exports.postCreate = async (req, res) => {
   // req.body.id = shortid.generate();
   // db.get('books').push(req.body).write();
   var error = [];
@@ -110,29 +112,34 @@ module.exports.postCreate = (req, res) => {
     return;
   }
   let pathBook = req.file.path.split('/').slice(1).join('/')
-  const newBook = {
+  const newBook = new Book ({
     title: req.body.title,
     description: req.body.description,
-    id: shortid.generate(),
     coverUrl: pathBook
-  };
-  console.log(newBook)
-  db.get("books")
-    .push(newBook)
-    .write();
+  });
+  //console.log(newBook)
+  
+  // db.get("books")
+  //   .push(newBook)
+  //   .write();
+  
+  //save newbook
+  
+  await newBook.save();
+  
   // add dum data
   fs.unlinkSync(req.file.path);
   res.redirect('/books');
 };
 
-module.exports.sreach = (req, res) => {
-  var q = req.query.q;
-  var matchBooks = db.get("books").value().filter((book) => {
-    return book.title.toLowerCase().indexOf(q.toLowerCase()) !== -1 
-  })
-  res.render('books/view',{
-    book: matchBooks,
-    q: q
-  })
-};
+// module.exports.sreach = (req, res) => {
+//   var q = req.query.q;
+//   var matchBooks = db.get("books").value().filter((book) => {
+//     return book.title.toLowerCase().indexOf(q.toLowerCase()) !== -1 
+//   })
+//   res.render('books/view',{
+//     book: matchBooks,
+//     q: q
+//   })
+// };
 

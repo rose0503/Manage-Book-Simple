@@ -23,7 +23,7 @@ router.get('/:id/delete', controller.delete);
 
 router.post('/create', upload.single('avatar'),controller.postCreate);
 
-router.get("/sreach", controller.sreach);
+//router.get("/sreach", controller.sreach);
 
 
 module.exports = router;
