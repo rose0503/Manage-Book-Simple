@@ -67,10 +67,12 @@ module.exports.postLogin = async (req, res) => {
   let resultCheck = bcrypt.compareSync(password, user.password);
   //resultCheck = true;
   if (resultCheck === false) {
-    db.get("users")
-      .find({ email: email })
-      .assign({ wrongLoginCount: (countWrongPassword += 1) })
-      .write();
+    // db.get("users")
+    //   .find({ email: email })
+    //   .assign({ wrongLoginCount: (countWrongPassword += 1) })
+    //   .write();
+    
+    User.findByIdAndUpdate(user._id, { $set: { wrongLoginCount: (countWrongPassword += 1) }})
     res.render("auth/login", {
       errors: ["Wrong password."],
       values: req.body
@@ -78,7 +80,7 @@ module.exports.postLogin = async (req, res) => {
     return;
   }
 
-  res.cookie("userId", user.id, { signed: true });
+  res.cookie("userId", user._id, { signed: true });
   res.redirect("/");
 };
 
