@@ -17,7 +17,8 @@ mongoose.connect(process.env.MONGO_URL, {
     useNewUrlParser: true,
     useFindAndModify: false,
     useCreateIndex: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
+    dbName: "CRUD-Book"
   })
   .then(_ => console.log("MongoDB connected"))
   .catch(err => console.log("MongoDB can't connect", err));
