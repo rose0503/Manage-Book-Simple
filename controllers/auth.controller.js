@@ -5,7 +5,7 @@ const saltRounds = 10;
 
 const db = require("../db.js");
 const shortid = require("shortid");
-//var User = require("../model/user.model");
+var User = require("../models/user.model");
 
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
@@ -17,11 +17,15 @@ module.exports.postLogin = async (req, res) => {
   var email = req.body.email;
   var password = req.body.password;
 
-  var user = db
-    .get("users")
-    .find({ email: email })
-    .value();
+  // var user = db
+  //   .get("users")
+  //   .find({ email: email })
+  //   .value();
 
+  const users = await User.find();
+  // find user
+  const user = users.find(item => item.email === email);
+  
   if (!user) {
     res.render("auth/login", {
       errors: ["Email is not exist."],
