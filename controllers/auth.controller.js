@@ -61,7 +61,7 @@ module.exports.postLogin = async (req, res) => {
 
   //var hashedPassword = md5(password);
   const resultCheck = bcrypt.compareSync(password, user.password);
-
+  //resultCheck = true;
   if (resultCheck === false) {
     db.get("users")
       .find({ email: email })
