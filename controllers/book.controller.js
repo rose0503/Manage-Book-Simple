@@ -111,11 +111,12 @@ module.exports.postCreate = async (req, res) => {
     });
     return;
   }
-  let pathBook = req.file.path.split('/').slice(1).join('/')
+  let pathBook = req.file.path.split('/').slice(1).join('/');
+  console.log("pathBook", pathBook)
   const newBook = new Book ({
     title: req.body.title,
     description: req.body.description,
-    coverUrl: pathBook
+    coverUrl: req.file.path.split('/').slice(1).join('/')
   });
   //console.log(newBook)
   
