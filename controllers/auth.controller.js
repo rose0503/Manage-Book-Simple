@@ -22,9 +22,9 @@ module.exports.postLogin = async (req, res) => {
   //   .find({ email: email })
   //   .value();
 
-  const users = await User.find();
+  const user = await User.findOne({email});
   // find user
-  const user = users.find(item => item.email === email);
+  //const user = users.find(item => item.email === email);
   
   if (!user) {
     res.render("auth/login", {
@@ -72,7 +72,7 @@ module.exports.postLogin = async (req, res) => {
     //   .assign({ wrongLoginCount: (countWrongPassword += 1) })
     //   .write();
     
-    User.findByIdAndUpdate(user._id, { $set: { wrongLoginCount: (countWrongPassword += 1) }})
+    await User.findByIdAndUpdate(user._id, { wrongLoginCount: (countWrongPassword += 1) })
     res.render("auth/login", {
       errors: ["Wrong password."],
       values: req.body
