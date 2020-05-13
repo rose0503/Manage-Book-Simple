@@ -8,5 +8,6 @@ module.exports.session = (req, res, next) => {
   }
   db.get("sessions").push({ id: sessionId }).write();
   console.log("sessionId" , sessionId)
+
   next();
 };
