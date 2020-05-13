@@ -50,7 +50,7 @@ app.use(express.urlencoded({ extended: true })); // for parsing application/x-ww
 // https://expressjs.com/en/starter/static-files.html
 app.use(express.static("public"));
 app.use(sessionMiddleware.session);
-//app.use(cartMiddleWare.cart);
+app.use(cartMiddleWare.cart);
 
 
 
