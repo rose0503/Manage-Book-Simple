@@ -1,44 +1,50 @@
-//const db =require("../db.js");
+const db =require("../db.js");
 
 const shortid = require('shortid');
+
 var Session = require("../models/session.model");
+var Book = require("../models/book.model");
+var Transaction = require("../models/transaction.model");
 
 module.exports.addToCart = async (req, res) =>{
   var bookId = req.params.id;
   var sessionId = req.signedCookies.sessionId;
-  var session=  db.get('sessions').find({id: sessionId}).value()
+  // var session=  db.get('sessions').find({id: sessionId}).value()
   
-  const session = await Session.findOne() 
+  const session = await Session.findOne({_id : sessionId}) 
   if(!sessionId){
     res.redirect('/books')
     return;
   }
-  var count = db.get('sessions').find({id: sessionId}).get('cart.' + bookId, 0).value();
-  console.log("count",count);
-  db.get('sessions').find({id: sessionId}).set("cart." + bookId, count + 1).write();
-  const cartArr = session.cart;
-  //console.log("cartid", session.cart)
-  let result = 0;
-  for(let a of Object.keys(cartArr))
-    result += cartArr[a];
-  res.locals.countBooks = result;
+  // var count = db.get('sessions').find({id: sessionId}).get('cart.' + bookId, 0).value();
+  // console.log("count",count);
+  // db.get('sessions').find({id: sessionId}).set("cart." + bookId, count + 1).write();
+  // const cartArr = session.cart;
+  // //console.log("cartid", session.cart)
+  // let result = 0;
+  // for(let a of Object.keys(cartArr))
+  //   result += cartArr[a];
+  // res.locals.countBooks = result;
   //console.log(result)
   res.redirect('/books');
   
 };
 
-module.exports.index = (req, res) => {
+module.exports.index = async (req, res) => {
   const sessionId = req.signedCookies.sessionId;
   
-  const cart = db
-    .get("sessions")
-    .find({ id: sessionId })
-    .value();
+  // const cart = db
+  //   .get("sessions")
+  //   .find({ id: sessionId })
+  //   .value();
+  
+  const cart = await Session.findOne({_id : sessionId}) 
   console.log("cart", cart)
   //const bookId = cart ? cart.cart : [];
   //console.log("booid",bookId)
-  const books = db.get("books").value();
+  //const books = db.get("books").value();
 
+  const books = await Book.find({});
   res.render("cart/cart", { cart, books });
 };
 
@@ -46,14 +52,18 @@ module.exports.postCart=  async (req, res) => {
   const { sessionId } = req.signedCookies;
   //const { user } = req;
   const userId = req.signedCookies.userId;
-  const cartData = db
-    .get("sessions")
-    .find({ id: sessionId })
-    .value();
+//   const cartData = db
+//     .get("sessions")
+//     .find({ id: sessionId })
+//     .value();
+  
+  const cartData = await Session.findOne({_id : sessionId}) 
   console.log("cartdata", cartData)
   //const bookId = cartData ? cartData.cart : [];
 
-  const booksData = db.get("books").value();
+  //const booksData = db.get("books").value();
+  
+  const books = await Book.find({});  
   let notifi= [];
   let su;
   try {
@@ -61,7 +71,7 @@ module.exports.postCart=  async (req, res) => {
       notifi.push("Bạn phải đăng nhập để thuê sách!!");
     
     if (!userId) 
-    notifi.push("Bạn phải đăng nhập để thuê sách!!");
+      notifi.push("Bạn phải đăng nhập để thuê sách!!");
       
     // const cart = db
     //   .get("sessions")
@@ -69,19 +79,24 @@ module.exports.postCart=  async (req, res) => {
     //   .value();
     // if (!cart) throw new Exception("Invalid Request");
     else{
-      const newTransaction = {
+      const newTransaction = new Transaction({
         userId: userId,
         bookId:Object.keys(cartData.cart) ,
-        id: shortid.generate(),
+        //id: shortid.generate(),
         isComplete: false
-      };
-      db.get("transactions")
-      .push(newTransaction)
-      .write();
+      });
+      // db.get("transactions")
+      // .push(newTransaction)
+      // .write();
+      
+      await newTransaction.save();
+      
       res.clearCookie("sessionId");
       db.get("sessions")
         .remove({ id: sessionId })
         .write();
+      
+      await Session.findByIdAndRemove({_id"});
         
       su= "Bạn đã thuê sách thành công!!";
     }
