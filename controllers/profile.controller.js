@@ -15,7 +15,7 @@ module.exports.index = (req, res) => {
 
   //var user = db.get('users').find({ id: id}).value();
   
-  const user = User.findOne({_id: id})
+  const user = User.find({id})
   console.log("profile user", user)
   res.render('profiles/index',{
     auth: req.user
