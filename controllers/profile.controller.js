@@ -1,6 +1,7 @@
 const cloudinary = require("cloudinary").v2;
 const fs = require("fs");
 const db = require("../db");
+var User = require("../models/user.model");
 
 cloudinary.config({
   cloud_name: process.env.CLOUD_NAME,
@@ -12,15 +13,19 @@ cloudinary.config({
 module.exports.index = (req, res) => {
   const id = req.signedCookies.userId;
 
-  var user = db.get('users').find({ id: id}).value();
+  //var user = db.get('users').find({ id: id}).value();
+  
+  const user = User.findOne({_id: id})
+  console.log("profile user", user)
   res.render('profiles/index',{
-    auth: user
+    auth: req.user
   })
 };
 
 module.exports.avatarPage = (req, res) => {
   const id = req.signedCookies.userId;
-  var user = db.get('users').find({ id: id}).value();
+  //var user = db.get('users').find({ id: id}).value();
+  const user = User.findOne({_id: id})
   res.render('profiles/updateAvatar',{
     auth: user
   }) 
@@ -41,7 +46,8 @@ function checkIsImage(mimetype) {
 
 module.exports.changeAvatar = async (req, res) => {
     const id = req.signedCookies.userId;
-    var user = db.get('users').find({ id: id}).value();
+    //var user = db.get('users').find({ id: id}).value();
+    const user = User.findOne({_id: id})
 //   const user = req.user;
   try {
     
@@ -62,10 +68,12 @@ module.exports.changeAvatar = async (req, res) => {
     if (!path) 
       res.render("profiles/updateAvatar", { auth: user, error: ["There was an error saving your avatar"]});
       //throw new Exception("There was an error saving your avatar");
-    db.get("users")
-      .find({ id: user.id })
-      .assign({ avatar: path })
-      .write();
+//     db.get("users")
+//       .find({ id: user.id })
+//       .assign({ avatar: path })
+//       .write();
+    
+    await User.findByIdAndUpdate(user.id, { avatar: path });
     fs.unlinkSync(req.file.path);
     res.redirect("/profiles");
   } catch (error) {

@@ -91,12 +91,12 @@ module.exports.postCart=  async (req, res) => {
       
       await newTransaction.save();
       
-      res.clearCookie("sessionId");
-      db.get("sessions")
-        .remove({ id: sessionId })
-        .write();
+//       res.clearCookie("sessionId");
+//       db.get("sessions")
+//         .remove({ id: sessionId })
+//         .write();
       
-      await Session.findByIdAndRemove({_id"});
+      await Session.findByIdAndRemove({_id: sessionId});
         
       su= "Bạn đã thuê sách thành công!!";
     }
