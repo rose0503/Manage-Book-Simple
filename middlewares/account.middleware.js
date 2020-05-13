@@ -1,7 +1,9 @@
 const db = require("../db");
-var user = db.get("users").value();
+// var user = db.get("users").value();
 
-module.exports.isAdmin= (req, res, next) => {
+var User = require("../models/user.model");
+
+module.exports.isAdmin= async (req, res, next) => {
     try {
       // check isAdmin
       const idUser = req.signedCookies.userId;
@@ -10,7 +12,8 @@ module.exports.isAdmin= (req, res, next) => {
         res.locals.isAdmin = false;
       } 
       else {
-        const u = db.get("users").find({ id: idUser }).value();        
+        //const u = db.get("users").find({ id: idUser }).value();     
+        const u = await User.findOne({ _id: idUser });
         if (!u.isAdmin ) {
           res.locals.isAdmin = false;
         } else {
@@ -25,9 +28,10 @@ module.exports.isAdmin= (req, res, next) => {
     }
   }
 
-module.exports.isUser = (req, res, next) => {
+module.exports.isUser = async (req, res, next) => {
     // isUser
-    var u = db.get("users").find({ id: req.signedCookies.userId }).value()
+    //var u = db.get("users").find({ id: req.signedCookies.userId }).value()
+    const u = await User.findOne({ _id: req.signedCookies.userId });
     res.locals.user = u;
     next();
   };
