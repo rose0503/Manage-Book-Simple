@@ -28,7 +28,7 @@ module.exports.index = async (req, res) => {
 //   console.log(db.get('books').value())
   
  let books = await Book.find({});
-  console.log("this is books result",books);
+  console.log("this is books result", books);
   //.then(doc =>  console.log('doc', doc)); 
   res.render('books/index',{
     books: books
