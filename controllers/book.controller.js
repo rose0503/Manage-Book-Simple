@@ -4,8 +4,6 @@ const fs = require("fs");
 const shortid = require("shortid");
 var Book = require("../models/book.model");
 
-var Book = require("../models/book.model");
-
 cloudinary.config({
   cloud_name: process.env.CLOUD_NAME,
   api_key: process.env.CLOUD_KEY,
@@ -30,10 +28,10 @@ module.exports.index = async (req, res) => {
 //   console.log(db.get('books').value())
   
  let books = await Book.find({});
-  console.log(books);
+  console.log("this is books result",books);
   //.then(doc =>  console.log('doc', doc)); 
   res.render('books/index',{
-  books: books
+    books: books
   })
   
 } 
