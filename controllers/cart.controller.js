@@ -1,11 +1,14 @@
-const db =require("../db.js");
+//const db =require("../db.js");
 
 const shortid = require('shortid');
+var Session = require("../models/session.model");
 
-module.exports.addToCart = (req, res) =>{
+module.exports.addToCart = async (req, res) =>{
   var bookId = req.params.id;
   var sessionId = req.signedCookies.sessionId;
   var session=  db.get('sessions').find({id: sessionId}).value()
+  
+  const session = await Session.findOne() 
   if(!sessionId){
     res.redirect('/books')
     return;
