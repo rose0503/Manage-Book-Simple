@@ -22,12 +22,12 @@ block content
               td
                 a.btn.btn-light(href="/users/" + user._id) Chi tiết
               td
-                a.btn.btn-light(href="/users/" + user.id + "/edit") Sửa
+                a.btn.btn-light(href="/users/" + user._id + "/edit") Sửa
               td
-                a.btn.btn-light(href="/users/" + user.id + "/delete") Xóa
+                a.btn.btn-light(href="/users/" + user._id + "/delete") Xóa
             if !isAdmin
               td
-                a.btn.btn-light(href="/users/" + user.id) Chi tiết
+                a.btn.btn-light(href="/users/" + user._id) Chi tiết
     
       if pagination
         nav(aria-label='Page navigation example')

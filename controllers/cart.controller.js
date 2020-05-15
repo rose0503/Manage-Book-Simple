@@ -37,7 +37,7 @@ module.exports.addToCart = async (req, res) =>{
           newSes.id = sessionId;
           newSes.cart = [{ bookId: bookId, count: 1 }];
           //console.log("newSec" ,newSes)
-          //await newSes.save();
+          await newSes.save();
         } else {
           let listCart = doc.cart;
           // found bookId
@@ -63,7 +63,7 @@ module.exports.index = async (req, res) => {
   //   .find({ id: sessionId })
   //   .value();
   
-  const cart = await Session.findOne({_id : sessionId}) 
+  const cart = await Session.findOne({id : sessionId}) 
   //console.log("cart", cart)
   //const bookId = cart ? cart.cart : [];
   //console.log("booid",bookId)

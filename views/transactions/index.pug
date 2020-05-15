@@ -28,10 +28,10 @@ block content
                                 span= book.title  
                         if isAdmin
                           td  
-                            a.btn.btn-info(href="/transactions/" + tran.id + "/complete")= tran.isComplete ? "Hoàn thành" : "Đang mượn"
+                            a.btn.btn-info(href="/transactions/" + tran._id + "/complete")= tran.isComplete ? "Hoàn thành" : "Đang mượn"
                         if !isAdmin
                           td  
-                            a.btn.btn-info.disabled(aria-disabled="true", role="button", href="/transactions/" + tran.id + "/complete")= tran.isComplete ? "Hoàn thành" : "Đang mượn"
+                            a.btn.btn-info.disabled(aria-disabled="true", role="button", href="/transactions/" + tran._id + "/complete")= tran.isComplete ? "Hoàn thành" : "Đang mượn"
       if pagination
         nav(aria-label='Page navigation example')
             ul.pagination.justify-content-end

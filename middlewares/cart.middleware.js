@@ -8,7 +8,7 @@ module.exports = {
   //console.log("sessionId", session)
   //var session=  db.get('sessions').find({id: sessionId}).value()
   var session = await Session.findOne({id: sessionId})
-  console.log("session", session)
+  console.log("session result", session)
   let cartArr;
     
   if(session.cart==undefined || session.cart==null) {
