@@ -44,7 +44,7 @@ function generatePagination(page, paginationSizes, numPages) {
 module.exports.index =async (req, res) => {
   //const query = db.get("users");
   const query = await User.find({});
-  console.log("query", query);
+  //console.log("query", query);
   var user = [];
   // query params
   let { page, limit } = req.query;
@@ -91,7 +91,7 @@ module.exports.postCreate = async (req, res) => {
   var pwd;
   //req.body.isAdmin = false;
   //req.body.wrongLoginCount = 0;
-  bcrypt.hash(req.body.password, saltRounds, function(err, hash) {
+  await bcrypt.hash(req.body.password, saltRounds, function(err, hash) {
        pwd= hash;
   });
   console.log("new password", pwd)
