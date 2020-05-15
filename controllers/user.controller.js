@@ -45,13 +45,13 @@ module.exports.index =async (req, res) => {
   //const query = db.get("users");
   const query = await User.find({});
   console.log("query", query);
-  const users = [];
+  var user = [];
   // query params
   let { page, limit } = req.query;
   page = +page && +page >= 0 ? +page : 0;
   limit = +limit && +limit >= 0 ? +limit : 4;
 
-  const length = query.lec;
+  const length = query.length;
 
   // num of pages
   const numPages = Math.ceil(length / limit);
@@ -67,10 +67,10 @@ module.exports.index =async (req, res) => {
   //   .drop(skip)
   //   .take(limit)
   //   .value();
-  users = query.slice(skip, skip + limit);
+  user = query.slice(skip, skip + limit);
   const links = generatePagination(page, paginationSizes, numPages);
   return res.render("users/index", {
-    users,
+    users: user,
     auth: req.user,
     pagination: {
       links,
@@ -85,15 +85,22 @@ module.exports.index =async (req, res) => {
 module.exports.create = (req, res) => {
   res.render('users/create')};
 
-module.exports.postCreate = (req, res) => {
-  req.body.id = shortid.generate();
-  req.body.avatar = req.file.path.split('/').slice(1).join('/');
-  req.body.isAdmin = false;
-  req.body.wrongLoginCount = 0;
+module.exports.postCreate = async (req, res) => {
+  //req.body.id = shortid.generate();
+  var avatar = req.file.path.split('/').slice(1).join('/');
+  var password;
+  //req.body.isAdmin = false;
+  //req.body.wrongLoginCount = 0;
   bcrypt.hash(req.body.password, saltRounds, function(err, hash) {
-      req.body.password= hash;
+       password= hash;
   });
-  db.get('users').push(req.body).write();
+  const newUser = new User({
+      name: req.body.name,
+      password,
+      email
+    });
+  //await newUser.save();
+  //db.get('users').push(req.body).write();
   res.redirect('/users');
 };
 
