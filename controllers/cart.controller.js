@@ -82,7 +82,7 @@ module.exports.postCart=  async (req, res) => {
 //     .find({ id: sessionId })
 //     .value();
   
-  const cartData = await Session.findOne({_id : sessionId}) 
+  const cartData = await Session.findOne({id : sessionId}) 
   console.log("cartdata", cartData)
   //const bookId = cartData ? cartData.cart : [];
 
@@ -106,9 +106,9 @@ module.exports.postCart=  async (req, res) => {
     else{
       const newTransaction = new Transaction({
         userId: userId,
-        bookId:Object.keys(cartData.cart) ,
+        bookId: cartData.cart ,
         //id: shortid.generate(),
-        isComplete: false
+        //isComplete: false
       });
       // db.get("transactions")
       // .push(newTransaction)
@@ -116,13 +116,13 @@ module.exports.postCart=  async (req, res) => {
       
       await newTransaction.save();
       
-//       res.clearCookie("sessionId");
+
 //       db.get("sessions")
 //         .remove({ id: sessionId })
 //         .write();
       
-      await Session.findByIdAndRemove({_id: sessionId});
-        
+      await Session.findByIdAndRemove({id: sessionId});
+      res.clearCookie("sessionId");
       su= "Bạn đã thuê sách thành công!!";
     }
    
@@ -130,7 +130,7 @@ module.exports.postCart=  async (req, res) => {
       res.render('cart/cart',{
         notifi: notifi,
         cart: cartData,
-        books: booksData,
+        books: books,
         success : su
       })
       return;

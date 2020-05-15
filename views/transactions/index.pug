@@ -22,7 +22,7 @@ block content
                       td
                         each book in books
                           each b in tran.bookId
-                            if b == book._id 
+                            if b.bookId == book._id || b == book._id 
                               div
                                 span -
                                 span= book.title  
