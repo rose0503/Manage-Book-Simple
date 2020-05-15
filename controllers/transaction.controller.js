@@ -127,10 +127,11 @@ module.exports.complete = async (req, res) => {
 
 module.exports.postCreate = async (req, res) => {
   //req.body.id = shortid.generate();  
-  const { userId, bookId } = req.body;
+  //const { userId, bookId } = req.body;
   let isComplete = false;
-  console.log("result req.body", req.body)
-  const newTransaction = new Transaction({ bookIds: bookId, userId , isComplete});
+  //console.log("result req.body", req.body)
+  const newTransaction = new Transaction({ bookId: req.body.bookId, userId: req.body.userId});
+  //console.log("newTransaction", newTransaction)
   await newTransaction.save();
   
   //db.get('transactions').push(req.body).write();

@@ -8,10 +8,10 @@ block content
         .col-sm
           select#u.form-control(name="userId")
             if !isAdmin
-              option(value=user.id)= user.name
+              option(value=user._id)= user.name
             if isAdmin
               each user in users
-                option(value=user.id)= user.name
+                option(value=user._id)= user.name
               else
                 option Không có
       
@@ -20,7 +20,7 @@ block content
         .col-sm
           select#book.form-control(name="bookId",size="5" , multiple)
             each book in books
-              option(value=book.id)= book.title
+              option(value=book._id)= book.title
             else
               option Không có
       button(type="submit", class="btn btn-primary mr-3") Tạo
