@@ -3,8 +3,17 @@ module.exports.postCreate = (req, res, next) => {
   if(!req.body.name){
     error.push('Vui lòng nhập họ tên.');
   }
+  
   if((req.body.name).length > 30){
     error.push('Họ tên phải nhỏ hơn 30 ký tự.');
+  }
+  
+  if(!req.body.email){
+    error.push('Vui lòng nhập email.');
+  }
+  
+  if(!req.body.password){
+    error.push('Vui lòng nhập mật khẩu.');
   }
   
   if(!req.body.age){

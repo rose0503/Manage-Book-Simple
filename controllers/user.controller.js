@@ -88,17 +88,21 @@ module.exports.create = (req, res) => {
 module.exports.postCreate = async (req, res) => {
   //req.body.id = shortid.generate();
   var avatar = req.file.path.split('/').slice(1).join('/');
-  var password;
+  var pwd;
   //req.body.isAdmin = false;
   //req.body.wrongLoginCount = 0;
   bcrypt.hash(req.body.password, saltRounds, function(err, hash) {
-       password= hash;
+       pwd= hash;
   });
+  console.log("new password", pwd)
   const newUser = new User({
       name: req.body.name,
-      password,
-      email
+      password: pwd,
+      email:req.body.email,
+      age: req.body.age,
+      avatar,
     });
+  console.log("new user", newUser)
   //await newUser.save();
   //db.get('users').push(req.body).write();
   res.redirect('/users');
