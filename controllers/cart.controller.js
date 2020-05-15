@@ -63,7 +63,7 @@ module.exports.index = async (req, res) => {
   //   .value();
   
   const cart = await Session.findOne({_id : sessionId}) 
-  console.log("cart", cart)
+  //console.log("cart", cart)
   //const bookId = cart ? cart.cart : [];
   //console.log("booid",bookId)
   //const books = db.get("books").value();

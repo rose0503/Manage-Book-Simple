@@ -15,8 +15,8 @@ block content
       if books
         each book in books   
           if cart
-            each d in  Object.keys(cart.cart) 
-              if(d == book.id)
+            each d in cart.cart 
+              if(d.bookId == book._id)
                 .col-12.col-xl-3.col-md-4.col-sm-6.my-2
                   .card
                     img.card-img-top(src=book.coverUrl ? book.coverUrl : 'https://icons.iconarchive.com/icons/thalita-torres/office/512/school-book-icon.png')
