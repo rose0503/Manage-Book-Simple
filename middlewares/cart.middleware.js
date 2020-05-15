@@ -16,11 +16,11 @@ module.exports = {
   }else {
     cartArr = session.cart;
   }
-  console.log("cartid", cartArr)
+  //console.log("cartid", cartArr)
   let result = 0;
     
-  for(let a of Object.keys(cartArr))
-    result += cartArr[a];
+  for(let a of cartArr)
+    result += a.count;
   res.locals.countBooks = result;
   
     next();
