@@ -127,7 +127,7 @@ module.exports.index = async (req, res) => {
       User.find({ _id: { $in: userIds } }),
       Book.find({ _id: { $in: bookIds } })
     ]);
-    if (req.user.role !== 0) {
+    if (req.user.isAdmin !== false) {
       transactions = transactions.filter(trans => {
         const { userId, isCompleted } = trans;
         const user = users.find(val => val._id.toString() === userId);
