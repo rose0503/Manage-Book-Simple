@@ -112,7 +112,8 @@ module.exports.index = async (req, res) => {
     transactions = await Transaction.find({}, null, { limit, skip });
     let { userIds, bookIds } = transactions.reduce(
       (acc, curr) => {
-        acc.userIds.add(curr.userId);
+        acc.userIds
+          .add(curr.userId);
         curr.bookIds.forEach(bookId => {
           acc.bookIds.add(bookId);
         });
