@@ -69,7 +69,7 @@ module.exports.postEdit = async (req, res) => {
 module.exports.delete = async (req, res) => {
   var id = req.params.id;
   //db.get('books').remove({ id: id}).write();
-  await Book.findByIdAndRemove(id);
+  await Book.findByIdAndRemove({_id: id});
   res.redirect('/books');
 };
 

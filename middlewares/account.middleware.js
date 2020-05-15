@@ -1,4 +1,4 @@
-const db = require("../db");
+//const db = require("../db");
 // var user = db.get("users").value();
 
 var User = require("../models/user.model");
@@ -7,7 +7,7 @@ module.exports.isAdmin= async (req, res, next) => {
     try {
       // check isAdmin
       const idUser = req.signedCookies.userId;
-      console.log(idUser)
+      //console.log(idUser)
       if (!idUser) {
         res.locals.isAdmin = false;
       } 

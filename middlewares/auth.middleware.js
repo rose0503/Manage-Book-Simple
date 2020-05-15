@@ -1,4 +1,4 @@
-const db = require("../db")
+//const db = require("../db")
 
 var User = require("../models/user.model");
 

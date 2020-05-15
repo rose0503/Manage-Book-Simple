@@ -131,8 +131,9 @@ module.exports.delete = async (req, res) => {
   res.redirect('/users');
 };
 
-module.exports.postEdit = (req, res) => {
+module.exports.postEdit =async (req, res) => {
   var id = req.params.id;  
-  db.get('users').find({ id: id}).assign({ name: req.body.name, age:req.body.age}).write();
+  //db.get('users').find({ id: id}).assign({ name: req.body.name, age:req.body.age}).write();
+  await User.findByIdAndUpdate({_id: id}, { name: req.body.name, age:req.body.age});
   res.redirect('/users');
 };

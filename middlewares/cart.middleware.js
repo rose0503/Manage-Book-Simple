@@ -1,10 +1,13 @@
-const db = require("../db")
+//const db = require("../db")
+
+var Session = require("../models/session.model");
 
 module.exports = {
-  cart:  (req, res, next) => {   
+  cart: async (req, res, next) => {   
   var sessionId = req.signedCookies.sessionId;
-  var session=  db.get('sessions').find({id: sessionId}).value()
-  
+  //var session=  db.get('sessions').find({id: sessionId}).value()
+  var session = await Session.findOne({_id: sessionId})
+    
   let cartArr;
     
   if(!session.cart) {
