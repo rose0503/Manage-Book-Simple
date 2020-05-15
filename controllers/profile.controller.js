@@ -10,22 +10,22 @@ cloudinary.config({
   CLOUDINARY_URL:  process.env.CLOUDINARY_URL
 });
 
-module.exports.index = (req, res) => {
+module.exports.index = async (req, res) => {
   const id = req.signedCookies.userId;
 
   //var user = db.get('users').find({ id: id}).value();
   
-  const user = User.find({id})
+  const user = await User.findOne({_id: id})
   console.log("profile user", user)
   res.render('profiles/index',{
-    auth: req.user
+    auth: user
   })
 };
 
-module.exports.avatarPage = (req, res) => {
+module.exports.avatarPage = async (req, res) => {
   const id = req.signedCookies.userId;
   //var user = db.get('users').find({ id: id}).value();
-  const user = User.findOne({_id: id})
+  const user = await User.findOne({_id: id})
   res.render('profiles/updateAvatar',{
     auth: user
   }) 
@@ -47,7 +47,7 @@ function checkIsImage(mimetype) {
 module.exports.changeAvatar = async (req, res) => {
     const id = req.signedCookies.userId;
     //var user = db.get('users').find({ id: id}).value();
-    const user = User.findOne({_id: id})
+    const user = await User.findOne({_id: id})
 //   const user = req.user;
   try {
     
