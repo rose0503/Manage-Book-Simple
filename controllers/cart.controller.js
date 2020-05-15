@@ -83,9 +83,7 @@ module.exports.postCart=  async (req, res) => {
 //     .value();
   
   const cartData = await Session.findOne({id : sessionId}) 
-  var bookIds = [];
-  
-  console.log("cartdata", cartData)
+  var bookIds = cartData.cart.map(x => x.bookId)
   //const bookId = cartData ? cartData.cart : [];
 
   //const booksData = db.get("books").value();
@@ -108,7 +106,7 @@ module.exports.postCart=  async (req, res) => {
     else{
       const newTransaction = new Transaction({
         userId: userId,
-        bookId: cartData.cart ,
+        bookId: bookIds ,
         //id: shortid.generate(),
         //isComplete: false
       });
@@ -125,7 +123,7 @@ module.exports.postCart=  async (req, res) => {
       
       await Session.findByIdAndRemove({id: sessionId});
       res.clearCookie("sessionId");
-      su= "Bạn đã thuê sách thành công!!";
+      
     }
    
     if(notifi.length){
@@ -133,7 +131,7 @@ module.exports.postCart=  async (req, res) => {
         notifi: notifi,
         cart: cartData,
         books: books,
-        success : su
+        
       })
       return;
 
