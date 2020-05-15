@@ -124,9 +124,10 @@ module.exports.edit =async (req, res) => {
   })
 };
 
-module.exports.delete = (req, res) => {
+module.exports.delete = async (req, res) => {
   var id = req.params.id;
-  db.get('users').remove({ id: id}).write();
+  //db.get('users').remove({ id: id}).write();
+  await User.findByIdAndRemove({_id: id});
   res.redirect('/users');
 };
 
