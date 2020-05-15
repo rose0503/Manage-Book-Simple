@@ -119,15 +119,20 @@ module.exports.complete = async (req, res) => {
   // }
   if(!trans.isComplete)
     //db.get('transactions').find({ id: id}).assign({ isComplete: true}).write();
-    await Transaction.findByIdAndUpdate({_id : id}, { isCompleted: true });
+    await Transaction.findByIdAndUpdate({_id : id}, { isComplete: true });
   res.redirect('/transactions');
   
 };
 
 
-module.exports.postCreate = (req, res) => {
-  req.body.id = shortid.generate();  
-  req.body.isComplete = false;
-  db.get('transactions').push(req.body).write();
+module.exports.postCreate = async (req, res) => {
+  //req.body.id = shortid.generate();  
+  const { userId, bookId } = req.body;
+  let isComplete = false;
+  console.log("result req.body", req.body)
+  const newTransaction = new Transaction({ bookIds: bookId, userId , isComplete});
+  await newTransaction.save();
+  
+  //db.get('transactions').push(req.body).write();
   res.redirect('/transactions');
 };
