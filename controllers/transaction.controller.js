@@ -43,11 +43,9 @@ function generatePagination(page, paginationSizes, numPages) {
   };
 
 module.exports.index = async (req, res) => {
-  // const users = db.get("users").value();
+  
   const users = await User.find({});
-  // const books = db.get("books").value();
   const books = await Book .find({});
-  // let transactions = db.get("transactions").value();
   const transactions = await Transaction.find({})
   
   var transaction = [];
@@ -95,16 +93,20 @@ module.exports.index = async (req, res) => {
 };
 
 
-module.exports.create = (req, res) => {
+module.exports.create =async  (req, res) => {
+  const users = await User.find({});
+  const books = await Book .find({});
+    
   res.render('transactions/create.pug', {
-    users: db.get("users").value(),
-    books: db.get("books").value(),
+    users: users,
+    books: books,
   })
 };
 
-module.exports.complete = (req, res) => {
+module.exports.complete = async (req, res) => {
   var id = req.params.id;
-  var trans = db.get('transactions').value();
+  //var trans = db.get('transactions').value();
+  const trans = await Transaction.find({})
   var error =[];
   
   // if(trans.id != id)
@@ -116,7 +118,8 @@ module.exports.complete = (req, res) => {
   //   return;
   // }
   if(!trans.isComplete)
-    db.get('transactions').find({ id: id}).assign({ isComplete: true}).write();
+    //db.get('transactions').find({ id: id}).assign({ isComplete: true}).write();
+    await Transaction.findByIdAndUpdate({_id : id}, { isCompleted: true });
   res.redirect('/transactions');
   
 };
