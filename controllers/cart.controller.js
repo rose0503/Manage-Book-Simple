@@ -75,22 +75,14 @@ module.exports.index = async (req, res) => {
 
 module.exports.postCart=  async (req, res) => {
   const { sessionId } = req.signedCookies;
-  //const { user } = req;
   const userId = req.signedCookies.userId;
-//   const cartData = db
-//     .get("sessions")
-//     .find({ id: sessionId })
-//     .value();
-  
+
   const cartData = await Session.findOne({id : sessionId}) 
   var bookIds = cartData.cart.map(x => x.bookId)
-  //const bookId = cartData ? cartData.cart : [];
-
-  //const booksData = db.get("books").value();
   
   const books = await Book.find({});  
   let notifi= [];
-  let su;
+  
   try {
     if (!cartData) 
       notifi.push("Bạn phải đăng nhập để thuê sách!!");
@@ -98,33 +90,7 @@ module.exports.postCart=  async (req, res) => {
     if (!userId) 
       notifi.push("Bạn phải đăng nhập để thuê sách!!");
       
-    // const cart = db
-    //   .get("sessions")
-    //   .find({ id: sessionId })
-    //   .value();
-    // if (!cart) throw new Exception("Invalid Request");
-    else{
-      const newTransaction = new Transaction({
-        userId: userId,
-        bookId: bookIds ,
-        //id: shortid.generate(),
-        //isComplete: false
-      });
-      // db.get("transactions")
-      // .push(newTransaction)
-      // .write();
-      
-      await newTransaction.save();
-      
-
-//       db.get("sessions")
-//         .remove({ id: sessionId })
-//         .write();
-      
-      await Session.findByIdAndRemove({id: sessionId});
-      res.clearCookie("sessionId");
-      
-    }
+    
    
     if(notifi.length){
       res.render('cart/cart',{
@@ -134,8 +100,18 @@ module.exports.postCart=  async (req, res) => {
         
       })
       return;
-
     }
+    
+    const newTransaction = new Transaction({
+      userId: userId,
+      bookId: bookIds 
+
+    });
+
+    await newTransaction.save();
+    await Session.findByIdAndRemove({id: sessionId});   
+    
+    res.clearCookie("sessionId");
     res.redirect("/books")
   } catch (error) {
     res.render("cart/cart", { message: error.message });
