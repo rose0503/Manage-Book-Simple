@@ -73,7 +73,7 @@ module.exports.changeAvatar = async (req, res) => {
 //       .assign({ avatar: path })
 //       .write();
     
-    await User.findByIdAndUpdate(user.id, { avatar: path });
+    await User.findByIdAndUpdate(user._id, { avatar: path });
     fs.unlinkSync(req.file.path);
     res.redirect("/profiles");
   } catch (error) {
