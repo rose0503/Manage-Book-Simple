@@ -49,7 +49,7 @@ module.exports.addToCart = async (req, res) =>{
           }
           doc.save();
         }
-  
+  });
   res.redirect('/books');
   
 };
