@@ -36,7 +36,7 @@ module.exports.addToCart = async (req, res) =>{
           let newSes = new Session();
           newSes.id = sessionId;
           newSes.cart = [{ bookId: bookId, count: 1 }];
-          console.log("newSec" ,newSes)
+          //console.log("newSec" ,newSes)
           //await newSes.save();
         } else {
           let listCart = doc.cart;
