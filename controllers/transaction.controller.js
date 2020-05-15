@@ -49,6 +49,9 @@ module.exports.index = async (req, res) => {
   const books = await Book .find({});
   // let transactions = db.get("transactions").value();
   const transactions = await Transaction.find({})
+  
+  var transaction = [];
+  
   let { page, limit } = req.query;
   page = +page && +page >= 0 ? +page : 0;
   limit = +limit && +limit >= 0 ? +limit : 4;
@@ -68,8 +71,9 @@ module.exports.index = async (req, res) => {
     }
     // skip
     const skip = page * limit;
-    transactions = transactions.slice(skip, skip + limit);
-    console.log("result transactions", transactions)
+    
+    transaction = transactions.slice(skip, skip + limit);
+    console.log("result transactions", transaction)
     //transactions = await Transaction.find({}, null, { limit, skip });
     const links = generatePagination(page, paginationSizes, numPages);
     pagination = {
@@ -82,7 +86,7 @@ module.exports.index = async (req, res) => {
   }
   //res.render("transaction/index", { transactions, auth: req.user, pagination });
   res.render('transactions/index',{
-    transactions: transactions,
+    transactions: transaction,
     users: users,
     books: books,
     pagination

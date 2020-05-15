@@ -16,13 +16,13 @@ block content
           tr  
             each tran in transactions    
                 each u in users
-                  if tran.userId == u.id
+                  if tran.userId == u._id
                     tr
                       td=u.name
                       td
                         each book in books
                           each b in tran.bookId
-                            if b == book.id 
+                            if b == book._id 
                               div
                                 span -
                                 span= book.title  
