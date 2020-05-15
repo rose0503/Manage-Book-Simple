@@ -4,6 +4,8 @@ const saltRounds = 10;
 const db =require("../db.js");
 const shortid = require('shortid');
 
+var User = require("../models/user.model");
+
 function generatePagination(page, paginationSizes, numPages) {
     let startLink = -1;
     // add skip '...'
@@ -39,14 +41,17 @@ function generatePagination(page, paginationSizes, numPages) {
     return pageLinks;
   };
 
-module.exports.index = (req, res) => {
-  const query = db.get("users");
+module.exports.index =async (req, res) => {
+  //const query = db.get("users");
+  const query = await User.find({});
+  console.log("query", query);
+  const users = [];
   // query params
   let { page, limit } = req.query;
   page = +page && +page >= 0 ? +page : 0;
   limit = +limit && +limit >= 0 ? +limit : 4;
 
-  const length = query.size().value();
+  const length = query.lec;
 
   // num of pages
   const numPages = Math.ceil(length / limit);
@@ -58,10 +63,11 @@ module.exports.index = (req, res) => {
   }
   // skip
   const skip = page * limit;
-  const users = query
-    .drop(skip)
-    .take(limit)
-    .value();
+  // const users = query
+  //   .drop(skip)
+  //   .take(limit)
+  //   .value();
+  users = query.slice(skip, skip + limit);
   const links = generatePagination(page, paginationSizes, numPages);
   return res.render("users/index", {
     users,

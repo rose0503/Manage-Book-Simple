@@ -9,6 +9,8 @@ var userSchema = new mongoose.Schema({
     isAdmin: Boolean,
     wrongLoginCount: Number,
     avatar: String,
+}, {
+    versionKey: false // You should be aware of the outcome after set to false
 });
 
 var User = mongoose.model('Users', userSchema, 'Users');

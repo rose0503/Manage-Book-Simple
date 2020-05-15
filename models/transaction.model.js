@@ -7,6 +7,8 @@ var transactionSchema = new mongoose.Schema({
     type: Boolean,
     default: false
   }
+}, {
+    versionKey: false // You should be aware of the outcome after set to false
 });
 
 var Transaction = mongoose.model(

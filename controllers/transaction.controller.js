@@ -71,7 +71,7 @@ module.exports.index = async (req, res) => {
     const skip = page * limit;
     
     transaction = transactions.slice(skip, skip + limit);
-    console.log("result transactions", transaction)
+    //console.log("result transactions", transaction)
     //transactions = await Transaction.find({}, null, { limit, skip });
     const links = generatePagination(page, paginationSizes, numPages);
     pagination = {
