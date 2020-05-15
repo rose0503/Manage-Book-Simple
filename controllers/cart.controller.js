@@ -11,14 +11,15 @@ module.exports.addToCart = async (req, res) =>{
   var sessionId = req.signedCookies.sessionId;
   // var session=  db.get('sessions').find({id: sessionId}).value()
   
-  const session = await Session.findOne({_id : sessionId}) 
+  const session = await Session.findOne({id : sessionId}) 
   if(!sessionId){
     res.redirect('/books')
     return;
   }
-  // var count = db.get('sessions').find({id: sessionId}).get('cart.' + bookId, 0).value();
-  // console.log("count",count);
-  // db.get('sessions').find({id: sessionId}).set("cart." + bookId, count + 1).write();
+  //var count = db.get('sessions').find({id: sessionId}).get('cart.' + bookId, 0).value();
+  var count = await Session.findOne({id : sessionId}).get('cart.' + bookId, 0)
+  console.log("count",count);
+  await Session.findOne({id : sessionId}).set("cart." + bookId, count + 1);
   // const cartArr = session.cart;
   // //console.log("cartid", session.cart)
   // let result = 0;
