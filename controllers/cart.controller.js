@@ -88,8 +88,7 @@ module.exports.postCart=  async (req, res) => {
       notifi.push("Bạn phải đăng nhập để thuê sách!!");
     
     if (!userId) 
-      notifi.push("Bạn phải đăng nhập để thuê sách!!");
-      
+      notifi.push("Bạn phải đăng nhập để thuê sách!!");    
     
    
     if(notifi.length){
@@ -105,7 +104,6 @@ module.exports.postCart=  async (req, res) => {
     const newTransaction = new Transaction({
       userId: userId,
       bookId: bookIds 
-
     });
 
     await newTransaction.save();
