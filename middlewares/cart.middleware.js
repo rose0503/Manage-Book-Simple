@@ -6,7 +6,7 @@ module.exports = {
   cart: async (req, res, next) => {   
   var sessionId = req.signedCookies.sessionId;
   //var session=  db.get('sessions').find({id: sessionId}).value()
-  var session = await Session.findOne({_id: sessionId})
+  var session = await Session.findOne({id: sessionId})
     
   let cartArr;
     

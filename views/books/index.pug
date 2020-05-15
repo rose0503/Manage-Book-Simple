@@ -21,14 +21,14 @@ block content
               
               if isAdmin   
                 .row                  
-                    a.btn.btn-primary.m-1(href='/cart/add/'+ book.id) Add
-                    a.btn.btn-primary.m-1(href="/books/" + book.id) Chi tiết
-                    a.btn.btn-primary.m-1(href="/books/" + book.id + "/edit") Sửa                
-                    a.btn.btn-primary.m-1(href="/books/" + book.id + "/delete") Xóa
+                    a.btn.btn-primary.m-1(href='/cart/add/'+ book._id) Add
+                    a.btn.btn-primary.m-1(href="/books/" + book._id) Chi tiết
+                    a.btn.btn-primary.m-1(href="/books/" + book._id + "/edit") Sửa                
+                    a.btn.btn-primary.m-1(href="/books/" + book._id + "/delete") Xóa
               if !isAdmin                 
                 .row                  
-                    a.btn.btn-primary.m-1(href='/cart/add/'+ book.id) Add to cart
-                    a.btn.btn-primary.m-1(href="/books/" + book.id) Chi tiết
+                    a.btn.btn-primary.m-1(href='/cart/add/'+ book._id) Add to cart
+                    a.btn.btn-primary.m-1(href="/books/" + book._id) Chi tiết
 
 
                   
