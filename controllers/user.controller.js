@@ -88,37 +88,37 @@ module.exports.create = (req, res) => {
 module.exports.postCreate = async (req, res) => {
   //req.body.id = shortid.generate();
   var avatar = req.file.path.split('/').slice(1).join('/');
-  var pwd;
   //req.body.isAdmin = false;
   //req.body.wrongLoginCount = 0;
   await bcrypt.hash(req.body.password, saltRounds, function(err, hash) {
-       pwd= hash;
+    const newUser = new User({
+        name: req.body.name,
+        password: hash,
+        email:req.body.email,
+        age: req.body.age,
+        avatar,
+      });
+    //console.log("new user", newUser)
+    newUser.save();
   });
-  console.log("new password", pwd)
-  const newUser = new User({
-      name: req.body.name,
-      password: pwd,
-      email:req.body.email,
-      age: req.body.age,
-      avatar,
-    });
-  console.log("new user", newUser)
-  //await newUser.save();
+  
   //db.get('users').push(req.body).write();
   res.redirect('/users');
 };
 
-module.exports.getId = (req, res) => {
+module.exports.getId =async  (req, res) => {
   var id = req.params.id;
-  var user = db.get('users').find({ id: id}).value();
+  //var user = db.get('users').find({ id: id}).value();
+  var user = await User.findOne({_id: id})
   res.render('users/view',{
     user: user
   })
 };
 
-module.exports.edit = (req, res) => {
+module.exports.edit =async (req, res) => {
   var id = req.params.id;
-  var user = db.get('users').find({ id: id}).value();
+  //var user = db.get('users').find({ id: id}).value();
+  var user = await User.findOne({_id: id})
   res.render('users/edit',{ 
     user: user
   })
