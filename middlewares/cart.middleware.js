@@ -5,14 +5,14 @@ var Session = require("../models/session.model");
 module.exports = {
   cart: async (req, res, next) => {   
   var sessionId = req.signedCookies.sessionId;
+  console.log("sessionId", sessionId)
   //var session=  db.get('sessions').find({id: sessionId}).value()
   var session = await Session.findOne({id: sessionId})
-    
+  console.log("session", session)
   let cartArr;
     
-  if(!session.cart) {
-    cartArr = {};
-    
+  if(session.cart==undefined || session.cart==null) {
+    cartArr = {};    
   }else {
     cartArr = session.cart;
   }
