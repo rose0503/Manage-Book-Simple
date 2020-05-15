@@ -23,6 +23,6 @@ module.exports = {
     result += a.count;
   res.locals.countBooks = result;
   
-    next();
+  next();
   }
 };
