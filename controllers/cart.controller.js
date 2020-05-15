@@ -83,6 +83,8 @@ module.exports.postCart=  async (req, res) => {
 //     .value();
   
   const cartData = await Session.findOne({id : sessionId}) 
+  var bookIds = [];
+  
   console.log("cartdata", cartData)
   //const bookId = cartData ? cartData.cart : [];
 
