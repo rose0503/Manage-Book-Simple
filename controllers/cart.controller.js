@@ -11,22 +11,45 @@ module.exports.addToCart = async (req, res) =>{
   var sessionId = req.signedCookies.sessionId;
   // var session=  db.get('sessions').find({id: sessionId}).value()
   
-  const session = await Session.findOne({id : sessionId}) 
+  //const session = await Session.findOne({id : sessionId}) 
   if(!sessionId){
     res.redirect('/books')
     return;
   }
-  //var count = db.get('sessions').find({id: sessionId}).get('cart.' + bookId, 0).value();
-  var count = await Session.findOne({id : sessionId}).get('cart.' + bookId, 0)
-  console.log("count",count);
-  await Session.findOne({id : sessionId}).set("cart." + bookId, count + 1);
-  // const cartArr = session.cart;
-  // //console.log("cartid", session.cart)
-  // let result = 0;
-  // for(let a of Object.keys(cartArr))
-  //   result += cartArr[a];
-  // res.locals.countBooks = result;
-  //console.log(result)
+  // //var count = db.get('sessions').find({id: sessionId}).get('cart.' + bookId, 0).value();
+  // var count = await Session.findOne({id : sessionId}).get('cart.' + bookId, 0)
+  // console.log("count",count);
+  // await Session.findOne({id : sessionId}).set("cart." + bookId, count + 1);
+  // // const cartArr = session.cart;
+  // // //console.log("cartid", session.cart)
+  // // let result = 0;
+  // // for(let a of Object.keys(cartArr))
+  // //   result += cartArr[a];
+  // // res.locals.countBooks = result;
+  // //console.log(result)
+  
+  Session.findOne({ id: sessionId }, async function(err, doc) {
+        if (err) {
+          console.log(err);
+        }
+        if (!doc) {
+          let newSes = new Session();
+          newSes.id = sessionId;
+          newSes.cart = [{ bookId: bookId, count: 1 }];
+          await newSes.save();
+        } else {
+          let listCart = doc.cart;
+          // found bookId
+          let index = listCart.findIndex(x => x.bookId === bookId);
+          // not found
+          if (index !== -1) {
+            listCart[index].count += 1;
+          } else {
+            listCart.push({ bookId: bookId, count: 1 });
+          }
+          doc.save();
+        }
+  
   res.redirect('/books');
   
 };
