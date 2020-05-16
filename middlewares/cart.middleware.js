@@ -22,7 +22,7 @@ module.exports = {
   for(let a of cartArr)
     result += a.count;
   res.locals.countBooks = result;
-  
+  //console.log("result", result)
   next();
   }
 };
