@@ -29,7 +29,9 @@ module.exports.index = async (req, res, next) => {
   res.render("books/index", {
     books: books
   });}catch (error){
-    res.status(500).send('Something broke!')
+    res.status(500).render("error/500", {
+    message: error ? error.message : "Internal server error"
+  });
   }
 };
 
