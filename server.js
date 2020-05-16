@@ -37,6 +37,9 @@ var accountMiddleware = require("./middlewares/account.middleware");
 var sessionMiddleware = require("./middlewares/session.middleware");
 const cartMiddleWare = require("./middlewares/cart.middleware");
 
+//error
+const errorHandler = require("./middlewares/error");
+
 //api
 const authApiRoutes = require("./api/routes/auth.route");
 const transactionsApiRoutes = require("./api/routes/transaction.route");
@@ -55,7 +58,7 @@ app.use(express.urlencoded({ extended: true })); // for parsing application/x-ww
 // make all the files in 'public' available
 // https://expressjs.com/en/starter/static-files.html
 app.use(express.static("public"));
-
+app.use(errorHandler);
 app.use(accountMiddleware.isAdmin);
 app.use(sessionMiddleware.session);
 app.use(cartMiddleWare.cart);
