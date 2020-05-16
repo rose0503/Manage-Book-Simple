@@ -38,6 +38,9 @@ var accountMiddleware = require("./middlewares/account.middleware");
 var sessionMiddleware = require("./middlewares/session.middleware");
 const cartMiddleWare = require("./middlewares/cart.middleware");
 
+//api
+const authApiRoutes = require("./api/routes/auth.route")
+
 app.set("views", "./views");
 app.set("view engine", "pug");
 app.use(cookieParser(process.env.SESSION_SECRET));

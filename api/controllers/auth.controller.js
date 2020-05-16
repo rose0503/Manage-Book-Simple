@@ -2,13 +2,10 @@ const sgMail = require("@sendgrid/mail");
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
 
-var User = require("../models/user.model");
+var User = require("../../models/user.model");
 
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
-module.exports.login = (req, res) => {
-  res.render("auth/login");
-};
 
 module.exports.postLogin = async (req, res) => {
   var email = req.body.email;
@@ -66,14 +63,18 @@ module.exports.postLogin = async (req, res) => {
     });
     return;
   }
+  res.status(200).json({
+        message: "You have successfully logged in",
+        user: user
+  }); 
 
-  res.cookie("userId", user._id, { signed: true });
-  res.redirect("/");
 };
 
 module.exports.logout = (req, res) => {
-  res.clearCookie("userId", {
-    path: "/"
-  });
-  res.redirect("/auth/login");
+  try {
+      res.clearCookie("userId", { path: "/" })
+      res.status(200).json({ message: "Logout successfully" })
+    } catch({ message = "Invalid request" }){
+      res.status(400).json({ message: "Failling" })
+    }
 };
