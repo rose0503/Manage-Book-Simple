@@ -1,7 +1,6 @@
-//const db = require("../db");
 const cloudinary = require("cloudinary").v2;
 const fs = require("fs");
-//const shortid = require("shortid");
+
 var Book = require("../models/book.model");
 
 cloudinary.config({
@@ -22,60 +21,45 @@ function checkIsImage(mimetype) {
 }
 
 module.exports.index = async (req, res) => {
-//   res.render('books/index',{
-//     books: db.get('books').value()
-//   })
-//   console.log(db.get('books').value())
-  
- let books = await Book.find({});
-  //console.log("this is books result", books);
-  //.then(doc =>  console.log('doc', doc)); 
-  res.render('books/index',{
+  let books = await Book.find({});
+  res.render("books/index", {
     books: books
-  })
-  
-} 
-  
+  });
+};
 
- module.exports.create = (req, res) => {
-  res.render('books/create')
- };
+module.exports.create = (req, res) => {
+  res.render("books/create");
+};
 
 module.exports.getId = async (req, res) => {
   var id = req.params.id;
-  //var book = db.get('books').find({ id: id}).value();
-  const book = await Book.findOne({_id : id});
-  res.render('books/view',{
+  const book = await Book.findOne({ _id: id });
+  res.render("books/view", {
     book: book
-  })
+  });
 };
 
 module.exports.edit = async (req, res) => {
   var id = req.params.id;
-  //var book = db.get('books').find({ id: id}).value();
-  const book = await Book.findOne({_id : id});
-  res.render('books/edit',{ 
+  const book = await Book.findOne({ _id: id });
+  res.render("books/edit", {
     book: book
-  })
+  });
 };
 
 module.exports.postEdit = async (req, res) => {
-  var id = req.params.id;
-  //db.get('books').find({ id: id}).assign({ title: req.body.title}).write();
-  await Book.findByIdAndUpdate(id, { title: req.body.title});
-  res.redirect('/books');
+  var id = req.params.id;  
+  await Book.findByIdAndUpdate(id, { title: req.body.title });
+  res.redirect("/books");
 };
 
 module.exports.delete = async (req, res) => {
-  var id = req.params.id;
-  //db.get('books').remove({ id: id}).write();
-  await Book.findByIdAndRemove({_id: id});
-  res.redirect('/books');
+  var id = req.params.id;  
+  await Book.findByIdAndRemove({ _id: id });
+  res.redirect("/books");
 };
 
 module.exports.postCreate = async (req, res) => {
-  // req.body.id = shortid.generate();
-  // db.get('books').push(req.body).write();
   var error = [];
 
   if (!req.body.title) {
@@ -84,7 +68,7 @@ module.exports.postCreate = async (req, res) => {
   if (!req.body.description) {
     error.push("Vui lòng nhập mô tả.");
   }
-  if (!req.file ) {
+  if (!req.file) {
     error.push("Image is required");
   }
   // if (req.file.mimetype === undefined) {
@@ -101,7 +85,7 @@ module.exports.postCreate = async (req, res) => {
   //   })
   //   .then(result => result.url)
   //   .catch(_ => false);
-  // if (!path)    
+  // if (!path)
   //   error.push("There was an error saving your image");
   //console.log("path",path);
   if (error.length) {
@@ -111,36 +95,33 @@ module.exports.postCreate = async (req, res) => {
     });
     return;
   }
-  let pathBook = req.file.path.split('/').slice(1).join('/');
-  console.log("pathBook", pathBook)
-  const newBook = new Book ({
+  let pathBook = req.file.path
+    .split("/")
+    .slice(1)
+    .join("/");
+  console.log("pathBook", pathBook);
+  const newBook = new Book({
     title: req.body.title,
     description: req.body.description,
-    coverUrl: req.file.path.split('/').slice(1).join('/')
-  });
-  //console.log(newBook)
-  
-  // db.get("books")
-  //   .push(newBook)
-  //   .write();
-  
-  //save newbook
-  
+    coverUrl: req.file.path
+      .split("/")
+      .slice(1)
+      .join("/")
+  }); 
   await newBook.save();
-  
+
   // add dum data
   fs.unlinkSync(req.file.path);
-  res.redirect('/books');
+  res.redirect("/books");
 };
 
 // module.exports.sreach = (req, res) => {
 //   var q = req.query.q;
 //   var matchBooks = db.get("books").value().filter((book) => {
-//     return book.title.toLowerCase().indexOf(q.toLowerCase()) !== -1 
+//     return book.title.toLowerCase().indexOf(q.toLowerCase()) !== -1
 //   })
 //   res.render('books/view',{
 //     book: matchBooks,
 //     q: q
 //   })
 // };
-
