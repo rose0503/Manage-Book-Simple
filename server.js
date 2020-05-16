@@ -56,9 +56,12 @@ app.use(express.static("public"));
 app.use(accountMiddleware.isAdmin);
 app.use(sessionMiddleware.session);
 app.use(cartMiddleWare.cart);
+
+// api 
+app.use("/api", authApiRoutes)
+
+
 app.use("/auth", authRoute);
-
-
 
 app.get(
   "/",
