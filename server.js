@@ -7,13 +7,14 @@ require("dotenv").config();
 const express = require("express");
 const app = express();
 const pug = require("pug");
-const bodyParser = require('body-parser');
+const bodyParser = require("body-parser");
 var cookieParser = require("cookie-parser");
-var csurf = require('csurf');
-var mongoose = require('mongoose');
+var csurf = require("csurf");
+var mongoose = require("mongoose");
 
 //mongoose.connect('mongodb://localhost/test');
-mongoose.connect(process.env.MONGO_URL, {
+mongoose
+  .connect(process.env.MONGO_URL, {
     useNewUrlParser: true,
     useFindAndModify: false,
     useCreateIndex: true,
@@ -22,8 +23,6 @@ mongoose.connect(process.env.MONGO_URL, {
   })
   .then(_ => console.log("MongoDB connected"))
   .catch(err => console.log("MongoDB can't connect", err));
-
-
 
 var indexRoute = require("./routes/index.route.js");
 var authRoute = require("./routes/auth.route.js");
@@ -39,10 +38,11 @@ var sessionMiddleware = require("./middlewares/session.middleware");
 const cartMiddleWare = require("./middlewares/cart.middleware");
 
 //api
-const authApiRoutes = require("./api/routes/auth.route")
-const transactionsApiRoutes = require("./api/routes/transaction.route")
-const bookApiRoutes = require("./api/routes/book.route")
-const usersApiRoutes = require("./api/routes/user.route")
+const authApiRoutes = require("./api/routes/auth.route");
+const transactionsApiRoutes = require("./api/routes/transaction.route");
+const bookApiRoutes = require("./api/routes/book.route");
+const usersApiRoutes = require("./api/routes/user.route");
+const profileApiRoutes = require("./api/routes/profile.route");
 
 app.set("views", "./views");
 app.set("view engine", "pug");
@@ -60,22 +60,18 @@ app.use(accountMiddleware.isAdmin);
 app.use(sessionMiddleware.session);
 app.use(cartMiddleWare.cart);
 
-// api 
-app.use("/api", authApiRoutes)
-app.use("/api/transactions", transactionsApiRoutes)
-app.use("/api/books", bookApiRoutes)
-app.use("/api/users", usersApiRoutes)
+// api
+app.use("/api", authApiRoutes);
+app.use("/api/transactions", transactionsApiRoutes);
+app.use("/api/books", bookApiRoutes);
+app.use("/api/users", usersApiRoutes);
+app.use("/api/profile", profileApiRoutes);
 
 app.use("/auth", authRoute);
 
-app.get(
-  "/",
-  authMiddleware.requireAuth,
-  accountMiddleware.isAdmin,
-  indexRoute, 
-);
+app.get("/", authMiddleware.requireAuth, accountMiddleware.isAdmin, indexRoute);
 app.use(
-  "/books", 
+  "/books",
   accountMiddleware.isUser,
   accountMiddleware.isAdmin,
   bookRoute

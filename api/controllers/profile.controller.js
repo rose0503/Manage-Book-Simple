@@ -1,6 +1,6 @@
 const cloudinary = require("cloudinary").v2;
 const fs = require("fs");
-var User = require("../models/user.model");
+var User = require("../../models/user.model");
 
 cloudinary.config({
   cloud_name: process.env.CLOUD_NAME,
@@ -10,20 +10,24 @@ cloudinary.config({
 });
 
 module.exports.index = async (req, res) => {
-  const id = req.signedCookies.userId;
-  const user = await User.findOne({ _id: id });
-  //console.log("profile user", user)
+  try {
+    const id = req.signedCookies.userId;
+    const user = await User.findOne({ _id: id });
+    //console.log("profile user", user)
 
-  res.render("profiles/index", {
-    auth: user
-  });
+    return res.status(200).json({
+      auth: user
+    });
+  } catch ({ message = "Invalid request" }) {
+    return res.status(400).json({ message });
+  }
 };
 
 module.exports.avatarPage = async (req, res) => {
   const id = req.signedCookies.userId;
   const user = await User.findOne({ _id: id });
 
-  res.render("profiles/updateAvatar", {
+  return res.status(200).json({
     auth: user
   });
 };
@@ -76,8 +80,8 @@ module.exports.changeAvatar = async (req, res) => {
 
     fs.unlinkSync(req.file.path);
 
-    res.redirect("/profiles");
-  } catch (error) {
-    res.render("profiles/avatar", { auth: user, error: error.message });
+    return res.status(200).json({ user });
+  } catch ({ message = "Invalid request" }) {
+    return res.status(400).json({ message });
   }
 };
