@@ -1,7 +1,7 @@
 const cloudinary = require("cloudinary").v2;
 const fs = require("fs");
 
-var Book = require("../models/book.model");
+var Book = require("../../models/book.model");
 
 cloudinary.config({
   cloud_name: process.env.CLOUD_NAME,
