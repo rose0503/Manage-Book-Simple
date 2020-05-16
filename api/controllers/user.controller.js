@@ -1,7 +1,7 @@
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
 
-var User = require("../models/user.model");
+var User = require("../../models/user.model");
 
 function generatePagination(page, paginationSizes, numPages) {
   let startLink = -1;
@@ -65,7 +65,7 @@ module.exports.index = async (req, res) => {
   //   .value();
   user = query.slice(skip, skip + limit);
   const links = generatePagination(page, paginationSizes, numPages);
-  return res.render("users/index", {
+  return res.status(200).json({
     users: user,
     auth: req.user,
     pagination: {
@@ -76,10 +76,6 @@ module.exports.index = async (req, res) => {
       start: skip
     }
   });
-};
-
-module.exports.create = (req, res) => {
-  res.render("users/create");
 };
 
 module.exports.postCreate = async (req, res) => {
@@ -97,31 +93,25 @@ module.exports.postCreate = async (req, res) => {
     });
     //console.log("new user", newUser)
     newUser.save();
+    return res.status(200).json({ newUser });
   });
 
-  res.redirect("/users");
+  
 };
 
 module.exports.getId = async (req, res) => {
   var id = req.params.id;
   var user = await User.findOne({ _id: id });
-  res.render("users/view", {
-    user: user
-  });
+  return res.status(200).json({ user: user });
+  
 };
 
-module.exports.edit = async (req, res) => {
-  var id = req.params.id;
-  var user = await User.findOne({ _id: id });
-  res.render("users/edit", {
-    user: user
-  });
-};
 
 module.exports.delete = async (req, res) => {
   var id = req.params.id;
   await User.findByIdAndRemove({ _id: id });
-  res.redirect("/users");
+  var user = await User.findOne({ _id: id });
+  return res.status(200).json({ user: user });
 };
 
 module.exports.postEdit = async (req, res) => {
@@ -130,5 +120,6 @@ module.exports.postEdit = async (req, res) => {
     { _id: id },
     { name: req.body.name, age: req.body.age }
   );
-  res.redirect("/users");
+  var user = await User.findOne({ _id: id });
+  return res.status(200).json({ user: user });
 };

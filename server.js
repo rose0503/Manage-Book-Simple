@@ -42,6 +42,7 @@ const cartMiddleWare = require("./middlewares/cart.middleware");
 const authApiRoutes = require("./api/routes/auth.route")
 const transactionsApiRoutes = require("./api/routes/transaction.route")
 const bookApiRoutes = require("./api/routes/book.route")
+const usersApiRoutes = require("./api/routes/user.route")
 
 app.set("views", "./views");
 app.set("view engine", "pug");
@@ -63,6 +64,7 @@ app.use(cartMiddleWare.cart);
 app.use("/api", authApiRoutes)
 app.use("/api/transactions", transactionsApiRoutes)
 app.use("/api/books", bookApiRoutes)
+app.use("/api/users", usersApiRoutes)
 
 app.use("/auth", authRoute);
 
