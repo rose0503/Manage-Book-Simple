@@ -1,3 +1,4 @@
+
 var User = require("../models/user.model");
 var Book = require("../models/book.model");
 var Session = require("../models/session.model");
@@ -39,7 +40,8 @@ function generatePagination(page, paginationSizes, numPages) {
     return pageLinks;
   };
 
-module.exports.index = async (req, res) => {  
+module.exports.index = async (req, res) => {
+  
   const users = await User.find({});
   const books = await Book .find({});
   const transactions = await Transaction.find({})
@@ -67,6 +69,8 @@ module.exports.index = async (req, res) => {
     const skip = page * limit;
     
     transaction = transactions.slice(skip, skip + limit);
+    //console.log("result transactions", transaction)
+    //transactions = await Transaction.find({}, null, { limit, skip });
     const links = generatePagination(page, paginationSizes, numPages);
     pagination = {
       links,
@@ -76,15 +80,16 @@ module.exports.index = async (req, res) => {
       start: skip
     };
   }
-  
+  //res.render("transaction/index", { transactions, auth: req.user, pagination });
   res.render('transactions/index',{
     transactions: transaction,
     users: users,
     books: books,
     pagination
   }) 
-  
+  //console.log(db.get('transactions').value())
 };
+
 
 module.exports.create =async  (req, res) => {
   const users = await User.find({});
@@ -98,6 +103,7 @@ module.exports.create =async  (req, res) => {
 
 module.exports.complete = async (req, res) => {
   var id = req.params.id;
+  //var trans = db.get('transactions').value();
   const trans = await Transaction.find({})
   var error =[];
   
