@@ -16,7 +16,7 @@ module.exports.session = async (req, res, next) => {
     cart: {}
   });
   await newSession.save();
-  console.log("newSessionId" , newSession)  
+  //console.log("newSessionId" , newSession)  
   next();
   }catch (error) {
     next(error)

@@ -24,8 +24,8 @@ module.exports.index = async (req, res, next) => {
   try{
   let books = await Book.find({});
   
-  var a; 
-  a.foo();
+  // var a; 
+  // a.foo();
   res.render("books/index", {
     books: books
   });}catch (error){
