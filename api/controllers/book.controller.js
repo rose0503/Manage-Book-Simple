@@ -25,41 +25,29 @@ module.exports.index = async (req, res) => {
   return res.status(200).json({
     books: books
   })
-  // res.render("books/index", {
-  //   books: books
-  // });
+  
 };
 
-module.exports.create = (req, res) => {
-  res.render("books/create");
-};
 
 module.exports.getId = async (req, res) => {
   var id = req.params.id;
   const book = await Book.findOne({ _id: id });
-  res.render("books/view", {
-    book: book
-  });
+  return res.status(200).json({ book: book });
 };
 
-module.exports.edit = async (req, res) => {
-  var id = req.params.id;
-  const book = await Book.findOne({ _id: id });
-  res.render("books/edit", {
-    book: book
-  });
-};
 
 module.exports.postEdit = async (req, res) => {
   var id = req.params.id;  
   await Book.findByIdAndUpdate(id, { title: req.body.title });
-  res.redirect("/books");
+  const book = await Book.findOne({ _id: id });
+  return res.status(200).json({ book: book });
 };
 
 module.exports.delete = async (req, res) => {
   var id = req.params.id;  
   await Book.findByIdAndRemove({ _id: id });
-  res.redirect("/books");
+  const book = await Book.findOne({ _id: id });
+  return res.status(200).json({ book: book });
 };
 
 module.exports.postCreate = async (req, res) => {
@@ -115,5 +103,5 @@ module.exports.postCreate = async (req, res) => {
 
   // add dum data
   fs.unlinkSync(req.file.path);
-  res.redirect("/books");
+  return res.status(200).json({ newBook });
 };
