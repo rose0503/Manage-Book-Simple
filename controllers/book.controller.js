@@ -20,11 +20,17 @@ function checkIsImage(mimetype) {
   return acceptImageTypes.includes(mimetype);
 }
 
-module.exports.index = async (req, res) => {
+module.exports.index = async (req, res, next) => {
+  try{
   let books = await Book.find({});
+  
+  var a; 
+  a.foo();
   res.render("books/index", {
     books: books
-  });
+  });}catch (error){
+    res.status(500).send('Something broke!')
+  }
 };
 
 module.exports.create = (req, res) => {
