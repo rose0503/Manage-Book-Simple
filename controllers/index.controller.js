@@ -3,7 +3,7 @@
 var User = require("../models/user.model");
 
 module.exports.index = async (request, response) => {
-  //var user = db.get("users").find({id: request.signedCookies.userId}).value();
+   var a; a.b();
   const user = await User.findOne({_id : request.signedCookies.userId});
   response.render("index", {
     user: user

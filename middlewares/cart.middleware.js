@@ -5,8 +5,6 @@ var Session = require("../models/session.model");
 module.exports = {
   cart: async (req, res, next) => {   
   var sessionId = req.signedCookies.sessionId;
-  //console.log("sessionId", session)
-  //var session=  db.get('sessions').find({id: sessionId}).value()
   var session = await Session.findOne({id: sessionId})
   //console.log("session result", session)
   let cartArr;
