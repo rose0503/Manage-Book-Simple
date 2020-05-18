@@ -7,7 +7,7 @@ require("dotenv").config();
 const express = require("express");
 const app = express();
 const pug = require("pug");
-const port = 8080;
+const port = process.env.PORT || 8080;
 const bodyParser = require("body-parser");
 var cookieParser = require("cookie-parser");
 var csurf = require("csurf");
@@ -103,5 +103,5 @@ app.use("/cart", accountMiddleware.isAdmin, cartRoute);
 
 // listen for requests :)
 const listener = app.listen(port, () => {
-  console.log("Your app is listening on port " + port);
+  console.log("Your app is listening on port " + listener.address().port);
 });
