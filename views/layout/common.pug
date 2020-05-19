@@ -25,8 +25,14 @@ html
             a.nav-link(href='/users') Users
           li.nav-item
             a.nav-link(href='/transactions') Transactions  
+          if user
+            li.nav-item
+                a.nav-link(href="/shops/customerShop/"+ user._id) My Shop  
           li.nav-item
               a.nav-link(href='/cart') Cart  
+          if isAdmin 
+            li.nav-item
+              a.nav-link(href='#') ManageShop  
       if user
         .d-flex.align-items-center.dropdown
           //a.cart(href="/cart")

@@ -32,6 +32,8 @@ var userRoute = require("./routes/user.route.js");
 var transactionRoute = require("./routes/transaction.route.js");
 var profileRoute = require("./routes/profile.route.js");
 var cartRoute = require("./routes/cart.route.js");
+var shopRoute = require("./routes/shop.route.js");
+
 
 var authMiddleware = require("./middlewares/auth.middleware");
 var accountMiddleware = require("./middlewares/account.middleware");
@@ -97,6 +99,13 @@ app.use(
   authMiddleware.requireAuth,
   accountMiddleware.isAdmin,
   transactionRoute
+);
+
+app.use(
+  "/shops",
+  authMiddleware.requireAuth,
+  accountMiddleware.isAdmin,
+  shopRoute
 );
 
 app.use("/cart", accountMiddleware.isAdmin, cartRoute);

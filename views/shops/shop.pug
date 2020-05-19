@@ -1,0 +1,18 @@
+
+extends ../layout/common.pug
+
+block content
+    h5= `${user.name}`
+    
+    form(action="", method="POST")
+        .form-group
+            label Tên Shop
+            input(class="form-control", name="name", type="text", value= values ? values.name: '')
+        label.col-form-label(for='book') Chọn sách:
+        .col-sm
+          select#book.form-control(name="book",size="4" , multiple)
+            each book in Books
+              option(value=book._id)= book.title
+            else
+              option Không có sách!!     
+        button.btn.btn-primary.mt-2 Create

@@ -1,0 +1,44 @@
+
+extends ../layout/common.pug
+
+block content
+    if shop
+        a(href=`/shops/customerShop/${user.id}`) Go to myshop
+        
+        h5 My Books
+        .row
+            .col-9
+                .table-responsive
+                    table.table.table-hover(style='width:100%').mt-2
+                        thead.thead-light
+                            tr
+                                th STT
+                                th Book
+                                th Action
+                        tbody
+                            - let count = 0;  
+                            - listBooks = shop.listBook
+                            each book in listBooks
+                                tr
+                                    td= count+=1
+                                    td= Books.find(x => x.id === book.idBook).title
+                                    td 
+                                        a.btn.btn-light(href='#') Hoàn Thành
+            .col-3                
+                h5 Add Books 
+                if notifi
+                    each i in notifi
+                        .alert.alert-primary= i
+                form(action="/shops/manageShop/", method="POST")
+                    label.col-form-label(for='book') Chọn sách:
+                    .col-sm
+                        select#book.form-control(name="book",size="4" , multiple)
+                            each book in Books
+                                option(value=book._id)= book.title
+                            else
+                                option Không có sách!!     
+                    button.btn.btn-primary.mt-2 Create
+    else  
+        .d-flex.justify-content-center
+            h3 Bạn chưa có shop nào
+            a.btn.btn-priamry(href="/shops") Tạo shop                           
