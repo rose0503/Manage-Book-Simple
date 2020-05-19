@@ -1,13 +1,13 @@
 extends ../layout/common.pug
 block content
   .container
-    h1.text-center Cart
+    h1.text-center Giỏ hàng
     if notifi
       each i in notifi
         .alert.alert-danger= i
-    
     .d-flex.justify-content-center.align-items-center
-      a.btn.btn-primary(href='/cart/addCart') rent
+          a.btn.btn-primary(href='/cart/addCart') Thuê sách
+          a.ml-3.btn.btn-primary(href='/books/') Xem sách
     .row
       if books
         each book in books   
