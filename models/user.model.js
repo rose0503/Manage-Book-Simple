@@ -2,10 +2,18 @@ var mongoose = require("mongoose");
 
 var userSchema = new mongoose.Schema(
   {
-    name: String,
-    age: String,
-    email: String,
-    password: String,
+    name: {
+      type: String,
+      required: true      
+    },
+    email: {
+      type: String,
+      required: true
+    },
+    password: {
+      type: String,
+      required: true
+    },
     isAdmin: {
       type: Boolean,
       default: false
@@ -14,10 +22,16 @@ var userSchema = new mongoose.Schema(
       type: Number,
       default: 0
     },
-    avatar: String
-  },
-  {
-    versionKey: false // You should be aware of the outcome after set to false
+    avatar: {
+      type: String,
+      default: "https://res.cloudinary.com/quocviet0503/image/upload/v1595881667/default-avatar_haphbj.png"
+    },
+    age:{
+      type: Number,
+      required: false,
+      min: 1,
+      max: 100
+    },
   }
 );
 

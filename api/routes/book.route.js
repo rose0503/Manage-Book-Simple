@@ -3,20 +3,19 @@ var router = express.Router();
 
 const controller = require("../controllers/book.controller");
 const validate = require("../../validations/book.validate");
-
-const multer = require("multer");
-const upload = multer({
-  dest: './public/uploads/'
-});
+const requireLogin = require('../middleware/requireLogin')
 
 router.get("/", controller.index);
 
 router.get("/:id", controller.getId);
 
-router.post("/create", upload.single("avatar"), controller.postCreate);
+router.get("/cart/:_id", controller.addToCart);
+
+router.post("/create",requireLogin, controller.postCreate);
 
 router.patch("/:id/edit", validate.postEdit, controller.postEdit);
 
 router.delete("/:id/delete", controller.delete);
+
 
 module.exports = router;

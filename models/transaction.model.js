@@ -1,19 +1,25 @@
 var mongoose = require("mongoose");
-
+const {ObjectId} = mongoose.Schema.Types;
 var transactionSchema = new mongoose.Schema({
-  userId: String,
-  bookId: [String],
+  userId: {
+    type: ObjectId,
+    ref: "Users"
+  },
+  bookRent: [{
+    bookId: {      
+      type: ObjectId,
+      ref: "Books"
+    }, 
+    date : {
+      type: Date
+    }
+    
+  }],
   isComplete: {
     type: Boolean,
     default: false
   }
-}, {
-    versionKey: false // You should be aware of the outcome after set to false
-});
+},{timestamps:true});
 
-var Transaction = mongoose.model(
-  "Transactions",
-  transactionSchema,
-  "Transactions"
-);
+var Transaction = mongoose.model("Transactions",transactionSchema,"Transactions");
 module.exports = Transaction;

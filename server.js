@@ -7,13 +7,16 @@ require("dotenv").config();
 const express = require("express");
 const app = express();
 const pug = require("pug");
+var cors = require('cors');
 const port = process.env.PORT || 8080;
 const bodyParser = require("body-parser");
 var cookieParser = require("cookie-parser");
 var csurf = require("csurf");
+const expressValidator = require('express-validator')
 var mongoose = require("mongoose");
 
-//mongoose.connect('mongodb://localhost/test');
+app.use(cors())
+
 mongoose
   .connect(process.env.MONGO_URL, {
     useNewUrlParser: true,
@@ -53,13 +56,12 @@ const profileApiRoutes = require("./api/routes/profile.route");
 app.set("views", "./views");
 app.set("view engine", "pug");
 app.use(cookieParser(process.env.SESSION_SECRET));
-
+app.use(expressValidator())
 //app.use(csurf({cookie:true}))
 app.use(express.json()); // for parsing application/json
 app.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
 // make all the files in 'public' available
-// https://expressjs.com/en/starter/static-files.html
 app.use(express.static("public"));
 app.use(errorHandler);
 app.use(accountMiddleware.isAdmin);
@@ -67,7 +69,7 @@ app.use(sessionMiddleware.session);
 app.use(cartMiddleWare.cart);
 
 // api
-app.use("/api", authApiRoutes);
+app.use("/api/auth", authApiRoutes);
 app.use("/api/transactions", transactionsApiRoutes);
 app.use("/api/books", bookApiRoutes);
 app.use("/api/users", usersApiRoutes);
@@ -110,6 +112,7 @@ app.use(
 
 app.use("/cart", accountMiddleware.isAdmin, cartRoute);
 
+app.get("/*", (req, res) => res.render("./error/500.pug"));
 // listen for requests :)
 const listener = app.listen(port, () => {
   console.log("Your app is listening on port " + listener.address().port);

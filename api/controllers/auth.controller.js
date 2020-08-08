@@ -1,6 +1,9 @@
 const sgMail = require("@sendgrid/mail");
 const bcrypt = require("bcrypt");
-const saltRounds = 10;
+const jwt = require('jsonwebtoken');
+
+const JWT_SECRET = process.env.SENDGRID_API_KEY;
+
 
 var User = require("../../models/user.model");
 
@@ -8,75 +11,94 @@ sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 module.exports.postLogin = async (req, res) => {
   try {
-    var email = req.body.email;
-    var password = req.body.password;
-
+    const {email, password} = req.body;
+    if(!email || !password){
+      return res.status(202).json({error: "Vui lòng nhập đầy đủ!"})
+    }
     // find user
     const user = await User.findOne({ email });
 
     if (!user) {
-      res.render("auth/login", {
-        errors: ["Email is not exist."],
-        values: req.body
-      });
-      return;
-    }
+      return res.status(422).json({error: "Email không tồn tại!"})
+    }else{
+      // res.json({user})
+      let countWrongPassword = user.wrongLoginCount;
+      if (countWrongPassword >= 3) {
+        const msg = {
+          to: email,
+          from: "tqviet.0503@gmail.com",
+          subject:
+            "[BOOKSTORE] Tài Khoản đăng nhập sai quá số lần quy định",
+          text:
+            "Nếu bạn nhận được mail này, do tài khoản đăng nhập hơn 3 lần không chính xác. Hãy vào kiểm tra thông tin để bảo mật!!",
+          html:
+            "Nếu bạn nhận được mail này, do tài khoản đăng nhập hơn 3 lần không chính xác. Hãy vào kiểm tra thông tin để bảo mật!!"
+        };
+        sgMail.send(msg).then(
+          () => {},
+          error => {
+            console.error(error);
 
-    let countWrongPassword = user.wrongLoginCount;
-    if (countWrongPassword >= 3) {
-      res.render("auth/login", {
-        errors: ["Bạn đã nhập sai quá nhiều lần. Hãy quay lại sau!!."],
-        values: req.body
-      });
-
-      const msg = {
-        to: email,
-        from: "tqviet.0503@gmail.com",
-        subject:
-          "Enter the wrong password more than the specified number of times",
-        text:
-          "If you receive this email, because you have entered the wrong password more than 3 times.",
-        html:
-          "If you receive this email, because you have entered the wrong password more than 3 times."
-      };
-      sgMail.send(msg).then(
-        () => {},
-        error => {
-          console.error(error);
-
-          if (error.response) {
-            console.error(error.response.body);
+            if (error.response) {
+              console.error(error.response.body);
+            }
           }
-        }
-      );
+        );
+        
+         res.status(422).json({error: "Bạn đã nhập sai quá nhiều lần. Hãy quay lại sau!!"})
+      }else{
+        bcrypt.compare(password, user.password)
+         .then(async doMatch =>{
+           if(doMatch){
+            const token = jwt.sign({_id: user._id}, JWT_SECRET);
+            const {_id, email, name} = user;
+            res.status(200).json({
+              message: "Đăng nhập thành công",
+              token,
+              user: {_id, email, name}
+            });
+           }else{
+            await User.findByIdAndUpdate(user._id, {
+              wrongLoginCount: (countWrongPassword += 1)
+            });
+            return res.status(422).json({error: "Password không đúng"})
+           }
+         })
+        
+      }
     }
-
-    let resultCheck = bcrypt.compareSync(password, user.password);
-    //resultCheck = true;
-    if (resultCheck === false) {
-      await User.findByIdAndUpdate(user._id, {
-        wrongLoginCount: (countWrongPassword += 1)
-      });
-      res.render("auth/login", {
-        errors: ["Wrong password."],
-        values: req.body
-      });
-      return;
-    }
-    return res.status(200).json({
-      message: "You have successfully logged in",
-      user: user
-    });
+    
   } catch ({ message = "Invalid request" }) {
     return res.status(400).json({ message });
   }
 };
 
-module.exports.logout = (req, res) => {
-  try {
-    res.clearCookie("userId", { path: "/" });
-    res.status(200).json({ message: "Logout successfully" });
-  } catch ({ message = "Invalid request" }) {
-    res.status(400).json({ message });
-  }
-};
+module.exports.signup = (req, res) => {
+    const  {name, email, password} = req.body;
+    // if(!name || !email || !password){
+    //   return res.status(422).json({error: "Vui lòng điền đầy đủ thông tin!"})
+    // }
+    User.findOne({email})
+     .then((saveUser)=>{
+       if(saveUser){
+         return res.status(422).json({error: "Email đã tồn tại"})
+       }
+       bcrypt.hash(password, 12)
+        .then(hashpassword =>{
+          const user = new User({
+            email,
+            password: hashpassword,
+            name
+          })
+          user.save()
+           .then(user=>{
+             res.json({message: "Đăng ký thành công"});
+           })
+           .catch(err => {
+             console.log(err)
+           })
+        })
+     }).catch(err =>{
+       console.log(err)
+     })
+}
