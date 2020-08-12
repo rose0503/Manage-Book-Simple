@@ -14,8 +14,8 @@ cloudinary.config({
 
 
 module.exports.index = async (req, res) => {
-  var _limit =parseInt(req.query._limit);
-  var _page =parseInt(req.query._page)
+  var _limit =parseInt(req.query._limit) || 6
+  var _page =parseInt(req.query._page) || 1
   let title_like = new RegExp("^" + req.query.title_like);
   var skip = (_page - 1 ) * _limit;
   var total = await Book.find()
@@ -37,8 +37,7 @@ module.exports.index = async (req, res) => {
    })
 };
 
-
-module.exports.addToCart =  (req, res) => {
+module.exports.getId =  (req, res) => {
   var {_id} = req.params;
    Book.findOne({_id})
   .then(result =>{
@@ -47,13 +46,6 @@ module.exports.addToCart =  (req, res) => {
     console.log(err)
   })  
 }
-
-module.exports.getId = async (req, res) => {
-  var id = req.params.id;
-  const book = await Book.findOne({ _id: id });
-  return res.status(200).json({ book: book });
-};
-
 
 module.exports.postEdit = async (req, res) => {
   var id = req.params.id;  

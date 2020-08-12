@@ -23,11 +23,11 @@ function checkIsImage(mimetype) {
 
 module.exports.index = async (req, res, next) => {
   try{
-    var _limit = res.params._limit || 6;
-    var _page = req.query._page || 1
-    var start = (_page - 1 ) * _limit;
-    var end = _page * _limit;
-  let books = await Book.find().slice(start, end);
+    // var _limit = res.params._limit || 6;
+    // var _page = req.query._page || 1
+    // var start = (_page - 1 ) * _limit;
+    // var end = _page * _limit;
+  let books = await Book.find()
   
   // var a; 
   // a.foo();

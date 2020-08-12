@@ -7,9 +7,7 @@ const requireLogin = require('../middleware/requireLogin')
 
 router.get("/", controller.index);
 
-router.get("/:id", controller.getId);
-
-router.get("/cart/:_id", controller.addToCart);
+router.get("/:_id", controller.getId);
 
 router.post("/create",requireLogin, controller.postCreate);
 

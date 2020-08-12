@@ -5,20 +5,25 @@ var transactionSchema = new mongoose.Schema({
     type: ObjectId,
     ref: "Users"
   },
-  bookRent: [{
-    bookId: {      
-      type: ObjectId,
-      ref: "Books"
-    }, 
-    date : {
-      type: Date
-    }
-    
-  }],
-  isComplete: {
-    type: Boolean,
-    default: false
-  }
+  bookRent: [
+    {
+      bookId: {      
+        type: ObjectId,
+        ref: "Books"
+      },
+      isComplete: {
+        type: Boolean,
+        default: false
+      },
+      dateRent: {
+        type: Date
+      },
+      dateBack: {
+        type: Date,
+        default: null
+      }
+    }   
+  ]
 },{timestamps:true});
 
 var Transaction = mongoose.model("Transactions",transactionSchema,"Transactions");
