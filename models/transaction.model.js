@@ -16,7 +16,8 @@ var transactionSchema = new mongoose.Schema({
         default: false
       },
       dateRent: {
-        type: Date
+        type: Date,
+        default: Date.now()
       },
       dateBack: {
         type: Date,

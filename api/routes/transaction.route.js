@@ -10,6 +10,6 @@ router.get('/getid', requireLogin, controller.getTransId);
 
 router.post('/create', controller.postCreate);
 
-router.patch('/:id/complete', controller.complete);
+router.patch('/complete/:id',requireLogin, controller.complete);
 
 module.exports = router; 

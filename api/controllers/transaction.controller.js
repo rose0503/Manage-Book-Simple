@@ -1,6 +1,7 @@
 var User = require("../../models/user.model");
 var Book = require("../../models/book.model");
 var Transaction = require("../../models/transaction.model");
+const { times } = require("lodash");
 
 module.exports.index = async (req, res) => {
   var total = await Transaction.find()
@@ -34,23 +35,26 @@ module.exports.getTransId = async (req,res)=>{
 }
 
 module.exports.complete = async (req, res) => {
-  var id = req.params.id;
-  const trans = await Transaction.find({});
-  var error = [];
+  const userId = req.user._id;
+  const bookid = req.params.id
+  
+  if(!userId){
+    return res.status(401).json({error: "Bạn phải đăng nhập"})
+  }
 
-  // if(trans.id != id)
-  //   error.push('Yêu cầu không hợp lệ.')
-  // if(error.length){
-  //   res.render('transactions/complete',{
-  //     errors: error
-  //   })
-  //   return;
-  // }
-  if (!trans.isComplete)
-    await Transaction.findByIdAndUpdate({ _id: id }, { isComplete: true });
-  return res.status(200).json({
-    transaction: trans
-  });
+  Transaction.updateOne({bookRent: {"$elemMatch":{bookId: bookid}}, userId:req.user._id},
+    {$set: {"bookRent.$.isComplete": true, "bookRent.$.dateBack": Date.now()}},
+    function(err, result){
+        if(err){
+          return res.status(422).json({error: err});
+      }else{
+        res.json({trans: result,
+          message: "Bạn đã trả sách thành công"
+        });
+      }
+      }
+  )
+
 };
 
 module.exports.postCreate = async (req, res) => {
