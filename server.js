@@ -53,6 +53,7 @@ const bookApiRoutes = require("./api/routes/book.route");
 const usersApiRoutes = require("./api/routes/user.route");
 const profileApiRoutes = require("./api/routes/profile.route");
 const cartApiRouters = require('./api/routes/cart.route')
+const shopApiRouters = require('./api/routes/shop.route')
 
 app.set("views", "./views");
 app.set("view engine", "pug");
@@ -76,6 +77,7 @@ app.use("/api/books", bookApiRoutes);
 app.use("/api/users", usersApiRoutes);
 app.use("/api/profile", profileApiRoutes);
 app.use("/api/cart", cartApiRouters);
+app.use("/api/shop", shopApiRouters);
 
 app.use("/auth", authRoute);
 

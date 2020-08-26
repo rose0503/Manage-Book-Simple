@@ -1,10 +1,8 @@
 var User = require("../../models/user.model");
 var Book = require("../../models/book.model");
 var Transaction = require("../../models/transaction.model");
-const { times } = require("lodash");
 
 module.exports.index = async (req, res) => {
-  var total = await Transaction.find()
   Transaction.find()
    .populate('userId', "_id name email avatar isAdmin")
    .populate('bookRent.bookId', "_id description title coverUrl")

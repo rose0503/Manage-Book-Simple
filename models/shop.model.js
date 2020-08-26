@@ -1,17 +1,32 @@
 var mongoose = require("mongoose");
+const {ObjectId} = mongoose.Schema.Types;
 
 var sessionSchema = new mongoose.Schema({
-    id: String,
-    userId: String,
-    name: String,
+    userId: {
+      type: ObjectId,
+      ref: "Users"
+    },
+    name: {
+      type : String,
+      required: true
+    },
     listBook: [ 
-      { idBook: String, status: Boolean }
+      { 
+        bookId: {      
+          type: ObjectId,
+          ref: "Books"
+        },
+        isStatus: {
+          type: Boolean,
+          default: true
+        },
+      }
     ],
     status:{
         type: Boolean,
         default: true
       }
-});
+},{timestamps:true});
 
 var Shops = mongoose.model('Shops', sessionSchema, 'Shops');
 module.exports = Shops;

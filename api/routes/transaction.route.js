@@ -8,7 +8,7 @@ router.get("/", controller.index);
 
 router.get('/getid', requireLogin, controller.getTransId); 
 
-router.post('/create', controller.postCreate);
+// router.post('/create', controller.postCreate);
 
 router.patch('/complete/:id',requireLogin, controller.complete);
 

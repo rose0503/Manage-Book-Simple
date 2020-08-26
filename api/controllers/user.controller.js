@@ -99,10 +99,16 @@ module.exports.postCreate = async (req, res) => {
   
 };
 
-module.exports.getId = async (req, res) => {
-  var id = req.params.id;
-  var user = await User.findOne({ _id: id });
-  return res.status(200).json({ user: user });
+module.exports.getMyId = (req, res) => {
+  var userId = req.user._id;
+  User.findOne({ _id: userId})
+   .select("-password")
+   .then(result => {
+      res.status(200).json({ user: user });
+   }).catch(error=>{
+      return res.status(400).json({error: error})
+   })
+   
   
 };
 

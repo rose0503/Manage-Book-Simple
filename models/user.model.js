@@ -1,4 +1,5 @@
 var mongoose = require("mongoose");
+const {ObjectId} = mongoose.Schema.Types;
 
 var userSchema = new mongoose.Schema(
   {
@@ -32,6 +33,10 @@ var userSchema = new mongoose.Schema(
       min: 1,
       max: 100
     },
+    shopOwner: {
+      type: ObjectId,
+      ref: "Shops"
+    }
   }
 );
 

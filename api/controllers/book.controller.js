@@ -16,7 +16,7 @@ cloudinary.config({
 module.exports.index = async (req, res) => {
   var _limit =parseInt(req.query._limit) || 6
   var _page =parseInt(req.query._page) || 1
-  let title_like = new RegExp("^" + req.query.title_like);
+  let title_like = new RegExp("^" + req.query.title_like );
   var skip = (_page - 1 ) * _limit;
   var total = await Book.find()
   Book.find({title: {$regex:title_like, $options:"i"}})
@@ -62,6 +62,7 @@ module.exports.delete = async (req, res) => {
 };
 
 module.exports.postCreate = (req, res) => {
+  const userId = req.user._id
   let {title, description, coverUrl} = req.body
   if(!title || !description || !coverUrl){
     return res.status(422).json({error: "Vui lòng điền thông tin đầy đủ!"});
@@ -70,10 +71,14 @@ module.exports.postCreate = (req, res) => {
   const newBook = new Book({
     title,
     description,
-    coverUrl
+    coverUrl,
+    createdBy: userId,
+    byShop: userId.shopOwner != null ? userId.shopOwner._id : null
   }); 
   newBook.save().then(result => {
-    res.json({newBook: result});
+    res.json({newBook: result,
+                message: "Thêm sách thành công"        
+    });
   })
   .catch(err =>{
       console.log(err); 

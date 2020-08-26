@@ -51,11 +51,11 @@ module.exports.postLogin = async (req, res) => {
          .then(async doMatch =>{
            if(doMatch){
             const token = jwt.sign({_id: user._id}, JWT_SECRET);
-            const {_id, email, name} = user;
+            const {_id, email, name, shopOwner, isAdmin} = user;
             res.status(200).json({
               message: "Đăng nhập thành công",
               token,
-              user: {_id, email, name}
+              user: {_id, email, name, shopOwner, isAdmin}
             });
            }else{
             await User.findByIdAndUpdate(user._id, {
