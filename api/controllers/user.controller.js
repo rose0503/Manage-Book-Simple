@@ -120,12 +120,12 @@ module.exports.delete = async (req, res) => {
   return res.status(200).json({ user: user });
 };
 
-module.exports.postEdit = async (req, res) => {
-  var id = req.params.id;
-  await User.findByIdAndUpdate(
-    { _id: id },
-    { name: req.body.name, age: req.body.age }
-  );
-  var user = await User.findOne({ _id: id });
-  return res.status(200).json({ user: user });
-};
+// module.exports.postEdit = async (req, res) => {
+//   var id = req.params.id;
+//   await User.findByIdAndUpdate(
+//     { _id: id },
+//     { name: req.body.name, age: req.body.age }
+//   );
+//   var user = await User.findOne({ _id: id });
+//   return res.status(200).json({ user: user });
+// };
